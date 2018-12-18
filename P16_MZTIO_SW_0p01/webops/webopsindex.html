@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Pixie-Net Web Operations</title>
+<style type="text/css">
+	body { background-color:#d0d0d0; font-family:sans-serif; }
+	div.box { background-color:#ffffff; width:500px; margin:20px auto 50px; padding:50px; border-radius:10px; border:1px solid #808080; box-shadow:8px 15px 20px #404040 }
+	img.logo { float:right; margin:-10px 0 0 30px }
+	h1 { margin:0; font-size:24px }
+	h2 { margin-top:40px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040 }
+	p { font-size:14px }
+	li { font-size:14px }
+	a { color:#6060d0; text-decoration:none }
+	a:hover { text-decoration:underline }
+</style>
+</head>
+
+
+<body>
+<div class="box">
+	<img src="Xia_LLC_web_header.jpg" width="500" height="80" border="0"></a>
+<p> </p>
+<p> <h1> Pixie-Net Web Operations</h1></p>
+Shortcuts: <a href="cgitraces.cgi"> ADC traces </a>, 
+           <a href="cgistats.cgi"> Run statistics </a>, 
+			  <a href="../index.html"> Home page </a>,
+			  <a href="mcapage.html">MCA spectra</a>
+
+
+	<h2> CGI Executables </h2>
+	<p><b>Run executables as if typed in terminal</b>:
+    <ul>
+	    <li> <a href="acquire.cgi"> acquire </a>    </li>
+       <li> <a href="coincdaq.cgi"> coincdaq </a>  </li>
+		 <li> <a href="findsettings.cgi"> findsettings </a>  </li>
+		 <li> <a href="gettraces.cgi"> gettraces </a>  </li>
+		 <li> <a href="progfippi.cgi"> progfippi </a>  </li>
+		 <li> <a href="runstats.cgi"> runstats </a>  </li>
+		 <li> <a href="startdaq.cgi"> startdaq </a>  </li>
+	 </ul></p>
+	 <p><b>When no other task is in progress</b>, view/refresh
+    <ul>
+	    <li> <a href="cgitraces.cgi"> ADC traces </a> 	   </li>
+       <li> <a href="cgistats.cgi"> Run statistics </a> (full) </li>		 
+	 </ul></p>
+
+	<h2>DAQ Results</h2>
+	<p> <b>After</b> the data acquisition, <b>open/download</b> </p>
+   <ul>
+   	<li> <a href="LMdata.txt"> 0x500</a> List mode data with waveforms (from run type 0x500, text) </li>
+		<li> <a href="LMdata.dat"> 0x501</a> List mode data without waveforms (from run type 0x501, csv) </li>
+		<li> <a href="LMdata.dt2"> 0x502</a> List mode with PSA (from run type 0x502, csv)</li>
+		<li> <a href="LMdata.dt3"> 0x503</a> List mode coincidence data (from run type 0x503, csv)</li>
+		<li> <a href="LMdata.b00"> 0x400/402</a> Binary list mode data (from run types 0x400, 0x402)</li>
+	   <li> <a href="MCA.csv"> MCA spectra </a> as csv file</li>
+	   <li> <a href="RS.csv"> Run statistics </a> as csv file (full)</li>
+		<li> <a href="psa2D.csv"> PSA histogram </a> as csv file</li>
+	</ul>
+	
+   <p>View most recent data<b> in plots and tables</b> </p>
+	<ul>
+		<li> <a href="mcapage.html">MCA spectra</a>
+	   <li> <a href="rspage.html">Run status</a>
+		<li> PSA <a href="psahistpage.html">histogram</a>, <a href="psahistprojpage.html">with projections</a> or <a href="psasurfacepage.html">surface</a> plot
+	   <li> <a href="adcpage.html"> ADC traces</a>.
+	</ul>
+	
+	
+
+   <p>To view LM waveforms from latest 0x500 DAQ,  <a href="cgiwaveforms.cgi?evno=0"> click here</a>.</p>
+
+	<h2> Help </h2>
+	<p> XIA support website for <a href="http://support.xia.com/default.asp?W772"> Pixie-Net </a> </p>
+</div>
+</body>
+
+</html>
