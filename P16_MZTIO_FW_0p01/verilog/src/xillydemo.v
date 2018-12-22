@@ -14,6 +14,7 @@ module xillydemo
    inout 	 SDA, // done
    output 	 Tx_En, // done
    output [1:0]  Tx_D, // done
+   
    input [5:4] 	 Control, // ? done
    input [1:0] 	 EB_Ctrl, // ? done
    inout [31:16] EB_Data, // done
@@ -35,6 +36,7 @@ module xillydemo
    wire [15:0] 	 FrontIO_Ain, FrontIO_Aout, FrontIO_Aena;    // front panel LVDS
    wire [15:0] 	 FrontIO_Bin, FrontIO_Bout, FrontIO_Bena;    // front panel LVDS  
    wire [15:0] 	 FrontIO_Cin, FrontIO_Cout, FrontIO_Cena;    // front panel LVDS
+   
    wire [31:0] 	 TriggerAllin, TriggerAllout, TriggerAllena; // on J4 backplane
    wire [31:16]  EB_Datain, EB_Dataout, EB_Dataena;         // on J3 backplane
    
@@ -43,8 +45,10 @@ module xillydemo
    IOBUF fa [15:0] (.IO(FrontIO_A),  .I(FrontIO_Ain), .O(FrontIO_Aout), .T(!FrontIO_Aena));
    IOBUF fb [15:0] (.IO(FrontIO_B),  .I(FrontIO_Bin), .O(FrontIO_Bout), .T(!FrontIO_Bena));
    IOBUF fc [15:0] (.IO(FrontIO_C),  .I(FrontIO_Cin), .O(FrontIO_Cout), .T(!FrontIO_Cena));
+   
    IOBUF ta [31:0] (.IO(TriggerAll), .I(TriggerAllin), .O(TriggerAllout), .T(!TriggerAllena));
    IOBUF ebd [31:16] (.IO(EB_Data),  .I(EB_Datain), .O(EB_Dataout), .T(!EB_Dataena));
+
    
    wire [5:4] 	 ctrl;   // spare J4
    wire [1:0] 	 eb_c;   // spare J3
