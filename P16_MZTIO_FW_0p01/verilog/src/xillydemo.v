@@ -15,13 +15,13 @@ module xillydemo
    output 	 Tx_En, // done
    output [1:0]  Tx_D, // done
    
-   input [5:4] 	 Control, // ? done
-   input [1:0] 	 EB_Ctrl, // ? done
-   inout [31:16] EB_Data, // done
+   input [5:4] 	 Control, // ? done   all slots
+   input [1:0] 	 EB_Ctrl, // ? done   PXI segment only
+   inout [31:16] EB_Data, // done     PXI segment only
    inout [15:0]  FrontIO_A, // done
    inout [15:0]  FrontIO_B, // done
    inout [15:0]  FrontIO_C, // done
-   inout [31:0]  TriggerAll // done
+   inout [31:0]  TriggerAll // done   all slots
    ); 
    
 `define SYSREVISION 32'hB100_0001    
