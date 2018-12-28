@@ -19,7 +19,7 @@ module xillydemo
    input [1:0] 	 EB_Ctrl, // ? done   PXI segment only
    inout [31:16] EB_Data, // done     PXI segment only
    inout [15:0]  FrontIO_A, // done
-   inout [15:0]  FrontIO_B, // done
+   inout [15:0]  FrontIO_B, // done  
    inout [15:0]  FrontIO_C, // done
    inout [31:0]  TriggerAll // done   all slots
    ); 
