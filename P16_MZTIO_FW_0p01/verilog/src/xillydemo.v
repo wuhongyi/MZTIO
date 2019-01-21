@@ -45,6 +45,19 @@ module xillydemo
    IOBUF fa [15:0] (.IO(FrontIO_A),  .I(FrontIO_Ain), .O(FrontIO_Aout), .T(!FrontIO_Aena));
    IOBUF fb [15:0] (.IO(FrontIO_B),  .I(FrontIO_Bin), .O(FrontIO_Bout), .T(!FrontIO_Bena));
    IOBUF fc [15:0] (.IO(FrontIO_C),  .I(FrontIO_Cin), .O(FrontIO_Cout), .T(!FrontIO_Cena));
+
+   // The configuration of the FrontIO_A/B/C is completely flexible. For example, if you connect the RJ-45 of a Pixie-16 to FrontI/O A 0-3 (the upper RJ-45 on the trigger board), signals will connect 
+   // FO1 - Front I/O A 0 
+   // FI1 - Front I/O A 2 
+   // FI5 - Front I/O A 1 
+   // FO5 - Front I/O A 3
+
+   // F0  5p/5n  synchronization status / multiplicity result channel 0(pku firmware)
+   // FO 1p/1n  not used / multiplicity result channel 1(pku firmware) 
+   // FI  5p/5n  external fast trigger
+   // FI  1p/1n  external validation trigger
+
+   
    
    IOBUF ta [31:0] (.IO(TriggerAll), .I(TriggerAllin), .O(TriggerAllout), .T(!TriggerAllena));
    IOBUF ebd [31:16] (.IO(EB_Data),  .I(EB_Datain), .O(EB_Dataout), .T(!EB_Dataena));
