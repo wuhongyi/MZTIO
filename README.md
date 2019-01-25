@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 一 1月 21 13:41:36 2019 (+0800)
+;; Last-Updated: 五 1月 25 21:28:08 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 8
+;;     Update #: 13
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -45,20 +45,22 @@ vim /etc/apt/sources.list
 
 修改为
 ```
-deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu vivid main restricted universe multiverse   
+deb http://old-releases.ubuntu.com/ubuntu vivid-security main restricted universe multiverse   
+deb http://old-releases.ubuntu.com/ubuntu vivid-updates main restricted universe multiverse   
+deb http://old-releases.ubuntu.com/ubuntu vivid-proposed main restricted universe multiverse   
+deb http://old-releases.ubuntu.com/ubuntu vivid-backports main restricted universe multiverse   
+deb-src http://old-releases.ubuntu.com/ubuntu vivid main restricted universe multiverse   
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-security main restricted universe multiverse   
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-updates main restricted universe multiverse   
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-proposed main restricted universe multiverse   
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-backports main restricted universe multiverse 
 
 deb http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 ```
+
+
 
 运行
 ```
@@ -66,20 +68,28 @@ apt-get update
 ```
 
 
-```bash
-
-apt-get install gcc-4.9-base:i386
-
-```
 
 
 ```bash
+#安装 firefox
+apt-get install firefox
 # 安装emacs
 apt install emacs
 ```
 
 
+## 恢复SD卡原始空间
 
+为了加快镜像装载速度，实际上只格式化了16G左右的SD卡空间，我32G的SD卡还有16G多的空间都没用到，为了能够进行使用进行如下操作
+
+fdisk /dev/mmcblk0
+然后分别输入: d [ENTER],2 [ENTER],n[ENTER] [ENTER],[ENTER],[ENTER],[ENTER],w[ENTER]， 若中间出现问题详细参考Getting started with Xillinux for Zynq-7000 EPP ， 然后重启linux 开机后
+
+resize2fs /dev/mmcblk0p2
+并使用
+
+df -h
+查看最后追加的结果
 
 
 
