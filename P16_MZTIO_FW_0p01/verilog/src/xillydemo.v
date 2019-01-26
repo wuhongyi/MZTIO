@@ -17,6 +17,7 @@ module xillydemo
    
    input [5:4] 	 Control, // ? done   all slots
    input [1:0] 	 EB_Ctrl, // ? done   PXI segment only
+   
    inout [31:16] EB_Data, // done     PXI segment only
    inout [15:0]  FrontIO_A, // done
    inout [15:0]  FrontIO_B, // done  
@@ -31,6 +32,15 @@ module xillydemo
    // *************************************************************
    // *************** IO Buffers **********************************
    // ************************************************************* 
+   // T   I   IO   O
+   // 1   x   Z    IO
+   // 0   1   1    1
+   // 0   0   0    0
+   
+   // IOBUF ,when T==0, I => IO
+   //        when T==1, IO => O
+   // 当 T==1时，IO端口相对于FPGA是输入，此时O的参数有效，可以使用
+   // 当 T==0时，IO端口相对于FPGA是输出，此时I的参数有效，需要对I进行赋值
    
    // ----------- IO Buffers Trigger I/O----------------------------  
    wire [15:0] 	 FrontIO_Ain, FrontIO_Aout, FrontIO_Aena;    // front panel LVDS
@@ -46,18 +56,19 @@ module xillydemo
    IOBUF fb [15:0] (.IO(FrontIO_B),  .I(FrontIO_Bin), .O(FrontIO_Bout), .T(!FrontIO_Bena));
    IOBUF fc [15:0] (.IO(FrontIO_C),  .I(FrontIO_Cin), .O(FrontIO_Cout), .T(!FrontIO_Cena));
 
-   // The configuration of the FrontIO_A/B/C is completely flexible. For example, if you connect the RJ-45 of a Pixie-16 to FrontI/O A 0-3 (the upper RJ-45 on the trigger board), signals will connect 
-   // FO1 - Front I/O A 0 
-   // FI1 - Front I/O A 2 
-   // FI5 - Front I/O A 1 
-   // FO5 - Front I/O A 3
+   // The configuration of the FrontIO_A/B/C is completely flexible. For example, if you connect the RJ-45 of a Pixie-16 to FrontI/O A 0-3 (the upper RJ-45 on the trigger board), signals will connect
+   // FO5 - Front I/O A 3      FrontIO_Aena==0
+   // FO1 - Front I/O A 0      FrontIO_Aena==0
+   // FI5 - Front I/O A 1      FrontIO_Aena==1
+   // FI1 - Front I/O A 2      FrontIO_Aena==1
 
    // F0  5p/5n  synchronization status / multiplicity result channel 0(pku firmware)
-   // FO 1p/1n  not used / multiplicity result channel 1(pku firmware) 
+   // FO  1p/1n  not used / multiplicity result channel 1(pku firmware) 
    // FI  5p/5n  external fast trigger
    // FI  1p/1n  external validation trigger
 
-   
+   // FrontIO_Aout [3] [0]  [7] [4]  [11] [8]  [15] [12]
+   // FrontIO_Ain  [1] [2]  [5] [6]  [9] [10]  [13] [14]
    
    IOBUF ta [31:0] (.IO(TriggerAll), .I(TriggerAllin), .O(TriggerAllout), .T(!TriggerAllena));
    IOBUF ebd [31:16] (.IO(EB_Data),  .I(EB_Datain), .O(EB_Dataout), .T(!EB_Dataena));
@@ -177,14 +188,84 @@ module xillydemo
    //     outblock == 1 : read results from the logic
    //
    
-   // i/o data array
+   // i/o data array 输入寄存器
    reg [7:0] 	 litearray0[0:511];
    reg [7:0] 	 litearray1[0:511];
    reg [7:0] 	 litearray2[0:511];
    reg [7:0] 	 litearray3[0:511];
+   // 000   CSR
+   // 001   
+   // 002   D18
+   // 003   outblock 
+   // 006   snum
+   // 100   FrontIO_Aena
+   // 101   FrontIO_Bena
+   // 102   FrontIO_Cena
+   // 103   TriggerAllena
+   // 104   EB_Dataena
+   // 108   frontA_coincidence_mask
+   // 109   frontB_coincidence_mask
+   // 10A   frontC_coincidence_mask
+   // 10B   TriggerAll_coincidence_mask
+   // 10C   EB_Data_coincidence_mask
+   // 110   frontA_multiplicity_mask
+   // 111   frontB_multiplicity_mask
+   // 112   frontC_multiplicity_mask
+   // 113   TriggerAll_multiplicity_mask
+   // 114   EB_Data_multiplicity_mask
+   // 118   frontA_coincidence_pattern
+   // 119   frontB_coincidence_pattern
+   // 11A   frontC_coincidence_pattern
+   // 11B   TriggerAll_coincidence_pattern
+   // 11C   EB_Data_coincidence_pattern
+   // 120   frontA_multiplicity_threshold
+   // 121   frontB_multiplicity_threshold
+   // 122   frontC_multiplicity_threshold
+   // 123   TriggerAll_multiplicity_threshold
+   // 124   EB_Data_multiplicity_threshold
+   // 128   frontA_output_select
+   // 129   frontB_output_select
+   // 12A   frontC_output_select
+   // 12B   TriggerAll_output_select
+   // 12C   EB_Data_output_select
    
-   // output data array
+   
+   // output data array 输出寄存器
    wire [31:0] 	 evdata[0:511];  // 512 words, 32bit wide
+   // 000   CSR
+   // 001   VERSION
+   // 002
+   // 003
+   // 004
+   // 005   coincresult
+   // 006
+   // 007
+   // 008
+   // 009   
+   // 00A   numtrig
+   // 00B   numtrig
+   // 00C   runticks
+   // 00D   runticks
+   // 00E
+   // 00F
+   // 010
+   // 011
+   // 012   snum
+   // 100   FrontIO_Aout
+   // 101   FrontIO_Bout
+   // 102   FrontIO_Cout
+   // 103   TriggerAllout
+   // 104   EB_Dataout
+   // 108   FrontIO_Aout & frontA_coincidence_mask
+   // 109   FrontIO_Bout & frontB_coincidence_mask
+   // 10A   FrontIO_Cout & frontC_coincidence_mask
+   // 10B   TriggerAllout & TriggerAll_coincidence_mask
+   // 10C   16'h0000, EB_Dataout & EB_Data_coincidence_mask
+   // 110   sumA
+   // 111   sumB
+   // 112   sumC
+   // 113   sumT
+   // 114   sumE
    
    // PS-PL wires
    wire 	 user_clk;
@@ -196,7 +277,7 @@ module xillydemo
    wire [31:0] 	 user_addr;       // lowest 2 user_addr bits are always zero, 4096 words max in lite; 
    wire 	 user_irq;
    assign      user_irq = 0;   // No interrupts for now
-   wire [1:0] 	 outblock;
+   wire [1:0] 	 outblock;// 用来控制读取寄存器位置。0表示读取输入寄存器，1表示读取输出寄存器
    
 
    always @(posedge user_clk)
@@ -502,25 +583,37 @@ module xillydemo
 
    assign TriggerAllin[31:0] = 0;        // for now, output nothing to backplane
    assign EB_Datain[31:16]   = 0;        // for now, output nothing to backplane
-   assign FrontIO_Ain[15:0] = (frontA_output_select == 0 )?  TriggerAllout[15:0] : 16'bzzzz ; 
-   assign FrontIO_Ain[15:0] = (frontA_output_select == 1 )? (TriggerAllout[15:0] & TriggerAll_coincidence_mask[15:0]) : 16'bzzzz ; 
-   assign FrontIO_Ain[15:0] = (frontA_output_select == 2 )? (TriggerAllout[15:0] & TriggerAll_multiplicity_mask[15:0]): 16'bzzzz ; 
-   assign FrontIO_Ain[15:0] = (frontA_output_select == 3 )? {16{coincresult[3]}} : 16'bzzzz ; 
-   assign FrontIO_Ain[15:0] = (frontA_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ; 
-   assign FrontIO_Ain[15:0] = (frontA_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
+   
+   // assign FrontIO_Ain[15:0] = (frontA_output_select == 0 )?  TriggerAllout[15:0] : 16'bzzzz ; 
+   // assign FrontIO_Ain[15:0] = (frontA_output_select == 1 )? (TriggerAllout[15:0] & TriggerAll_coincidence_mask[15:0]) : 16'bzzzz ; 
+   // assign FrontIO_Ain[15:0] = (frontA_output_select == 2 )? (TriggerAllout[15:0] & TriggerAll_multiplicity_mask[15:0]): 16'bzzzz ; 
+   // assign FrontIO_Ain[15:0] = (frontA_output_select == 3 )? {16{coincresult[3]}} : 16'bzzzz ; 
+   // assign FrontIO_Ain[15:0] = (frontA_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ;
+   // assign FrontIO_Ain[15:0] = (frontA_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
+
+   assign FrontIO_Ain[1] = FrontIO_Aout[3];
+   assign FrontIO_Ain[2] = FrontIO_Aout[3];
+   assign FrontIO_Ain[5] = FrontIO_Aout[7];
+   assign FrontIO_Ain[6] = FrontIO_Aout[7];
+   assign FrontIO_Ain[9] = FrontIO_Aout[11];
+   assign FrontIO_Ain[10] = FrontIO_Aout[11];
+   assign FrontIO_Ain[13] = FrontIO_Aout[15];
+   assign FrontIO_Ain[14] = FrontIO_Aout[15];
+
+   
    assign FrontIO_Bin[15:0] = (frontB_output_select == 0 )?  TriggerAllout[31:16] : 16'bzzzz ; 
    assign FrontIO_Bin[15:0] = (frontB_output_select == 1 )? (TriggerAllout[31:16] & TriggerAll_coincidence_mask[31:16]) : 16'bzzzz ; 
    assign FrontIO_Bin[15:0] = (frontB_output_select == 2 )? (TriggerAllout[31:16] & TriggerAll_multiplicity_mask[31:16]): 16'bzzzz ; 
    assign FrontIO_Bin[15:0] = (frontB_output_select == 3 )? {16{coincresult[3]}} : 16'bzzzz ; 
    assign FrontIO_Bin[15:0] = (frontB_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ; 
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
+   assign FrontIO_Bin[15:0] = (frontB_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
+   
    assign FrontIO_Cin[15:0] = (frontC_output_select == 0 )?  EB_Dataout[31:16] : 16'bzzzz ; 
    assign FrontIO_Cin[15:0] = (frontC_output_select == 1 )? (EB_Dataout[31:16] & EB_Data_coincidence_mask[31:16]) : 16'bzzzz ; 
    assign FrontIO_Cin[15:0] = (frontC_output_select == 2 )? (EB_Dataout[31:16] & EB_Data_multiplicity_mask[31:16]): 16'bzzzz ; 
    assign FrontIO_Cin[15:0] = (frontC_output_select == 3 )? {16{coincresult[4]}} : 16'bzzzz ; 
    assign FrontIO_Cin[15:0] = (frontC_output_select == 4 )? {16{coincresult[12]}} : 16'bzzzz ; 
    assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
-
 
 
 
@@ -572,9 +665,6 @@ module xillydemo
    // Clock and quiesce
    wire        bus_clk;
    wire        quiesce;
-
-
-
 
 
    // Note that none of the ARM processor's direct connections to pads is

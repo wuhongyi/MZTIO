@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 五 1月 25 21:28:08 2019 (+0800)
+;; Last-Updated: 六 1月 26 20:24:34 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 13
+;;     Update #: 19
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -16,8 +16,7 @@ https://support.xia.com/default.asp?W372
 - Open Vivado. Use Tools > Run Tcl Script to run project generating script …/verilog/xillydemo-vivado.tcl. The resulting project file is in ...\verilog\vivado
 There have been cases where the script crashes Vivado, and then the compile has ~100 pin property critical warnings. In such cases, start over.  
 - Compile demo project (generate bitstream). Ignore warnings and critical warnings.
-- Check ...\verilog\vivado\xillydemo.runs\impl_1\xillydemo.bit 
-
+- Check build/xillydemo.runs/impl_1/xillydemo.bit 
 
 将USB线连接电脑，获取系统 IP
 
@@ -90,6 +89,82 @@ resize2fs /dev/mmcblk0p2
 
 df -h
 查看最后追加的结果
+
+
+
+## update the boot files
+
+To mount the SD card boot partition to a folder /mnt/sd, execute
+```bash
+mount /dev/mmcblk0p1 /mnt/sd
+```
+this is useful to update the boot files without removing the SD card. The Pixie-16 MZ-TrigIO has to be rebooted before the new boot files become effective.
+
+So the precedure would be 
+- generate FW files on a desktop PC
+- copy to shared Linux folder on the SD card (/var/www)
+- mount boot partition mount /dev/mmcblk0p1 /mnt/sd (create /mnt/sd if not already there) 
+- copy files e.g. cp /var/www/xillydemo.bit /mnt/sd
+- reboot or power cycle ( reboot)
+
+
+```bash
+scp xillydemo.bit root@222.29.111.157:~
+```
+
+----
+
+
+PixieNetCommon.c          
+PixieNetCommon.h          
+PixieNetConfig.cpp        
+PixieNetConfig.h          
+PixieNetDefs.h            
+
+makefile            
+cgistats.c                
+clockprog.c         
+monitordaq.c        
+progfippi.c    
+runstats.c     
+writeI2C.c     
+
+d3.v3.min.js        
+defaults.ini        
+settings.ini   
+
+Xia_LLC_web_header.jpg    
+dygraph-combined.js 
+index.html          
+plotly-latest.min.js
+rspage.html    
+webopspasswords 存放网页密码
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
