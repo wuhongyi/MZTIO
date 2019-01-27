@@ -608,15 +608,20 @@ module xillydemo
    assign FrontIO_Bin[15:0] = (frontB_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ; 
    assign FrontIO_Bin[15:0] = (frontB_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
    
-   assign FrontIO_Cin[15:0] = (frontC_output_select == 0 )?  EB_Dataout[31:16] : 16'bzzzz ; 
-   assign FrontIO_Cin[15:0] = (frontC_output_select == 1 )? (EB_Dataout[31:16] & EB_Data_coincidence_mask[31:16]) : 16'bzzzz ; 
-   assign FrontIO_Cin[15:0] = (frontC_output_select == 2 )? (EB_Dataout[31:16] & EB_Data_multiplicity_mask[31:16]): 16'bzzzz ; 
-   assign FrontIO_Cin[15:0] = (frontC_output_select == 3 )? {16{coincresult[4]}} : 16'bzzzz ; 
-   assign FrontIO_Cin[15:0] = (frontC_output_select == 4 )? {16{coincresult[12]}} : 16'bzzzz ; 
-   assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
+   // assign FrontIO_Cin[15:0] = (frontC_output_select == 0 )?  EB_Dataout[31:16] : 16'bzzzz ; 
+   // assign FrontIO_Cin[15:0] = (frontC_output_select == 1 )? (EB_Dataout[31:16] & EB_Data_coincidence_mask[31:16]) : 16'bzzzz ; 
+   // assign FrontIO_Cin[15:0] = (frontC_output_select == 2 )? (EB_Dataout[31:16] & EB_Data_multiplicity_mask[31:16]): 16'bzzzz ; 
+   // assign FrontIO_Cin[15:0] = (frontC_output_select == 3 )? {16{coincresult[4]}} : 16'bzzzz ; 
+   // assign FrontIO_Cin[15:0] = (frontC_output_select == 4 )? {16{coincresult[12]}} : 16'bzzzz ; 
+   // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
+   assign FrontIO_Cin[0] = user_clk;
+   assign FrontIO_Cin[1] = user_clk;
+   assign FrontIO_Cin[2] = user_clk;
+   assign FrontIO_Cin[3] = user_clk;
 
-
+   assign FrontIO_Cin[7] = FrontIO_Aout[3];
+   
 
 
    /* ***************** xillybus instantiation ****************** */
