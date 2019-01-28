@@ -410,11 +410,11 @@ module xillydemo
    assign evdata[9'h012] = {16'h0000, snum};       
    
    // inputs direct    
-   assign evdata[9'h100] = {16'h0000, FrontIO_Aout};        
-   assign evdata[9'h101] = {16'h0000, FrontIO_Bout};
-   assign evdata[9'h102] = {16'h0000, FrontIO_Cout};
-   assign evdata[9'h103] = {TriggerAllout};
-   assign evdata[9'h104] = {16'h0000, EB_Dataout};
+   assign evdata[9'h100] = {16'h0000, FrontIO_Aena};        
+   assign evdata[9'h101] = {16'h0000, FrontIO_Bena};
+   assign evdata[9'h102] = {16'h0000, FrontIO_Cena};
+   assign evdata[9'h103] = {TriggerAllena};
+   assign evdata[9'h104] = {16'h0000, EB_Dataena};
    
    // inputs with coincidence mask 
    assign evdata[9'h108] = {16'h0000, FrontIO_Aout & frontA_coincidence_mask};
@@ -591,22 +591,25 @@ module xillydemo
    // assign FrontIO_Ain[15:0] = (frontA_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ;
    // assign FrontIO_Ain[15:0] = (frontA_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
 
-   assign FrontIO_Ain[1] = FrontIO_Aout[3];
-   assign FrontIO_Ain[2] = FrontIO_Aout[3];
-   assign FrontIO_Ain[5] = FrontIO_Aout[7];
-   assign FrontIO_Ain[6] = FrontIO_Aout[7];
-   assign FrontIO_Ain[9] = FrontIO_Aout[11];
-   assign FrontIO_Ain[10] = FrontIO_Aout[11];
-   assign FrontIO_Ain[13] = FrontIO_Aout[15];
-   assign FrontIO_Ain[14] = FrontIO_Aout[15];
+   
+   // assign FrontIO_Ain[1] = FrontIO_Aout[3];
+   // assign FrontIO_Ain[2] = FrontIO_Aout[3];
+   // assign FrontIO_Ain[0] = 1'bz;
+   // assign FrontIO_Ain[3] = 1'bz;
+   assign FrontIO_Bin[1] = FrontIO_Aout[3];
+   assign FrontIO_Bin[2] = FrontIO_Aout[3];
+   // assign FrontIO_Ain[9] = FrontIO_Aout[11];
+   // assign FrontIO_Ain[10] = FrontIO_Aout[11];
+   // assign FrontIO_Ain[13] = FrontIO_Aout[15];
+   // assign FrontIO_Ain[14] = FrontIO_Aout[15];
 
    
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 0 )?  TriggerAllout[31:16] : 16'bzzzz ; 
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 1 )? (TriggerAllout[31:16] & TriggerAll_coincidence_mask[31:16]) : 16'bzzzz ; 
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 2 )? (TriggerAllout[31:16] & TriggerAll_multiplicity_mask[31:16]): 16'bzzzz ; 
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 3 )? {16{coincresult[3]}} : 16'bzzzz ; 
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ; 
-   assign FrontIO_Bin[15:0] = (frontB_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
+   // assign FrontIO_Bin[15:0] = (frontB_output_select == 0 )?  TriggerAllout[31:16] : 16'bzzzz ; 
+   // assign FrontIO_Bin[15:0] = (frontB_output_select == 1 )? (TriggerAllout[31:16] & TriggerAll_coincidence_mask[31:16]) : 16'bzzzz ; 
+   // assign FrontIO_Bin[15:0] = (frontB_output_select == 2 )? (TriggerAllout[31:16] & TriggerAll_multiplicity_mask[31:16]): 16'bzzzz ; 
+   // assign FrontIO_Bin[15:0] = (frontB_output_select == 3 )? {16{coincresult[3]}} : 16'bzzzz ; 
+   // assign FrontIO_Bin[15:0] = (frontB_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ; 
+   // assign FrontIO_Bin[15:0] = (frontB_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
    
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 0 )?  EB_Dataout[31:16] : 16'bzzzz ; 
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 1 )? (EB_Dataout[31:16] & EB_Data_coincidence_mask[31:16]) : 16'bzzzz ; 
@@ -615,13 +618,13 @@ module xillydemo
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 4 )? {16{coincresult[12]}} : 16'bzzzz ; 
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
-   assign FrontIO_Cin[0] = user_clk;
-   assign FrontIO_Cin[1] = user_clk;
-   assign FrontIO_Cin[2] = user_clk;
-   assign FrontIO_Cin[3] = user_clk;
+   // assign FrontIO_Cin[0] = FrontIO_Aout[0];
+   assign FrontIO_Cin[1] = FrontIO_Aout[0];
+   // assign FrontIO_Cin[2] = FrontIO_Aout[3];
+   assign FrontIO_Cin[3] = FrontIO_Aout[3];
 
-   assign FrontIO_Cin[7] = FrontIO_Aout[3];
-   
+   assign FrontIO_Cin[5] = FrontIO_Aout[0];
+   assign FrontIO_Cin[7] = FrontIO_Aout[3];   
 
 
    /* ***************** xillybus instantiation ****************** */
