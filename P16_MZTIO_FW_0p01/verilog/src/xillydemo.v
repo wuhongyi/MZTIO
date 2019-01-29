@@ -251,11 +251,11 @@ module xillydemo
    // 010
    // 011
    // 012   snum
-   // 100   FrontIO_Aout
-   // 101   FrontIO_Bout
-   // 102   FrontIO_Cout
-   // 103   TriggerAllout
-   // 104   EB_Dataout
+   // 100   FrontIO_Aena   // change
+   // 101   FrontIO_Bena   // change
+   // 102   FrontIO_Cena   // change
+   // 103   TriggerAllena  // change
+   // 104   EB_Dataena     // change
    // 108   FrontIO_Aout & frontA_coincidence_mask
    // 109   FrontIO_Bout & frontB_coincidence_mask
    // 10A   FrontIO_Cout & frontC_coincidence_mask
@@ -340,12 +340,14 @@ module xillydemo
    assign d18_ena  = litearray0[2][2];
    assign outblock = litearray0[3][1:0];   // read back block 
    assign snum[15:0]  = {litearray1[9'h006][7:0],litearray0[9'h006][7:0]}; 
+
    
    assign FrontIO_Aena[15:0]  = {litearray1[9'h100][7:0],litearray0[9'h100][7:0]};
    assign FrontIO_Bena[15:0]  = {litearray1[9'h101][7:0],litearray0[9'h101][7:0]};
    assign FrontIO_Cena[15:0]  = {litearray1[9'h102][7:0],litearray0[9'h102][7:0]};
    assign TriggerAllena[31:0] = {litearray3[9'h103][7:0],litearray2[9'h103][7:0],litearray1[9'h103][7:0],litearray0[9'h103][7:0]};
    assign EB_Dataena[31:16]   = {litearray1[9'h104][7:0],litearray0[9'h104][7:0]};
+
    
    wire [15:0] frontA_coincidence_mask, frontB_coincidence_mask, frontC_coincidence_mask;
    wire [31:0] TriggerAll_coincidence_mask; 
@@ -409,7 +411,7 @@ module xillydemo
    // 14-17 reserved, do not use (SW adds values)            
    assign evdata[9'h012] = {16'h0000, snum};       
    
-   // inputs direct    
+   // inputs direct          wuhongyi
    assign evdata[9'h100] = {16'h0000, FrontIO_Aena};        
    assign evdata[9'h101] = {16'h0000, FrontIO_Bena};
    assign evdata[9'h102] = {16'h0000, FrontIO_Cena};
@@ -591,19 +593,6 @@ module xillydemo
    // assign FrontIO_Ain[15:0] = (frontA_output_select == 4 )? {16{coincresult[11]}} : 16'bzzzz ;
    // assign FrontIO_Ain[15:0] = (frontA_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ;
 
-   
-   // assign FrontIO_Ain[1] = FrontIO_Aout[3];
-   // assign FrontIO_Ain[2] = FrontIO_Aout[3];
-   // assign FrontIO_Ain[0] = 1'bz;
-   // assign FrontIO_Ain[3] = 1'bz;
-   assign FrontIO_Bin[1] = FrontIO_Aout[3];
-   assign FrontIO_Bin[2] = FrontIO_Aout[3];
-   // assign FrontIO_Ain[9] = FrontIO_Aout[11];
-   // assign FrontIO_Ain[10] = FrontIO_Aout[11];
-   // assign FrontIO_Ain[13] = FrontIO_Aout[15];
-   // assign FrontIO_Ain[14] = FrontIO_Aout[15];
-
-   
    // assign FrontIO_Bin[15:0] = (frontB_output_select == 0 )?  TriggerAllout[31:16] : 16'bzzzz ; 
    // assign FrontIO_Bin[15:0] = (frontB_output_select == 1 )? (TriggerAllout[31:16] & TriggerAll_coincidence_mask[31:16]) : 16'bzzzz ; 
    // assign FrontIO_Bin[15:0] = (frontB_output_select == 2 )? (TriggerAllout[31:16] & TriggerAll_multiplicity_mask[31:16]): 16'bzzzz ; 
@@ -618,11 +607,16 @@ module xillydemo
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 4 )? {16{coincresult[12]}} : 16'bzzzz ; 
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
-   // assign FrontIO_Cin[0] = FrontIO_Aout[0];
-   assign FrontIO_Cin[1] = FrontIO_Aout[0];
-   // assign FrontIO_Cin[2] = FrontIO_Aout[3];
-   assign FrontIO_Cin[3] = FrontIO_Aout[3];
 
+   
+   
+   // assign FrontIO_Ain[1] = FrontIO_Aout[3];
+   assign FrontIO_Ain[2] = FrontIO_Aout[3];//FRONT_A_OUTENA    0x0006
+
+   
+   // output to CAEN DT2495, change to NIM signal   // FRONT_C_OUTENA  0xaa
+   assign FrontIO_Cin[1] = FrontIO_Aout[0];
+   assign FrontIO_Cin[3] = FrontIO_Aout[3];
    assign FrontIO_Cin[5] = FrontIO_Aout[0];
    assign FrontIO_Cin[7] = FrontIO_Aout[3];   
 
