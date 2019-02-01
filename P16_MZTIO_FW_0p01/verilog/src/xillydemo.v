@@ -37,11 +37,9 @@ module xillydemo
    // 0   1   1    1
    // 0   0   0    0
    
-   // IOBUF ,when T==0, I => IO
-   //        when T==1, IO => O
-   // 当 T==1时，IO端口相对于FPGA是输入，此时O的参数有效，可以使用
-   // 当 T==0时，IO端口相对于FPGA是输出，此时I的参数有效，需要对I进行赋值
-   
+   // IOBUF ,when T==0, I => IO   You should assign an value to I
+   //        when T==1, IO => O   You can use O directly
+
    // ----------- IO Buffers Trigger I/O----------------------------  
    wire [15:0] 	 FrontIO_Ain, FrontIO_Aout, FrontIO_Aena;    // front panel LVDS
    wire [15:0] 	 FrontIO_Bin, FrontIO_Bout, FrontIO_Bena;    // front panel LVDS  
@@ -52,9 +50,9 @@ module xillydemo
    
    // IOBUF "in" is the signal from the fabric to the IO buffer, for output to PCB on IO pin if T==0
    // IOBUF "out" is the signal to the fabric from the IO buffer and PCB
-   IOBUF fa [15:0] (.IO(FrontIO_A),  .I(FrontIO_Ain), .O(FrontIO_Aout), .T(!FrontIO_Aena));
-   IOBUF fb [15:0] (.IO(FrontIO_B),  .I(FrontIO_Bin), .O(FrontIO_Bout), .T(!FrontIO_Bena));
-   IOBUF fc [15:0] (.IO(FrontIO_C),  .I(FrontIO_Cin), .O(FrontIO_Cout), .T(!FrontIO_Cena));
+   IOBUF fa [15:0] (.IO(FrontIO_A),  .I(FrontIO_Ain), .O(FrontIO_Aout), .T(~FrontIO_Aena));
+   IOBUF fb [15:0] (.IO(FrontIO_B),  .I(FrontIO_Bin), .O(FrontIO_Bout), .T(~FrontIO_Bena));
+   IOBUF fc [15:0] (.IO(FrontIO_C),  .I(FrontIO_Cin), .O(FrontIO_Cout), .T(~FrontIO_Cena));
 
    // The configuration of the FrontIO_A/B/C is completely flexible. For example, if you connect the RJ-45 of a Pixie-16 to FrontI/O A 0-3 (the upper RJ-45 on the trigger board), signals will connect
    // FO5 - Front I/O A 3      FrontIO_Aena==0
@@ -70,8 +68,8 @@ module xillydemo
    // FrontIO_Aout [3] [0]  [7] [4]  [11] [8]  [15] [12]
    // FrontIO_Ain  [1] [2]  [5] [6]  [9] [10]  [13] [14]
    
-   IOBUF ta [31:0] (.IO(TriggerAll), .I(TriggerAllin), .O(TriggerAllout), .T(!TriggerAllena));
-   IOBUF ebd [31:16] (.IO(EB_Data),  .I(EB_Datain), .O(EB_Dataout), .T(!EB_Dataena));
+   IOBUF ta [31:0] (.IO(TriggerAll), .I(TriggerAllin), .O(TriggerAllout), .T(~TriggerAllena));
+   IOBUF ebd [31:16] (.IO(EB_Data),  .I(EB_Datain), .O(EB_Dataout), .T(~EB_Dataena));
 
    
    wire [5:4] 	 ctrl;   // spare J4
@@ -188,7 +186,7 @@ module xillydemo
    //     outblock == 1 : read results from the logic
    //
    
-   // i/o data array 输入寄存器
+   // i/o data array     Input register
    reg [7:0] 	 litearray0[0:511];
    reg [7:0] 	 litearray1[0:511];
    reg [7:0] 	 litearray2[0:511];
@@ -230,7 +228,7 @@ module xillydemo
    // 12C   EB_Data_output_select
    
    
-   // output data array 输出寄存器
+   // output data array     Output register
    wire [31:0] 	 evdata[0:511];  // 512 words, 32bit wide
    // 000   CSR
    // 001   VERSION
@@ -277,7 +275,7 @@ module xillydemo
    wire [31:0] 	 user_addr;       // lowest 2 user_addr bits are always zero, 4096 words max in lite; 
    wire 	 user_irq;
    assign      user_irq = 0;   // No interrupts for now
-   wire [1:0] 	 outblock;// 用来控制读取寄存器位置。0表示读取输入寄存器，1表示读取输出寄存器
+   wire [1:0] 	 outblock;// Used to control the read register position. 0 means read input register, 1 means read output register
    
 
    always @(posedge user_clk)
@@ -437,8 +435,6 @@ module xillydemo
    // *************************************************************
    // ****************  Processing Logic **************************
    // *************************************************************
-   
-   
    
    wire 	proc_clk;
    assign proc_clk = user_clk;   // for now. possibly better to use ptpclk, but then have to handle the clock crossing
@@ -608,17 +604,18 @@ module xillydemo
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
 
-   
-   
-   // assign FrontIO_Ain[1] = FrontIO_Aout[3];
+   assign FrontIO_Ain[1] = FrontIO_Aout[3];
    assign FrontIO_Ain[2] = FrontIO_Aout[3];//FRONT_A_OUTENA    0x0006
 
+   assign FrontIO_Ain[5] = FrontIO_Aout[7];
+   assign FrontIO_Ain[6] = FrontIO_Aout[7];//FRONT_A_OUTENA    0x0006
+   
    
    // output to CAEN DT2495, change to NIM signal   // FRONT_C_OUTENA  0xaa
    assign FrontIO_Cin[1] = FrontIO_Aout[0];
    assign FrontIO_Cin[3] = FrontIO_Aout[3];
-   assign FrontIO_Cin[5] = FrontIO_Aout[0];
-   assign FrontIO_Cin[7] = FrontIO_Aout[3];   
+   assign FrontIO_Cin[5] = FrontIO_Aout[4];
+   assign FrontIO_Cin[7] = FrontIO_Aout[7];   
 
 
    /* ***************** xillybus instantiation ****************** */
