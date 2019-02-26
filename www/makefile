@@ -1,7 +1,7 @@
 TARGET = progfippi runstats cgistats.cgi clockprog monitordaq
 LIBS = -lm 
 CFLAGS = -std=c99 -Wall
-CXXFLAGS = -Wall -O3 -DNDEBUG   -pthread -std=gnu++98
+CXXFLAGS = -Wall -O3 -DNDEBUG   -pthread -std=c++11
 INCDIRS = -I/usr  -I/usr/include -I/usr/local/include
 LINKFLAGS =  -static -static-libstdc++
 BOOSTLIBS = -L/usr/local/lib -lboost_date_time -lboost_chrono -lboost_atomic -lboost_program_options -lboost_system -lboost_thread -lrt -pthread
@@ -16,7 +16,6 @@ all: default
 
 %.o: %.cpp 
 	g++  $(CXXFLAGS) $(INCDIRS) -c $< -o $@
-	
 
 progfippi: progfippi.o PixieNetCommon.o PixieNetConfig.o PixieNetDefs.h
 	g++ progfippi.o PixieNetCommon.o PixieNetConfig.o $(LIBS) -o progfippi

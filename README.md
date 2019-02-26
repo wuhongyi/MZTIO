@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 六 1月 26 20:24:34 2019 (+0800)
+;; Last-Updated: 二 2月 26 21:02:23 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 19
+;;     Update #: 22
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -31,11 +31,14 @@ ssh -Y root@222.29.111.157
 
 ## 基本配置
 
-原文件备份
+### ubuntu 18
 
-```
-cp /etc/apt/sources.list /etc/apt/sources.list.bak
-```
+如果操作系统是当前最新版本，则不需要进行额外的源配置。
+
+
+### ubuntu 12
+
+如果操作系统版本是之前的老版本，则需要按照以下进行源的修改配置。
 
 编辑源列表文件
 ```
@@ -59,14 +62,12 @@ deb http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 ```
 
-
+### 软件升级
 
 运行
 ```
 apt-get update
 ```
-
-
 
 
 ```bash
@@ -76,6 +77,10 @@ apt-get install firefox
 apt install emacs
 ```
 
+ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors
+
+
+----
 
 ## 恢复SD卡原始空间
 
@@ -90,7 +95,7 @@ resize2fs /dev/mmcblk0p2
 df -h
 查看最后追加的结果
 
-
+----
 
 ## update the boot files
 
@@ -114,6 +119,7 @@ scp xillydemo.bit root@222.29.111.157:~
 
 ----
 
+## 程序说明
 
 PixieNetCommon.c          
 PixieNetCommon.h          
@@ -139,32 +145,6 @@ index.html
 plotly-latest.min.js
 rspage.html    
 webopspasswords 存放网页密码
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

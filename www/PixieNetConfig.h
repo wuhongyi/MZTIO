@@ -100,7 +100,7 @@ typedef struct PixieNetFippiConfig {
   // define individual bits for reg 0, as demonstration principle.  
 
   unsigned int LOCAL_CONTROL_00;
-  unsigned int LOCAL_CONTROL_01;       // defines the signalling direction for each of the 16 LVDS drivers
+  unsigned int LOCAL_CONTROL_01;// defines the signalling direction for each of the 16 LVDS drivers
   unsigned int LOCAL_CONTROL_02;
   unsigned int LOCAL_CONTROL_03;
   unsigned int LOCAL_CONTROL_04;

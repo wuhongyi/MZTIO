@@ -55,15 +55,14 @@
 #include "PixieNetConfig.h"
 
 
-int main(void) {
-
+int main(void)
+{
   int fd;
   void *map_addr;
   int size = 4096;
   volatile unsigned int *mapped;
   int k;
   long long int revsn;
-
 
   // ******************* read ini file and fill struct with values ********************
 
@@ -106,15 +105,14 @@ int main(void) {
   
   map_addr = mmap( NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
-  if (map_addr == MAP_FAILED) {
+  if (map_addr == MAP_FAILED)
+    {
     perror("Failed to mmap");
     return -3;
   }
 
   mapped = (unsigned int *) map_addr;
-
-
-
+  
 
   // ******************* Main code begins ********************
   // first, set CSR run control options   
@@ -158,11 +156,9 @@ int main(void) {
   // ********** TRIGGER CONTROL PARAMETERS ******************
 
   // set outputs of FPGA to LVDS buffers as tristate before programming the buffers' direction via I2C (below)
-   mapped[AOUTENA+AOFFFA] =  FPGAOUT_IS_OFF;     // write to FPGA, 
-   mapped[AOUTENA+AOFFFB] =  FPGAOUT_IS_OFF;     // write to FPGA, 
-   mapped[AOUTENA+AOFFFC] =  FPGAOUT_IS_OFF;     // write to FPGA, 
-
-
+   mapped[AOUTENA+AOFFFA] = FPGAOUT_IS_OFF;// write to FPGA,
+   mapped[AOUTENA+AOFFFB] = FPGAOUT_IS_OFF;// write to FPGA, 
+   mapped[AOUTENA+AOFFFC] = FPGAOUT_IS_OFF;// write to FPGA, 
 
   // ------ Output enables -------
     //FRONT_A_OUTENA
@@ -682,13 +678,3 @@ int main(void) {
  close(fd);
  return 0;
 }
-
-
-
-
-
-
-
-
-
-
