@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 二 2月 26 21:02:23 2019 (+0800)
+;; Last-Updated: 二 2月 26 22:59:30 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 22
+;;     Update #: 39
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -20,13 +20,38 @@ There have been cases where the script crashes Vivado, and then the compile has 
 
 将USB线连接电脑，获取系统 IP
 
+在 linux 中可以采用串口通讯软件 minicom
+
+```bash
+minicom -s
+```
+
+```
++-----[configuration]------+
+| Filenames and paths      |
+| File transfer protocols  |
+| Serial port setup        |
+| Modem and dialing        |
+| Screen and keyboard      |
+| Save setup as dfl        |
+| Save setup as..          |
+| Exit                     |
+| Exit from Minicom        |
++--------------------------+
+```
+
+- 进入 Serial port setup，修改 Serial Device 为 /dev/ttyUSB0。Bps/Par/Bits 采用默认的 115200 8N1
+- 进入 Modem and dialing ，将A、B、K项内容删除
+- 然后选择 Save setup as dfl 保存设置
+- 最后选择 Exit 退出配置模式，进入控制模式
+
 user：root
 password: xia17pxn
 
 密码采用默认的，方便使用者都能登陆
 
 ```
-ssh -Y root@222.29.111.157
+ssh -Y root@222.29.111.232
 ```
 
 ## 基本配置
@@ -74,7 +99,28 @@ apt-get update
 #安装 firefox
 apt-get install firefox
 # 安装emacs
-apt install emacs
+apt-get install emacs
+
+# ROOT 依赖库文件
+apt-get install cmake
+apt-get install libx11-dev
+apt-get install libxpm-dev
+apt-get install libxft-dev 
+apt-get install libxext-dev
+apt-get install gfortran 
+apt-get install libssl-dev 
+apt-get install xlibmesa-glu-dev 
+apt-get install libglew1.5-dev 
+apt-get install libftgl-dev 
+apt-get install libmysqlclient-dev 
+apt-get install libfftw3-dev 
+apt-get install libcfitsio-dev 
+apt-get install graphviz-dev
+apt-get install libavahi-compat-libdnssd-dev 
+apt-get install libxml2-dev 
+apt-get install libkrb5-dev 
+apt-get install libgsl0-dev 
+apt-get install libqt4-dev
 ```
 
 ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors
@@ -84,7 +130,7 @@ ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该�
 
 ## 恢复SD卡原始空间
 
-为了加快镜像装载速度，实际上只格式化了16G左右的SD卡空间，我32G的SD卡还有16G多的空间都没用到，为了能够进行使用进行如下操作
+为了加快镜像装载速度，实际上只格式化了8/16G左右的SD卡空间，我16/32G的SD卡还有8/16G多的空间都没用到，为了能够进行使用进行如下操作
 
 fdisk /dev/mmcblk0
 然后分别输入: d [ENTER],2 [ENTER],n[ENTER] [ENTER],[ENTER],[ENTER],[ENTER],w[ENTER]， 若中间出现问题详细参考Getting started with Xillinux for Zynq-7000 EPP ， 然后重启linux 开机后
