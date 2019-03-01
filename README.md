@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 二 2月 26 22:59:30 2019 (+0800)
+;; Last-Updated: 三 2月 27 13:35:25 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 39
+;;     Update #: 40
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -160,7 +160,7 @@ So the precedure would be
 
 
 ```bash
-scp xillydemo.bit root@222.29.111.157:~
+ scp xillydemo.bit root@222.29.111.157:~
 ```
 
 ----

@@ -264,6 +264,9 @@ module xillydemo
    // 112   sumC
    // 113   sumT
    // 114   sumE
+
+   // 1E0(480) - 1FF(511) output scaler
+
    
    // PS-PL wires
    wire 	 user_clk;
@@ -429,8 +432,55 @@ module xillydemo
    assign evdata[9'h112] = {24'h000000, sumC};
    assign evdata[9'h113] = {24'h000000, sumT};
    assign evdata[9'h114] = {24'h000000, sumE};  
-   
 
+   reg [31:0] 	scaler0[0:32];
+   reg [31:0] 	scaler0_tmp[0:32];
+   reg [31:0] 	cnt1s    ;
+   wire 	add_cnt1s;
+   wire 	end_cnt1s;
+   always @(posedge bus_clk) begin
+      if(add_cnt1s) begin
+	 if(end_cnt1s)
+	   cnt1s <= 0;
+	 else
+	   cnt1s <= cnt1s + 1;
+      end
+   end
+   assign add_cnt1s = 1;//condition: add 1 
+   assign end_cnt1s = add_cnt1s && cnt1s == 100000000 - 1; //End condition, last value
+
+   reg sign_1b , sign_2b , sign_pos;
+   always @(posedge bus_clk) begin
+      sign_1b <= FrontIO_Aout[3];
+      sign_2b <= sign_1b; 
+   end
+   always @(posedge bus_clk) begin
+      if(sign_2b && !sign_1b) 
+	sign_pos <= 1;
+      else
+	sign_pos <= 0;
+   end
+
+   always  @(posedge bus_clk)begin
+      if(sign_pos && end_cnt1s)begin
+	 scaler0_tmp[5'h0] <= 1;
+      end
+      else if(end_cnt1s)begin
+	 scaler0_tmp[5'h0] <= 0;
+      end
+      else if(sign_pos)begin
+	 scaler0_tmp[5'h0] <= scaler0_tmp[5'h0]+1;
+      end
+   end
+   
+   always @(posedge bus_clk) begin
+      if(end_cnt1s) begin
+	 scaler0[5'h0] <= scaler0_tmp[5'h0];
+      end
+   end
+
+   assign evdata[9'h1E0] = scaler0[5'h0];
+   
    
    // *************************************************************
    // ****************  Processing Logic **************************
@@ -735,7 +785,7 @@ module xillydemo
 			  .user_irq ( user_irq ),
       
 			  // General signals
-			  .bus_clk(bus_clk),
+			  .bus_clk(bus_clk),//http://xillybus.com/doc/microblaze-fpga-core-api
 			  .quiesce(quiesce), 
       
 			  // Ethernet signals
