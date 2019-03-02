@@ -44,8 +44,8 @@
 #include <string.h>
 #include <sys/mman.h>
 
-#include "PixieNetDefs.h"
-#include "PixieNetCommon.h"
+#include "MZTIODefs.h"
+#include "MZTIOCommon.h"
 
 
 void I2Cstart(volatile unsigned int *mapped)  {
@@ -505,10 +505,10 @@ char Channel_PLRS_Names[N_PL_RS_PAR][MAX_PAR_NAME_LENGTH] = {
    c[12] = c[18];
    c[13] = c[19];
    c[14] = c[20]; 
-   c[15] = 0;
-   c[16] = 0;
-   c[17] = 0;
-   c[18] = 0;
+   c[15] = mapped[480];
+   c[16] = mapped[480];
+   c[17] = mapped[480];
+   c[18] = mapped[480];//wuhongyi
 
 
    // compute and print useful output values
@@ -560,7 +560,3 @@ char Channel_PLRS_Names[N_PL_RS_PAR][MAX_PAR_NAME_LENGTH] = {
  if(dest != 1) fclose(fil);
  return 0;
 }
-
-
-
-

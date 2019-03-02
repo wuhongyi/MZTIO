@@ -17,20 +17,20 @@ all: default
 %.o: %.cpp 
 	g++  $(CXXFLAGS) $(INCDIRS) -c $< -o $@
 
-progfippi: progfippi.o PixieNetCommon.o PixieNetConfig.o PixieNetDefs.h
-	g++ progfippi.o PixieNetCommon.o PixieNetConfig.o $(LIBS) -o progfippi
+progfippi: progfippi.o MZTIOCommon.o MZTIOConfig.o MZTIODefs.h
+	g++ progfippi.o MZTIOCommon.o MZTIOConfig.o $(LIBS) -o progfippi
 
-runstats: runstats.o PixieNetCommon.o PixieNetDefs.h
-	gcc runstats.o PixieNetCommon.o $(LIBS) -o runstats
+runstats: runstats.o MZTIOCommon.o MZTIODefs.h
+	gcc runstats.o MZTIOCommon.o $(LIBS) -o runstats
 
-monitordaq: monitordaq.o PixieNetCommon.o PixieNetConfig.o PixieNetDefs.h
-	g++ monitordaq.o PixieNetCommon.o PixieNetConfig.o $(LIBS) -o monitordaq
+monitordaq: monitordaq.o MZTIOCommon.o MZTIOConfig.o MZTIODefs.h
+	g++ monitordaq.o MZTIOCommon.o MZTIOConfig.o $(LIBS) -o monitordaq
 
-cgistats.cgi: cgistats.o PixieNetCommon.o PixieNetDefs.h
-	gcc cgistats.o PixieNetCommon.o $(LIBS) -o cgistats.cgi
+cgistats.cgi: cgistats.o MZTIOCommon.o MZTIODefs.h
+	gcc cgistats.o MZTIOCommon.o $(LIBS) -o cgistats.cgi
 
-clockprog: clockprog.o PixieNetCommon.o PixieNetDefs.h
-	gcc clockprog.o PixieNetCommon.o $(LIBS) -o clockprog
+clockprog: clockprog.o MZTIOCommon.o MZTIODefs.h
+	gcc clockprog.o MZTIOCommon.o $(LIBS) -o clockprog
 
 
 clean:

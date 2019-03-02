@@ -47,11 +47,11 @@
 #include <sys/mman.h>
 #include <sys/file.h>
 
-// gcc -Wall clockprog.c PixieNetCommon.o -o clockprog
+// gcc -Wall clockprog.c MZTIOCommon.o -o clockprog
 
 
-#include "PixieNetDefs.h"
-#include "PixieNetCommon.h"
+#include "MZTIODefs.h"
+#include "MZTIOCommon.h"
 
 int main( int argc, char *argv[] ) {
 
@@ -423,13 +423,3 @@ int main( int argc, char *argv[] ) {
  close(fd);
  return 0;
 }
-
-
-
-
-
-
-
-
-
-

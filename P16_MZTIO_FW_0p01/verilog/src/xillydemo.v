@@ -438,7 +438,7 @@ module xillydemo
    reg [31:0] 	cnt1s    ;
    wire 	add_cnt1s;
    wire 	end_cnt1s;
-   always @(posedge bus_clk) begin
+   always @(posedge user_clk) begin
       if(add_cnt1s) begin
 	 if(end_cnt1s)
 	   cnt1s <= 0;
@@ -447,21 +447,21 @@ module xillydemo
       end
    end
    assign add_cnt1s = 1;//condition: add 1 
-   assign end_cnt1s = add_cnt1s && cnt1s == 100000000 - 1; //End condition, last value
+   assign end_cnt1s = add_cnt1s && cnt1s >= 100000000 - 1; //End condition, last value
 
    reg sign_1b , sign_2b , sign_pos;
-   always @(posedge bus_clk) begin
+   always @(posedge user_clk) begin
       sign_1b <= FrontIO_Aout[3];
       sign_2b <= sign_1b; 
    end
-   always @(posedge bus_clk) begin
+   always @(posedge user_clk) begin
       if(sign_2b && !sign_1b) 
 	sign_pos <= 1;
       else
 	sign_pos <= 0;
    end
 
-   always  @(posedge bus_clk)begin
+   always  @(posedge user_clk)begin
       if(sign_pos && end_cnt1s)begin
 	 scaler0_tmp[5'h0] <= 1;
       end
@@ -473,7 +473,7 @@ module xillydemo
       end
    end
    
-   always @(posedge bus_clk) begin
+   always @(posedge user_clk) begin
       if(end_cnt1s) begin
 	 scaler0[5'h0] <= scaler0_tmp[5'h0];
       end

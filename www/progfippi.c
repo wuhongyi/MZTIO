@@ -50,9 +50,9 @@
 
 // need to compile with -lm option
 
-#include "PixieNetDefs.h"
-#include "PixieNetCommon.h"
-#include "PixieNetConfig.h"
+#include "MZTIODefs.h"
+#include "MZTIOCommon.h"
+#include "MZTIOConfig.h"
 
 
 int main(void)

@@ -50,8 +50,8 @@
 // gcc -Wall writeI2C.c PixieNetCommon.o -o writeI2C
 
 
-#include "PixieNetDefs.h"
-#include "PixieNetCommon.h"
+#include "MZTIODefs.h"
+#include "MZTIOCommon.h"
 
 int main( int argc, char *argv[] )
 {

@@ -56,8 +56,8 @@
 #include <algorithm>
 
 
-#include "PixieNetDefs.h"
-#include "PixieNetConfig.h"
+#include "MZTIODefs.h"
+#include "MZTIOConfig.h"
 
 using namespace std;
 

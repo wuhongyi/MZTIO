@@ -44,8 +44,8 @@
 #include <string.h>
 #include <sys/mman.h>
 
-#include "PixieNetDefs.h"
-#include "PixieNetCommon.h"
+#include "MZTIODefs.h"
+#include "MZTIOCommon.h"
 
 
 int main(void) {
