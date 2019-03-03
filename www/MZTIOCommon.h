@@ -35,7 +35,13 @@
 
 // refs for shared functions
 
-int read_print_runstats(int mode, int dest, volatile unsigned int *mapped );
+#ifndef _MZTIOCOMMON_H_
+#define _MZTIOCOMMON_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void I2Cstart(volatile unsigned int *mapped);
 void I2Cstop(volatile unsigned int *mapped);
 void I2Cslaveack(volatile unsigned int *mapped);
@@ -48,5 +54,8 @@ long long int hwinfo( volatile unsigned int *mapped );
 float board_temperature( volatile unsigned int *mapped);
 float zynq_temperature();
 
-
-
+#ifdef __cplusplus
+}
+#endif
+  
+#endif /* _MZTIOCOMMON_H_ */

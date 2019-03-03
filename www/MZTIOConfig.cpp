@@ -469,9 +469,8 @@ namespace {
     
     return true;
   }//read_config_file_lines(..)
-  
-}//namespace
 
+}//namespace
 
 int SetBit(int bit, int value)      // returns "value" with bit "bit" set
 {

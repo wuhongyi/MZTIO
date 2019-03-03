@@ -168,8 +168,7 @@ typedef struct PixieNetFippiConfig {
 int init_PixieNetFippiConfig_from_file( const char * const filename,
                                        int ignore_missing,
                                        struct PixieNetFippiConfig *config );
-  
-  
+
   
 #ifdef __cplusplus
 }

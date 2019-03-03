@@ -52,8 +52,10 @@
 #include "MZTIOCommon.h"
 #include "MZTIOConfig.h"
 
+int read_print_runstats(int mode, int dest, volatile unsigned int *mapped );
 
-int main(void) {
+int main(void)
+{
 
   int fd;
   void *map_addr;
@@ -170,5 +172,200 @@ int main(void) {
  flock( fd, LOCK_UN );
  munmap(map_addr, size);
  close(fd);
+ return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+int read_print_runstats(int mode, int dest, volatile unsigned int *mapped )
+{
+// mode 0: full print of all runstats, including raw values
+// mode 1: only print register info, not temperatures etc thatrequire (slow) I2C reads
+// dest 0: print to file
+// dest 1: print to stdout      -- useful for cgi
+// dest 2: print to both        -- currently fails if called by web client due to file write permissions
+
+  int k, lastrs;
+  FILE * fil;
+  unsigned int m[N_PL_RS_PAR], c[N_PL_RS_PAR]; 
+  long long int revsn;
+  //unsigned int csr, csrbit;
+  double rtime,  trate;
+  char N[4][32] = {      // names for the cgi array
+    "ParameterL",
+    "LocalLogic",
+    "ParameterT",
+    "TriggerIOStatus"};
+
+
+   // Run stats PL Parameter names applicable to a Pixie module 
+char Module_PLRS_Names[N_PL_RS_PAR][MAX_PAR_NAME_LENGTH] = {
+  // "reserved",
+   "CSROUT",		//0       // hex
+   "FW_VERSION", 
+   "SW_VERSION", 
+   "UNIQUE_ID", 
+   "UNIQUE_ID", 
+   "COINCTEST", 
+   "reserved", 
+   "reserved", 
+   "reserved", 
+   "reserved", 
+   "NUMTRIGGERS", 	   //10    // dec
+   "NUMTRIGGERS",
+   "RUNTICKS", 
+   "RUNTICKS", 
+   "RUNTIME", 
+   "TRIGGERRATE", 
+   "T_ZYNQ", 
+   "T_BOARD",
+   "SNUM",
+   "reserved",		    //20
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",	    //30
+   "reserved"
+};
+
+ // Run stats PL Parameter names for Trigger I/O registers
+char Channel_PLRS_Names[N_PL_RS_PAR][MAX_PAR_NAME_LENGTH] = {
+ //  "reserved",
+   "IN_FRONTA",		//0       // hex
+   "IN_FRONTB", 
+   "IN_FRONTC", 
+   "IN_TRIGGERALL", 
+   "IN_EBDATA", 
+   "CMASK_FRONTA", 
+   "CMASK_FRONTB", 
+   "CMASK_FRONTC", 
+   "CMASK_TRIGGERALL", 
+   "CMASK_EBDATA", 
+   "MMSUM_FRONTA", 	   //10       // dec
+   "MMSUM_FRONTB", 
+   "MMSUM_FRONTC", 
+   "MMSUM_TRIGGERALL", 
+   "MMSUM_EBDATA", 
+   "reserved", 
+   "reserved", 
+   "reserved", 
+   "reserved",
+   "reserved",		    //20
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",
+   "reserved",	    //30
+   "reserved"
+};      
+
+// return(0);
+
+//}
+
+  // ************** XIA code begins **************************
+  // open the output file
+  if(dest != 1)  {
+          fil = fopen("RS.csv","w");
+          fprintf(fil,"ParameterL,LocalLogic,ParameterT,TriggerIOStatus\n");
+   }
+      
+
+  // read _used_ RS values (32bit) from FPGA 
+  // at this point, raw binary values; later conversion into count rates etc
+
+ //   mapped[AOUTBLOCK] = OB_RSREG;		// switch reads to run statistics block of addresses
+ // must be done by calling function
+   for( k = 0; k < N_PL_RS_PAR; k ++ )
+   {
+      m[k]  = mapped[ARS_LOC+k];
+      c[k]  = mapped[ARS_TIO+k];
+   }
+ //  csr = m[1];    // more memorable name for CSR
+   m[2] = PS_CODE_VERSION;   // overwrite with SW version
+
+   // condense the outputs a bit, many unused fields in "c"
+   c[5]  = c[8];
+   c[6]  = c[9]; 
+   c[7]  = c[10];
+   c[8]  = c[11]; 
+   c[9]  = c[12];
+   c[10] = c[16]; 
+   c[11] = c[17];
+   c[12] = c[18];
+   c[13] = c[19];
+   c[14] = c[20]; 
+   c[15] = mapped[480];
+   c[16] = mapped[480];
+   c[17] = mapped[480];
+   c[18] = mapped[480];//wuhongyi
+
+
+   // compute and print useful output values
+   // run time in s
+   rtime = ((double)m[12]+(double)m[13]*TWOTO32)*1.0e-6/SYSTEM_CLOCK_MHZ;
+
+   // trigger rate in 1/s
+   if(rtime==0)
+      trate = 0; 
+   else 
+      trate = ((double)m[10]+(double)m[11]*TWOTO32) / rtime;
+
+   // determine how much to "print"
+   if(mode == 1)  {
+     lastrs = 15;
+     m[3] = 0 ;
+     m[4] = 0 ;
+   } else {
+     lastrs = N_USED_RS_PAR;
+     // temperatures and other I2C data
+     m[16] = (int)zynq_temperature();
+     m[17] = (int)board_temperature(mapped);
+     revsn = hwinfo(mapped);                      // this is a pretty slow I2C I/O
+     m[3] = (int)(0xFFFFFFFF &  revsn );          
+     m[4] = (int)(0xFFFFFFFF & (revsn>>32) );  
+   }
+
+   // print values 
+   for( k = 0; k < lastrs; k ++ )
+   {
+      if(k<10) {   // print bit patterns for some parameters
+         if(dest != 1) fprintf(fil,"%s,0x%X,%s,0x%X\n ",Module_PLRS_Names[k],m[k],Channel_PLRS_Names[k],c[k]);
+         if(dest != 0) printf("{%s:\"%s\",%s:\"0x%X\",%s:\"%s\",%s:\"0x%X\"},  \n",N[0],Module_PLRS_Names[k],N[1],m[k],N[2],Channel_PLRS_Names[k],N[3],c[k]);
+   //  if(dest != 0) printf("{%s:\"%s\",%s:\"0x%X\",%s:\"%s\",%s:%u,%s:%u,%s:%u,%s:%u},  \n",N[0],Module_PLRS_Names[k],N[1],m[k],N[2],Channel_PLRS_Names[k],N[3],c[0][k],N[4],c[1][k],N[5],c[2][k],N[6],c[3][k]);
+      } else if(k==14) {   // some results are floats
+         if(dest != 1) fprintf(fil,"%s,%f,%s,%u\n ",Module_PLRS_Names[k],rtime,Channel_PLRS_Names[k],c[k]);
+         if(dest != 0) printf("{%s:\"%s\",%s:\"%f\",%s:\"%s\",%s:%u},  \n",N[0],Module_PLRS_Names[k],N[1],rtime,N[2],Channel_PLRS_Names[k],N[3],c[k]);
+      } else if(k==15) {   // some results are floats
+         if(dest != 1) fprintf(fil,"%s,%f,%s,%u\n ",Module_PLRS_Names[k],trate,Channel_PLRS_Names[k],c[k]);
+         if(dest != 0) printf("{%s:\"%s\",%s:\"%f\",%s:\"%s\",%s:%u},  \n",N[0],Module_PLRS_Names[k],N[1],trate,N[2],Channel_PLRS_Names[k],N[3],c[k]);
+      } else  {
+         if(dest != 1) fprintf(fil,"%s,%u,%s,%u\n ",Module_PLRS_Names[k],m[k],Channel_PLRS_Names[k],c[k]);
+        if(dest != 0) printf("{%s:\"%s\",%s:%u,%s:\"%s\",%s:%u},  \n",N[0],Module_PLRS_Names[k],N[1],m[k],N[2],Channel_PLRS_Names[k],N[3],c[k]);
+      }
+   }
+   
+
+ // clean up  
+ if(dest != 1) fclose(fil);
  return 0;
 }
