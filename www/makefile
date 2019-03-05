@@ -17,14 +17,14 @@ all: default
 %.o: %.cpp 
 	g++  $(CXXFLAGS) $(INCDIRS) -c $< -o $@
 
-progfippi: progfippi.o MZTIOCommon.o MZTIOConfig.o MZTIODefs.h
-	g++ progfippi.o MZTIOCommon.o MZTIOConfig.o $(LIBS) -o progfippi
+progfippi: progfippi.o MZTIOCommon.o  MZTIODefs.h
+	g++ progfippi.o MZTIOCommon.o  $(LIBS) -o progfippi
 
 runstats: runstats.o MZTIOCommon.o MZTIODefs.h
 	gcc runstats.o MZTIOCommon.o $(LIBS) -o runstats
 
-monitordaq: monitordaq.o MZTIOCommon.o MZTIOConfig.o MZTIODefs.h
-	g++ monitordaq.o MZTIOCommon.o MZTIOConfig.o $(LIBS) -o monitordaq
+monitordaq: monitordaq.o MZTIOCommon.o MZTIODefs.h
+	g++ monitordaq.o MZTIOCommon.o $(LIBS) -o monitordaq
 
 cgistats.cgi: cgistats.o MZTIOCommon.o MZTIODefs.h
 	gcc cgistats.o MZTIOCommon.o $(LIBS) -o cgistats.cgi

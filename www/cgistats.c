@@ -255,9 +255,9 @@ char Channel_PLRS_Names[N_PL_RS_PAR][MAX_PAR_NAME_LENGTH] = {
    c[13] = c[19];
    c[14] = c[20]; 
    c[15] = mapped[480];
-   c[16] = mapped[480];
-   c[17] = mapped[480];
-   c[18] = mapped[480];//wuhongyi
+   c[16] = mapped[481];
+   c[17] = mapped[482];
+   c[18] = mapped[483];//wuhongyi
 
 
    // compute and print useful output values

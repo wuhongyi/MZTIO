@@ -52,7 +52,6 @@
 
 #include "MZTIODefs.h"
 #include "MZTIOCommon.h"
-#include "MZTIOConfig.h"
 
 #include <map>
 #include <vector>
@@ -238,13 +237,13 @@ int main(void)
   }
 
   //Lock the PL address space so multiple programs cant step on eachother.
-  if( flock( fd, LOCK_EX | LOCK_NB ) )
+  if(flock(fd, LOCK_EX | LOCK_NB))
     {
       printf( "Failed to get file lock on /dev/uio0\n" );
       return -2;
     }
   
-  map_addr = mmap( NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  map_addr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
   if (map_addr == MAP_FAILED)
     {
@@ -269,12 +268,12 @@ int main(void)
   mapped[AOUTENA+AOFFFC] = FPGAOUT_IS_OFF;// write to FPGA, 
 
 
-  for (it = label_to_values.begin(); it != label_to_values.end(); ++it)
-    {
-      if(it->first == 0x100 || it->first == 0x101 || it->first == 0x102) continue;
-      mapped[it->first] = it->second;
-      if(mapped[it->first] != it->second) printf("Error writing register %d\n",it->first);
-    }
+  // for (it = label_to_values.begin(); it != label_to_values.end(); ++it)
+  //   {
+  //     if(it->first == 0x100 || it->first == 0x101 || it->first == 0x102) continue;
+  //     mapped[it->first] = it->second;
+  //     if(mapped[it->first] != it->second) printf("Error writing register %d\n",it->first);
+  //   }
  
 
   // ************************ I2C programming *********************************
@@ -349,7 +348,7 @@ int main(void)
 
   it = label_to_values.find(0x101);
   if (it == label_to_values.end())
-    printf("Can't fing register 0x101\n");
+    printf("Can't find register 0x101\n");
 
    
   // lower B
@@ -413,7 +412,7 @@ int main(void)
 
   it = label_to_values.find(0x102);
   if (it == label_to_values.end())
-    printf("Can't fing register 0x102\n");
+    printf("Can't find register 0x102\n");
 
    
   // lower C
@@ -479,25 +478,32 @@ int main(void)
 
   // now enable FPGA front panel outputs
 
-  it = label_to_values.find(0x100);
-  if (it == label_to_values.end())
-    printf("Can't fing register 0x100\n");
-  mapped[AOUTENA+AOFFFA] =  it->second;     // write to FPGA, then read back to verify
-  if(mapped[AOUTENA+AOFFFA] != it->second) printf("Error writing FRONT_A_OUTENA register\n");
+  // it = label_to_values.find(0x100);
+  // if (it == label_to_values.end())
+  //   printf("Can't fing register 0x100\n");
+  // mapped[AOUTENA+AOFFFA] =  it->second;     // write to FPGA, then read back to verify
+  // if(mapped[AOUTENA+AOFFFA] != it->second) printf("Error writing FRONT_A_OUTENA register\n");
 
-  it = label_to_values.find(0x101);
-  if (it == label_to_values.end())
-    printf("Can't fing register 0x101\n");
-  mapped[AOUTENA+AOFFFB] =  it->second;     // write to FPGA, then read back to verify
-  if(mapped[AOUTENA+AOFFFB] != it->second) printf("Error writing FRONT_B_OUTENA register\n");
+  // it = label_to_values.find(0x101);
+  // if (it == label_to_values.end())
+  //   printf("Can't fing register 0x101\n");
+  // mapped[AOUTENA+AOFFFB] =  it->second;     // write to FPGA, then read back to verify
+  // if(mapped[AOUTENA+AOFFFB] != it->second) printf("Error writing FRONT_B_OUTENA register\n");
 
-  it = label_to_values.find(0x102);
-  if (it == label_to_values.end())
-    printf("Can't fing register 0x102\n");
-  mapped[AOUTENA+AOFFFC] =  it->second;     // write to FPGA, then read back to verify
-  if(mapped[AOUTENA+AOFFFC] != it->second) printf("Error writing FRONT_C_OUTENA register\n");
+  // it = label_to_values.find(0x102);
+  // if (it == label_to_values.end())
+  //   printf("Can't fing register 0x102\n");
+  // mapped[AOUTENA+AOFFFC] =  it->second;     // write to FPGA, then read back to verify
+  // if(mapped[AOUTENA+AOFFFC] != it->second) printf("Error writing FRONT_C_OUTENA register\n");
     
+  for (it = label_to_values.begin(); it != label_to_values.end(); ++it)
+    {
+      mapped[it->first] = it->second;
+      if(mapped[it->first] != it->second) printf("Error writing register %d\n",it->first);
+    }
 
+
+  
     
   // MZ TrigIO board temperature
   printf("Board temperature: %d C \n",(int)board_temperature(mapped) );

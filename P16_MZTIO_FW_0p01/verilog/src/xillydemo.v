@@ -433,8 +433,8 @@ module xillydemo
    assign evdata[9'h113] = {24'h000000, sumT};
    assign evdata[9'h114] = {24'h000000, sumE};  
 
-   reg [31:0] 	scaler0[0:32];
-   reg [31:0] 	scaler0_tmp[0:32];
+   reg [31:0] 	scaler0[0:31];
+   reg [31:0] 	scaler0_tmp[0:31];
    reg [31:0] 	cnt1s    ;
    wire 	add_cnt1s;
    wire 	end_cnt1s;
@@ -447,7 +447,7 @@ module xillydemo
       end
    end
    assign add_cnt1s = 1;//condition: add 1 
-   assign end_cnt1s = add_cnt1s && cnt1s >= 100000000 - 1; //End condition, last value
+   assign end_cnt1s = add_cnt1s && cnt1s == 100000000 - 1; //End condition, last value
 
    reg sign_1b , sign_2b , sign_pos;
    always @(posedge user_clk) begin

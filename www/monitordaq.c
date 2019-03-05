@@ -50,7 +50,7 @@
 
 #include "MZTIODefs.h"
 #include "MZTIOCommon.h"
-#include "MZTIOConfig.h"
+
 
 int read_print_runstats(int mode, int dest, volatile unsigned int *mapped );
 
@@ -67,26 +67,6 @@ int main(void)
   int loopcount; 
   // int eventcount;
  
-  
-  // ******************* read ini file and fill struct with values ********************
-  
-  PixieNetFippiConfig fippiconfig;		// struct holding the input parameters
-  const char *defaults_file = "defaults.ini";
-  int rval = init_PixieNetFippiConfig_from_file( defaults_file, 0, &fippiconfig );   // first load defaults, do not allow missing parameters
-  if( rval != 0 )
-  {
-    printf( "Failed to parse FPGA settings from %s, rval=%d\n", defaults_file, rval );
-    return rval;
-  }
-  const char *settings_file = "settings.ini";
-  rval = init_PixieNetFippiConfig_from_file( settings_file, 1, &fippiconfig );   // second override with user settings, do allow missing
-  if( rval != 0 )
-  {
-    printf( "Failed to parse FPGA settings from %s, rval=%d\n", settings_file, rval );
-    return rval;
-  }
-
-
 
   // *************** PS/PL IO initialization *********************
   // open the device for PD register I/O
@@ -119,8 +99,8 @@ int main(void)
 
 
     // ********************** Monitoring Start **********************
-   ReqRunTime   = fippiconfig.REQ_RUNTIME;
-   PollTime     = fippiconfig.POLL_TIME;
+   ReqRunTime   = 10;
+   PollTime     = 900000;
    loopcount =  0;
  //  eventcount = 0;
    starttime = time(NULL);           // capture OS start time

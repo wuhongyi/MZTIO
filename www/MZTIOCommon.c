@@ -352,7 +352,8 @@ float zynq_temperature()
     // assume local shortcut exists to 
     // /sys/devices/soc0/amba/f8007100.adc/iio:device0/in_temp0_raw
     // which has trouble with fopen due to the :
-    FILE *devfile1 = fopen( "/var/www/temp0_raw","r");
+    // FILE *devfile1 = fopen( "/var/www/temp0_raw","r"); 
+    FILE *devfile1 = fopen( "/sys/devices/soc0/amba/f8007100.adc/iio:device0/in_temp0_raw","r");
     if(!devfile1)
     { 
        // printf( "Could not open device file\n");
