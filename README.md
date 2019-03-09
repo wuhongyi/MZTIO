@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 三 2月 27 13:35:25 2019 (+0800)
+;; Last-Updated: 六 3月  9 16:32:34 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 40
+;;     Update #: 42
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -60,6 +60,11 @@ ssh -Y root@222.29.111.232
 
 如果操作系统是当前最新版本，则不需要进行额外的源配置。
 
+如果要安装CERN ROOT，则在 /etc/apt/sources.list 中添加以下行
+
+```
+deb http://ports.ubuntu.com/ xenial main universe multiverse
+```
 
 ### ubuntu 12
 
@@ -90,7 +95,7 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 ### 软件升级
 
 运行
-```
+```bash
 apt-get update
 ```
 
@@ -121,6 +126,10 @@ apt-get install libxml2-dev
 apt-get install libkrb5-dev 
 apt-get install libgsl0-dev 
 apt-get install libqt4-dev
+```
+
+```bash
+apt-get install root-system-bin
 ```
 
 ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors
