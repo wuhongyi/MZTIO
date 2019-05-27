@@ -27,7 +27,16 @@ module xillydemo
    
 `define SYSREVISION 32'hB100_0001    
    //    product ID (same as in EEPROM). (upper 16 bits)                                                  
-   //   FW variant | major build number  | minor build number  | minor build number  (lower 16 bits)        
+   //   FW variant | major build number  | minor build number  | minor build number  (lower 16 bits)
+
+
+   // experiment 
+   wire 	 frontbackcoin;
+   wire 	 fronttrigger;
+   wire 	 backtrigger;
+
+   // experiment 
+   
    
    // *************************************************************
    // *************** IO Buffers **********************************
@@ -433,8 +442,7 @@ module xillydemo
    assign evdata[9'h113] = {24'h000000, sumT};
    assign evdata[9'h114] = {24'h000000, sumE};  
 
-   reg [31:0] 	scaler0[0:31];
-   reg [31:0] 	scaler0_tmp[0:31];
+
    reg [31:0] 	cnt1s    ;
    wire 	add_cnt1s;
    wire 	end_cnt1s;
@@ -449,38 +457,130 @@ module xillydemo
    assign add_cnt1s = 1;//condition: add 1 
    assign end_cnt1s = add_cnt1s && cnt1s == 100000000 - 1; //End condition, last value
 
-   reg sign_1b , sign_2b , sign_pos;
-   always @(posedge user_clk) begin
-      sign_1b <= FrontIO_Aout[3];
-      sign_2b <= sign_1b; 
-   end
-   always @(posedge user_clk) begin
-      if(sign_2b && !sign_1b) 
-	sign_pos <= 1;
-      else
-	sign_pos <= 0;
-   end
+   reg [31:0] 	scaler0[0:31];
+   reg [31:0] 	scaler0_tmp[0:31];
 
+   reg sign_1b_0 , sign_2b_0 , sign_pos_0;
+   always @(posedge user_clk) begin
+      sign_1b_0 <= fronttrigger;
+      sign_2b_0 <= sign_1b_0; 
+   end
+   always @(posedge user_clk) begin
+      if(sign_2b_0 && !sign_1b_0) 
+	sign_pos_0 <= 1;
+      else
+	sign_pos_0 <= 0;
+   end
    always  @(posedge user_clk)begin
-      if(sign_pos && end_cnt1s)begin
+      if(sign_pos_0 && end_cnt1s)begin
 	 scaler0_tmp[5'h0] <= 1;
       end
       else if(end_cnt1s)begin
 	 scaler0_tmp[5'h0] <= 0;
       end
-      else if(sign_pos)begin
+      else if(sign_pos_0)begin
 	 scaler0_tmp[5'h0] <= scaler0_tmp[5'h0]+1;
       end
    end
-   
    always @(posedge user_clk) begin
       if(end_cnt1s) begin
 	 scaler0[5'h0] <= scaler0_tmp[5'h0];
       end
    end
-
    assign evdata[9'h1E0] = scaler0[5'h0];
+
+
    
+   reg sign_1b_1 , sign_2b_1 , sign_pos_1;
+   always @(posedge user_clk) begin
+      sign_1b_1 <= backtrigger;
+      sign_2b_1 <= sign_1b_1; 
+   end
+   always @(posedge user_clk) begin
+      if(sign_2b_1 && !sign_1b_1) 
+	sign_pos_1 <= 1;
+      else
+	sign_pos_1 <= 0;
+   end
+   always  @(posedge user_clk)begin
+      if(sign_pos_1 && end_cnt1s)begin
+	 scaler0_tmp[5'h1] <= 1;
+      end
+      else if(end_cnt1s)begin
+	 scaler0_tmp[5'h1] <= 0;
+      end
+      else if(sign_pos_1)begin
+	 scaler0_tmp[5'h1] <= scaler0_tmp[5'h1]+1;
+      end
+   end
+   always @(posedge user_clk) begin
+      if(end_cnt1s) begin
+	 scaler0[5'h1] <= scaler0_tmp[5'h1];
+      end
+   end
+   assign evdata[9'h1E1] = scaler0[5'h1];
+
+   
+   reg sign_1b_2 , sign_2b_2 , sign_pos_2;
+   always @(posedge user_clk) begin
+      sign_1b_2 <= frontbackcoin;
+      sign_2b_2 <= sign_1b_2; 
+   end
+   always @(posedge user_clk) begin
+      if(sign_2b_2 && !sign_1b_2) 
+	sign_pos_2 <= 1;
+      else
+	sign_pos_2 <= 0;
+   end
+   always  @(posedge user_clk)begin
+      if(sign_pos_2 && end_cnt1s)begin
+	 scaler0_tmp[5'h2] <= 1;
+      end
+      else if(end_cnt1s)begin
+	 scaler0_tmp[5'h2] <= 0;
+      end
+      else if(sign_pos_2)begin
+	 scaler0_tmp[5'h2] <= scaler0_tmp[5'h2]+1;
+      end
+   end
+   always @(posedge user_clk) begin
+      if(end_cnt1s) begin
+	 scaler0[5'h2] <= scaler0_tmp[5'h2];
+      end
+   end
+   assign evdata[9'h1E2] = scaler0[5'h2];
+   
+   // reg sign_1b_3 , sign_2b_3 , sign_pos_3;
+   // always @(posedge user_clk) begin
+   //    sign_1b <= fronttrigger;
+   //    sign_2b <= sign_1b; 
+   // end
+   // always @(posedge user_clk) begin
+   //    if(sign_2b && !sign_1b) 
+   // 	sign_pos <= 1;
+   //    else
+   // 	sign_pos <= 0;
+   // end
+
+   // always  @(posedge user_clk)begin
+   //    if(sign_pos && end_cnt1s)begin
+   // 	 scaler0_tmp[5'h0] <= 1;
+   //    end
+   //    else if(end_cnt1s)begin
+   // 	 scaler0_tmp[5'h0] <= 0;
+   //    end
+   //    else if(sign_pos)begin
+   // 	 scaler0_tmp[5'h0] <= scaler0_tmp[5'h0]+1;
+   //    end
+   // end
+   
+   // always @(posedge user_clk) begin
+   //    if(end_cnt1s) begin
+   // 	 scaler0[5'h0] <= scaler0_tmp[5'h0];
+   //    end
+   // end
+
+   // assign evdata[9'h1E3] = scaler0[5'h0];   
    
    // *************************************************************
    // ****************  Processing Logic **************************
@@ -654,11 +754,19 @@ module xillydemo
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
 
-   assign FrontIO_Ain[1] = FrontIO_Aout[3];
-   assign FrontIO_Ain[2] = FrontIO_Aout[3];//FRONT_A_OUTENA    0x0006
+   assign fronttrigger = FrontIO_Aout[3];
+   assign backtrigger = (FrontIO_Aout[7] | FrontIO_Aout[11] | FrontIO_Aout[15]);
+   assign frontbackcoin = fronttrigger & backtrigger;
 
-   assign FrontIO_Ain[5] = FrontIO_Aout[7];
-   assign FrontIO_Ain[6] = FrontIO_Aout[7];//FRONT_A_OUTENA    0x0006
+   assign FrontIO_Ain[2] = frontbackcoin;
+   assign FrontIO_Ain[6] = frontbackcoin;
+   assign FrontIO_Ain[10] = frontbackcoin;
+   assign FrontIO_Ain[14] = frontbackcoin;
+   
+   // assign FrontIO_Ain[1] = FrontIO_Aout[3];
+   // assign FrontIO_Ain[2] = FrontIO_Aout[3];//FRONT_A_OUTENA    0x0006
+   // assign FrontIO_Ain[5] = FrontIO_Aout[7];
+   // assign FrontIO_Ain[6] = FrontIO_Aout[7];//FRONT_A_OUTENA    0x0006
    
    
    // output to CAEN DT2495, change to NIM signal   // FRONT_C_OUTENA  0xaa

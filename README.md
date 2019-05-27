@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 六 3月  9 16:32:34 2019 (+0800)
+;; Last-Updated: 一 5月 27 20:20:05 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 42
+;;     Update #: 44
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -51,7 +51,7 @@ password: xia17pxn
 密码采用默认的，方便使用者都能登陆
 
 ```
-ssh -Y root@222.29.111.232
+ssh -Y root@222.29.111.80
 ```
 
 ## 基本配置
@@ -171,6 +171,24 @@ So the precedure would be
 ```bash
  scp xillydemo.bit root@222.29.111.157:~
 ```
+
+----
+
+## 在线监视
+
+修改好参数配置文件 settings.ini
+
+执行
+```bash
+progfippi
+```
+写入设置参数
+
+**需要注意的是，当获取采集时候，不允许执行该程序**
+
+在网页中即可查看参数设置情况，scale计数情况
+
+
 
 ----
 
