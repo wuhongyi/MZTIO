@@ -755,27 +755,35 @@ module xillydemo
 
 
    assign fronttrigger = FrontIO_Aout[3];
-   assign backtrigger = (FrontIO_Aout[7] | FrontIO_Aout[11] | FrontIO_Aout[15]);
-   assign frontbackcoin = fronttrigger & backtrigger;
-
+   assign backtrigger = FrontIO_Aout[7] && FrontIO_Aout[11] && FrontIO_Aout[15];
+   assign frontbackcoin = fronttrigger || backtrigger;
+   // assign backtrigger = FrontIO_Aout[7] || FrontIO_Aout[11] || FrontIO_Aout[15];
+   // assign frontbackcoin = fronttrigger && backtrigger;
+   
    assign FrontIO_Ain[2] = frontbackcoin;
    assign FrontIO_Ain[6] = frontbackcoin;
    assign FrontIO_Ain[10] = frontbackcoin;
    assign FrontIO_Ain[14] = frontbackcoin;
+
+   assign FrontIO_Cin[3] = FrontIO_Aout[3];
+   assign FrontIO_Cin[7] = FrontIO_Aout[7];   
+   assign FrontIO_Cin[11] = backtrigger;
+   assign FrontIO_Cin[15] = frontbackcoin;   
    
+
    // assign FrontIO_Ain[1] = FrontIO_Aout[3];
    // assign FrontIO_Ain[2] = FrontIO_Aout[3];//FRONT_A_OUTENA    0x0006
    // assign FrontIO_Ain[5] = FrontIO_Aout[7];
    // assign FrontIO_Ain[6] = FrontIO_Aout[7];//FRONT_A_OUTENA    0x0006
    
    
-   // output to CAEN DT2495, change to NIM signal   // FRONT_C_OUTENA  0xaa
-   assign FrontIO_Cin[1] = FrontIO_Aout[0];
-   assign FrontIO_Cin[3] = FrontIO_Aout[3];
-   assign FrontIO_Cin[5] = FrontIO_Aout[4];
-   assign FrontIO_Cin[7] = FrontIO_Aout[7];   
+   // output to CAEN DT5495, change to NIM signal   // FRONT_C_OUTENA  0xaa
+   // assign FrontIO_Cin[1] = FrontIO_Aout[0];
+   // assign FrontIO_Cin[3] = FrontIO_Aout[3];
+   // assign FrontIO_Cin[5] = FrontIO_Aout[4];
+   // assign FrontIO_Cin[7] = FrontIO_Aout[7];   
 
-
+   
    /* ***************** xillybus instantiation ****************** */
    //  can ignore net definitions below, only using xillybus lite for now
 
