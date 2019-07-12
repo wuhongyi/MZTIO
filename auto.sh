@@ -1,17 +1,17 @@
 #!/bin/bash
 
-rm -r docs
+module load texlive/2019
 
-gitbook build
+rm -rf docs/*
 
-mv _book docs
+make clean
 
-git add --all
-git commit -m ""
-git push -u origin master
+make html
+cp -r build/html/* docs/
 
-rm -r docs
+make latexpdf
+mv build/latex/mztio.pdf README.md
 
-##############################
-# gitbook init
-# gitbook install .
+make clean
+
+touch docs/.nojekyll
