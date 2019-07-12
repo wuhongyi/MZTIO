@@ -10,7 +10,7 @@ make html
 cp -r build/html/* docs/
 
 make latexpdf
-mv build/latex/mztio.pdf README.md
+mv build/latex/mztio.pdf README.pdf
 
 make clean
 
