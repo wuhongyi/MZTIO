@@ -85,7 +85,11 @@
               <p class="caption"><span class="caption-text">指南</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">remote control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">remote control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#minicom">minicom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ip">静态IP设置</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
@@ -160,11 +164,13 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:23:17 2019 (+0800)
-;; Last-Updated: 一 5月 27 21:24:33 2019 (+0800)
+;; Last-Updated: 六 7月 13 14:36:28 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn --><div class="section" id="remote-control">
 <h1>remote control<a class="headerlink" href="#remote-control" title="永久链接至标题">¶</a></h1>
+<div class="section" id="minicom">
+<h2>minicom<a class="headerlink" href="#minicom" title="永久链接至标题">¶</a></h2>
 <p>将 USB 线连接电脑，获取系统 IP</p>
 <p>在 linux 中可以采用串口通讯软件 minicom</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minicom -s
@@ -195,7 +201,27 @@ password: xia17pxn</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">Y</span> <span class="n">root</span><span class="nd">@222</span><span class="o">.</span><span class="mf">29.111</span><span class="o">.</span><span class="mi">80</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="ip">
+<h2>静态IP设置<a class="headerlink" href="#ip" title="永久链接至标题">¶</a></h2>
+<p>因为 Ubuntu18.04 采用的是 netplan 来管理 network。所以可以在 /etc/netplan/ 目录下创建一个以 yaml 结尾的文件。比如 01-netplan.yaml 文件。</p>
+<p>然后在此文件下写入以下配置：</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">renderer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networkd</span>
+  <span class="nt">ethernets</span><span class="p">:</span>
+    <span class="nt">enp3s0</span><span class="p">:</span>
+      <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+      <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">192.168.1.110/24</span><span class="p p-Indicator">]</span>
+      <span class="nt">gateway4</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
+      <span class="nt">nameservers</span><span class="p">:</span>
+        <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">8.8.8.8</span><span class="p p-Indicator">,</span> <span class="nv">114.114.114.114</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p><strong>特别要注意的是这里的每一行的空格一定要有的，否则会报错误而设置失败！</strong></p>
+<p>最后使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">netplan</span> <span class="pre">apply</span></code> 来重启网络服务就可以了。使用 <code class="docutils literal notranslate"><span class="pre">ip</span>&#160; <span class="pre">a</span></code> 查看你的静态IP是否设置成功了！</p>
 <!-- RemoteControl.md ends here --></div>
+</div>
 
 
            </div>
