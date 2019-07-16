@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:23:17 2019 (+0800)
-;; Last-Updated: 六 7月 13 14:36:28 2019 (+0800)
+;; Last-Updated: 二 7月 16 19:35:17 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
 # remote control
@@ -69,6 +69,19 @@ network:
 ```
 
 **特别要注意的是这里的每一行的空格一定要有的，否则会报错误而设置失败！**
+
+```yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      addresses: [10.10.6.33/24]
+      gateway4: 10.10.6.10
+      dhcp4: no 
+```
+
+以上参数为CIAE实验使用的配置。
 
 
 最后使用 `sudo netplan apply` 来重启网络服务就可以了。使用 `ip  a` 查看你的静态IP是否设置成功了！

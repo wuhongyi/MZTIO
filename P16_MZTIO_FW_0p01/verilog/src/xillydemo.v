@@ -235,7 +235,9 @@ module xillydemo
    // 12A   frontC_output_select
    // 12B   TriggerAll_output_select
    // 12C   EB_Data_output_select
-   
+   // 130   LVDSIO_Aena
+   // 131   LVDSIO_Bena
+   // 132   LVDSIO_Cena	  
    
    // output data array     Output register
    wire [31:0] 	 evdata[0:511];  // 512 words, 32bit wide
@@ -754,21 +756,53 @@ module xillydemo
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
 
-   assign fronttrigger = FrontIO_Aout[3];
-   assign backtrigger = FrontIO_Aout[7] && FrontIO_Aout[11] && FrontIO_Aout[15];
-   assign frontbackcoin = fronttrigger || backtrigger;
-   // assign backtrigger = FrontIO_Aout[7] || FrontIO_Aout[11] || FrontIO_Aout[15];
-   // assign frontbackcoin = fronttrigger && backtrigger;
+   wire [9:0] delay;
+   reg       delay_we_en;
+   reg       delay_rd_en;
+   wire       delayoutput;
+
+   always @(posedge user_clk) begin
+	 if(delay >= 20)
+	   delay_rd_en <= 1;
+	 else
+	   delay_rd_en <= 0;
+   end
+  
+   always @(posedge user_clk) begin
+	 if(delay <= 20)
+	   delay_we_en <= 1;
+	 else
+	   delay_we_en <= 0;
+   end
+ 
+   fifo_generator_512 signaldealy
+     (
+      .clk(user_clk), 
+      .srst(0),
+      .din(~FrontIO_Aout[3]),
+      .wr_en(delay_we_en),
+      .rd_en(delay_rd_en),
+      .dout(delayoutput),
+      .full(),
+      .empty(), 
+      .data_count(delay)
+      );
+   
+
+
+   assign fronttrigger = ~FrontIO_Aout[3];
+   assign backtrigger = (~FrontIO_Aout[7]) || (~FrontIO_Aout[11]) || (~FrontIO_Aout[15]);
+   assign frontbackcoin = fronttrigger && backtrigger;
    
    assign FrontIO_Ain[2] = frontbackcoin;
    assign FrontIO_Ain[6] = frontbackcoin;
    assign FrontIO_Ain[10] = frontbackcoin;
    assign FrontIO_Ain[14] = frontbackcoin;
 
-   assign FrontIO_Cin[3] = FrontIO_Aout[3];
-   assign FrontIO_Cin[7] = FrontIO_Aout[7];   
-   assign FrontIO_Cin[11] = backtrigger;
-   assign FrontIO_Cin[15] = frontbackcoin;   
+   assign FrontIO_Cin[9] = ~FrontIO_Aout[3];
+   assign FrontIO_Cin[10] = ~FrontIO_Aout[7];   
+   assign FrontIO_Cin[13] = ~FrontIO_Aout[11];
+   assign FrontIO_Cin[14] = delayoutput;   
    
 
    // assign FrontIO_Ain[1] = FrontIO_Aout[3];

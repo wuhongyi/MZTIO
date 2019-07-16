@@ -1,8 +1,8 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-//Date        : Thu Dec 20 20:13:46 2018
-//Host        : localhost.localdomain running 64-bit Scientific Linux release 7.4 (Nitrogen)
+//Date        : Sat Jul 13 14:55:19 2019
+//Host        : localhost.localdomain running 64-bit CentOS Linux release 7.6.1810 (Core)
 //Command     : generate_target vivado_system_wrapper.bd
 //Design      : vivado_system_wrapper
 //Purpose     : IP block netlist
