@@ -32,9 +32,11 @@ module xillydemo
 
    // experiment 
    wire 	 frontbackcoin;
+   wire 	 frontbackor;
    wire 	 fronttrigger;
    wire 	 backtrigger;
-
+   wire [31:0] 	 delayandwidth1;
+   
    // experiment 
    
    
@@ -238,6 +240,8 @@ module xillydemo
    // 130   LVDSIO_Aena
    // 131   LVDSIO_Bena
    // 132   LVDSIO_Cena	  
+
+   // 030   [15:0] delay  [31:16] width
    
    // output data array     Output register
    wire [31:0] 	 evdata[0:511];  // 512 words, 32bit wide
@@ -360,6 +364,11 @@ module xillydemo
    assign TriggerAllena[31:0] = {litearray3[9'h103][7:0],litearray2[9'h103][7:0],litearray1[9'h103][7:0],litearray0[9'h103][7:0]};
    assign EB_Dataena[31:16]   = {litearray1[9'h104][7:0],litearray0[9'h104][7:0]};
 
+   // wuhongyi
+   assign delayandwidth1[31:0] = {litearray3[9'h30][7:0],litearray2[9'h30][7:0],litearray1[9'h30][7:0],litearray0[9'h30][7:0]};
+   
+
+   
    
    wire [15:0] frontA_coincidence_mask, frontB_coincidence_mask, frontC_coincidence_mask;
    wire [31:0] TriggerAll_coincidence_mask; 
@@ -525,7 +534,7 @@ module xillydemo
    
    reg sign_1b_2 , sign_2b_2 , sign_pos_2;
    always @(posedge user_clk) begin
-      sign_1b_2 <= frontbackcoin;
+      sign_1b_2 <= frontbackor;
       sign_2b_2 <= sign_1b_2; 
    end
    always @(posedge user_clk) begin
@@ -551,38 +560,36 @@ module xillydemo
       end
    end
    assign evdata[9'h1E2] = scaler0[5'h2];
-   
-   // reg sign_1b_3 , sign_2b_3 , sign_pos_3;
-   // always @(posedge user_clk) begin
-   //    sign_1b <= fronttrigger;
-   //    sign_2b <= sign_1b; 
-   // end
-   // always @(posedge user_clk) begin
-   //    if(sign_2b && !sign_1b) 
-   // 	sign_pos <= 1;
-   //    else
-   // 	sign_pos <= 0;
-   // end
 
-   // always  @(posedge user_clk)begin
-   //    if(sign_pos && end_cnt1s)begin
-   // 	 scaler0_tmp[5'h0] <= 1;
-   //    end
-   //    else if(end_cnt1s)begin
-   // 	 scaler0_tmp[5'h0] <= 0;
-   //    end
-   //    else if(sign_pos)begin
-   // 	 scaler0_tmp[5'h0] <= scaler0_tmp[5'h0]+1;
-   //    end
-   // end
    
-   // always @(posedge user_clk) begin
-   //    if(end_cnt1s) begin
-   // 	 scaler0[5'h0] <= scaler0_tmp[5'h0];
-   //    end
-   // end
-
-   // assign evdata[9'h1E3] = scaler0[5'h0];   
+   reg sign_1b_3 , sign_2b_3 , sign_pos_3;
+   always @(posedge user_clk) begin
+      sign_1b_3 <= frontbackcoin;
+      sign_2b_3 <= sign_1b_3; 
+   end
+   always @(posedge user_clk) begin
+      if(sign_2b_3 && !sign_1b_3) 
+   	sign_pos_3 <= 1;
+      else
+   	sign_pos_3 <= 0;
+   end
+   always  @(posedge user_clk)begin
+      if(sign_pos_3 && end_cnt1s)begin
+   	 scaler0_tmp[5'h3] <= 1;
+      end
+      else if(end_cnt1s)begin
+   	 scaler0_tmp[5'h3] <= 0;
+      end
+      else if(sign_pos_3)begin
+   	 scaler0_tmp[5'h3] <= scaler0_tmp[5'h3]+1;
+      end
+   end
+   always @(posedge user_clk) begin
+      if(end_cnt1s) begin
+   	 scaler0[5'h3] <= scaler0_tmp[5'h3];
+      end
+   end
+   assign evdata[9'h1E3] = scaler0[5'h3];   
    
    // *************************************************************
    // ****************  Processing Logic **************************
@@ -757,52 +764,84 @@ module xillydemo
 
 
    wire [9:0] delay;
-   reg       delay_we_en;
-   reg       delay_rd_en;
-   wire       delayoutput;
+   wire       delay_we_en;
+   wire       delay_rd_en;
+   wire       delayoutput_tmp;
+   reg 	      delayoutput;
+   wire       empty;
+   wire       full;
 
+
+   assign delay_rd_en = (delay>0 && delay >= delayandwidth1[9:0]);//(~empty && delay >= delayandwidth1[9:0]);  // empty threshold 4
+   assign delay_we_en = (~full && delay <= delayandwidth1[9:0]);
+   
    always @(posedge user_clk) begin
-	 if(delay >= 20)
-	   delay_rd_en <= 1;
-	 else
-	   delay_rd_en <= 0;
+	 if(delay_rd_en)
+	   delayoutput <= delayoutput_tmp;
    end
-  
-   always @(posedge user_clk) begin
-	 if(delay <= 20)
-	   delay_we_en <= 1;
-	 else
-	   delay_we_en <= 0;
-   end
- 
-   fifo_generator_512 signaldealy
+
+   fifo_delay512 signaldealy
      (
       .clk(user_clk), 
       .srst(0),
-      .din(~FrontIO_Aout[3]),
+      .din(fronttrigger),
       .wr_en(delay_we_en),
       .rd_en(delay_rd_en),
-      .dout(delayoutput),
-      .full(),
-      .empty(), 
+      .dout(delayoutput_tmp),
+      .full(full),
+      .empty(empty), 
       .data_count(delay)
       );
-   
 
+
+   
+   reg widthoutput_tmp;
+   reg widthoutput;   
+   always @(posedge user_clk) begin
+	widthoutput_tmp <= delayoutput;
+   end
+
+   reg [9 :0]   cntwidth    ;
+   wire 	add_cntwidth;
+   wire 	end_cntwidth;
+   reg 		add_flag;
+   
+   always @(posedge user_clk) begin
+      if(add_cntwidth) begin
+	 if(end_cntwidth)
+	   cntwidth <= 0;
+	 else
+	   cntwidth <= cntwidth + 1;
+      end
+   end
+   assign add_cntwidth = add_flag==1;//condition: add 1 
+   assign end_cntwidth = add_cntwidth && cntwidth == delayandwidth1[25:16]-1; //End condition, last value
+
+   always  @(posedge user_clk)begin
+      if(delayoutput && ~widthoutput_tmp)begin
+	 add_flag <= 1;
+	 widthoutput <= 1;
+      end
+      else if(end_cntwidth)begin
+	 add_flag <= 0;
+	 widthoutput <= 0;
+      end
+   end   
 
    assign fronttrigger = ~FrontIO_Aout[3];
    assign backtrigger = (~FrontIO_Aout[7]) || (~FrontIO_Aout[11]) || (~FrontIO_Aout[15]);
    assign frontbackcoin = fronttrigger && backtrigger;
+   assign frontbackor = fronttrigger || backtrigger;
    
    assign FrontIO_Ain[2] = frontbackcoin;
    assign FrontIO_Ain[6] = frontbackcoin;
    assign FrontIO_Ain[10] = frontbackcoin;
    assign FrontIO_Ain[14] = frontbackcoin;
 
-   assign FrontIO_Cin[9] = ~FrontIO_Aout[3];
-   assign FrontIO_Cin[10] = ~FrontIO_Aout[7];   
-   assign FrontIO_Cin[13] = ~FrontIO_Aout[11];
-   assign FrontIO_Cin[14] = delayoutput;   
+   assign FrontIO_Cin[9] = fronttrigger;
+   assign FrontIO_Cin[10] = backtrigger;   
+   assign FrontIO_Cin[13] = delayoutput;
+   assign FrontIO_Cin[14] = widthoutput;   
    
 
    // assign FrontIO_Ain[1] = FrontIO_Aout[3];

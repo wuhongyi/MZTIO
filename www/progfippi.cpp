@@ -210,7 +210,7 @@ int main(void)
   void *map_addr;
   int size = 4096;
   volatile unsigned int *mapped;
-  int k;
+  int k, lbit, fbit;
   long long int revsn;
 
 
@@ -274,8 +274,72 @@ int main(void)
   //     mapped[it->first] = it->second;
   //     if(mapped[it->first] != it->second) printf("Error writing register %d\n",it->first);
   //   }
- 
 
+
+
+  
+  // check if there is a conflict: LVDS out - FPGA out: ok, pass though FPGA -> front
+  //     out = 1                   LVDS out - FPGA in: ok, signal from DB -> FPGA and front
+  //     in =  0                   LVDS in  - FPGA out: not allowed, conflict
+  //                               LVDS in  - FPGA in: ok, pass though front -> FPGA
+  unsigned int LVDS_A_OUTENA;
+  unsigned int LVDS_B_OUTENA;
+  unsigned int LVDS_C_OUTENA;
+  unsigned int FRONT_A_OUTENA;
+  unsigned int FRONT_B_OUTENA;
+  unsigned int FRONT_C_OUTENA;
+  it = label_to_values.find(0x100);
+  if (it == label_to_values.end()) printf("Can't find register 0x100\n");
+  FRONT_A_OUTENA = it->second;
+  it = label_to_values.find(0x101);
+  if (it == label_to_values.end()) printf("Can't find register 0x101\n");
+  FRONT_A_OUTENA = it->second;
+  it = label_to_values.find(0x102);
+  if (it == label_to_values.end()) printf("Can't find register 0x102\n");
+  FRONT_A_OUTENA = it->second;
+  it = label_to_values.find(0x130);
+  if (it == label_to_values.end()) printf("Can't find register 0x130\n");
+  LVDS_A_OUTENA = it->second;
+  it = label_to_values.find(0x131);
+  if (it == label_to_values.end()) printf("Can't find register 0x131\n");
+  LVDS_B_OUTENA = it->second;
+  it = label_to_values.find(0x132);
+  if (it == label_to_values.end()) printf("Can't find register 0x132\n");
+  LVDS_C_OUTENA = it->second;
+
+  
+  for( k = 0; k <16; k++ )     // check each bit
+    {
+      lbit = (LVDS_A_OUTENA  >> k ) & 0x0001;
+      fbit = (FRONT_A_OUTENA >> k ) & 0x0001;
+      if(lbit==1 && fbit==0)  printf("FRONT/LVDS_A_OUTENA settings (bit %d) expect input from daughtercard\n",k); 
+      if(lbit==0 && fbit==1)  
+	{
+	  printf("FRONT/LVDS_A output settings (bit %d) create a conflict\n",k); 
+	  return -1;
+	}
+
+      lbit = (LVDS_B_OUTENA  >> k ) & 0x0001;
+      fbit = (FRONT_B_OUTENA >> k ) & 0x0001;
+      if(lbit==1 && fbit==0)  printf("FRONT/LVDS_B_OUTENA settings (bit %d) expect input from daughtercard\n",k); 
+      if(lbit==0 && fbit==1)  
+	{
+	  printf("FRONT/LVDS_B output settings (bit %d) create a conflict\n",k); 
+	  return -1;
+	}
+
+      lbit = (LVDS_C_OUTENA  >> k ) & 0x0001;
+      fbit = (FRONT_C_OUTENA >> k ) & 0x0001;
+      if(lbit==1 && fbit==0)  printf("FRONT/LVDS_C_OUTENA settings (bit %d) expect input from daughtercard\n",k); 
+      if(lbit==0 && fbit==1)  
+	{
+	  printf("FRONT/LVDS_C output settings (bit %d) create a conflict\n",k); 
+	  return -1;
+	}
+      // other conditions ok
+    }
+
+  
   // ************************ I2C programming *********************************
 
   // LVDS buffer direction for FRONT A-C is applied via FPGA's I2C
@@ -283,9 +347,9 @@ int main(void)
 
   // ---------------------- program LVDS input vs output  -----------------------
 
-  it = label_to_values.find(0x100);
+  it = label_to_values.find(0x130);
   if (it == label_to_values.end())
-    printf("Can't find register 0x100\n");
+    printf("Can't find register 0x130\n");
  
   // lower A
   I2Cstart(mapped);
@@ -346,9 +410,9 @@ int main(void)
   I2Cstop(mapped);
 
 
-  it = label_to_values.find(0x101);
+  it = label_to_values.find(0x131);
   if (it == label_to_values.end())
-    printf("Can't find register 0x101\n");
+    printf("Can't find register 0x131\n");
 
    
   // lower B
@@ -410,9 +474,9 @@ int main(void)
   I2Cstop(mapped);
 
 
-  it = label_to_values.find(0x102);
+  it = label_to_values.find(0x132);
   if (it == label_to_values.end())
-    printf("Can't find register 0x102\n");
+    printf("Can't find register 0x132\n");
 
    
   // lower C

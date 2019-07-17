@@ -162,9 +162,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 15 13:40:28 2019 (+0800)
-;; Last-Updated: 六 7月 13 00:18:52 2019 (+0800)
+;; Last-Updated: 三 7月 17 18:24:29 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn --><div class="section" id="id1">
 <h1>程序说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PixieNetCommon.c          
@@ -227,6 +227,7 @@ webopspasswords 存放网页密码
 <p>如果MEZZ01开启输入模式，则必须设置 <code class="docutils literal notranslate"><span class="pre">FRONT_X_OUTENA==0</span> <span class="pre">&amp;&amp;</span> <span class="pre">LVDS_X_OUTTENA==1</span></code>	，其余模式下，MEZZ01跳针全部设置成输出模式，此时网口可用于输入或者输出模式。</p>
 </li>
 </ul>
+<p>当前，在前面板 C 口配置 一个 MEZZ01 模块，其中前四通道设置为信号输入，分别连接[1]/[2]/[5]/[6]，后四个通道设置为信号输出，分别连接[9]/[10]/[13]/[14]。 该配置模式下，C口对应的四个网口仍然可用于多重性的输出，此时参数 FrontIO = 0x6600, LVDSIO = 0x6666。如果不使用 MEZZ01 模块，只连接网口与P16模块，则参数 FrontIO/LVDSIO 均设置为 0x6666。</p>
 <!-- code.md ends here --></div>
 </div>
 

@@ -81,14 +81,14 @@ int main(void)
 
   // read the webpage template and print 
   fil = fopen("rspage.html","r");
-  for( k = 0; k < 61; k ++ )
+  for( k = 0; k < 66; k ++ )
   {
       fgets(line, LINESZ, fil);     // read from template, first part
-      if(k==5)
+      if(k==6)
          printf("<title>Pixie-16 MZ Trigger IO Status (current)</title>\n");
-      else if(k==50)      
+      else if(k==55)      
          printf("<p> <h1> Pixie-16 MZ Trigger IO Status (current) </h1>\n");
-      else if(k==51)  
+      else if(k==56)  
          printf(" (Do not execute while other task in progress) </p>\n");
       else
          printf("%s",line);            // "print" to webserver on stdout  
@@ -103,7 +103,7 @@ int main(void)
 
 
   // finish printing the webpage
-  for( k = 61; k < 99; k ++ )
+  for( k = 66; k < 104; k ++ )
   {
       fgets(line, LINESZ, fil);        // read from template
       printf("%s",line);               // "print" to webserver on stdout
@@ -200,10 +200,10 @@ char Channel_PLRS_Names[N_PL_RS_PAR][MAX_PAR_NAME_LENGTH] = {
    "MMSUM_FRONTC", 
    "MMSUM_TRIGGERALL", 
    "MMSUM_EBDATA", 
-   "reserved", 
-   "reserved", 
-   "reserved", 
-   "reserved",
+   "front trigger", 
+   "back trigger", 
+   "front || back", 
+   "front && back",
    "reserved",		    //20
    "reserved",
    "reserved",

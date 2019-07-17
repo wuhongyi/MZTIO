@@ -164,9 +164,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:23:17 2019 (+0800)
-;; Last-Updated: 六 7月 13 14:36:28 2019 (+0800)
+;; Last-Updated: 二 7月 16 19:35:17 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn --><div class="section" id="remote-control">
 <h1>remote control<a class="headerlink" href="#remote-control" title="永久链接至标题">¶</a></h1>
 <div class="section" id="minicom">
@@ -219,6 +219,17 @@ password: xia17pxn</p>
 </pre></div>
 </div>
 <p><strong>特别要注意的是这里的每一行的空格一定要有的，否则会报错误而设置失败！</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">renderer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networkd</span>
+  <span class="nt">ethernets</span><span class="p">:</span>
+    <span class="nt">eth0</span><span class="p">:</span>
+      <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">10.10.6.33/24</span><span class="p p-Indicator">]</span>
+      <span class="nt">gateway4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.6.10</span>
+      <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span> 
+</pre></div>
+</div>
+<p>以上参数为CIAE实验使用的配置。</p>
 <p>最后使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">netplan</span> <span class="pre">apply</span></code> 来重启网络服务就可以了。使用 <code class="docutils literal notranslate"><span class="pre">ip</span>&#160; <span class="pre">a</span></code> 查看你的静态IP是否设置成功了！</p>
 <!-- RemoteControl.md ends here --></div>
 </div>
