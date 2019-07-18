@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2018 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:mii_to_rmii:2.0
--- IP Revision: 20
+-- IP Revision: 21
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY mii_to_rmii_v2_0_20;
-USE mii_to_rmii_v2_0_20.mii_to_rmii;
+LIBRARY mii_to_rmii_v2_0_21;
+USE mii_to_rmii_v2_0_21.mii_to_rmii;
 
 ENTITY vivado_system_mii_to_rmii_0_0 IS
   PORT (
@@ -110,11 +110,11 @@ ARCHITECTURE vivado_system_mii_to_rmii_0_0_arch OF vivado_system_mii_to_rmii_0_0
     );
   END COMPONENT mii_to_rmii;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF vivado_system_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mii_to_rmii,Vivado 2018.3";
+  ATTRIBUTE X_CORE_INFO OF vivado_system_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mii_to_rmii,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF vivado_system_mii_to_rmii_0_0_arch : ARCHITECTURE IS "vivado_system_mii_to_rmii_0_0,mii_to_rmii,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF vivado_system_mii_to_rmii_0_0_arch: ARCHITECTURE IS "vivado_system_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=20,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_INSTANCE=vivado_system_mii_to_rmii_0_0,C_FIXED_SPEED=1,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=zynq}";
+  ATTRIBUTE CORE_GENERATION_INFO OF vivado_system_mii_to_rmii_0_0_arch: ARCHITECTURE IS "vivado_system_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=21,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_INSTANCE=vivado_system_mii_to_rmii_0_0,C_FIXED_SPEED=1,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=zynq}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF rmii2phy_tx_en: SIGNAL IS "xilinx.com:interface:rmii:1.0 RMII_PHY_M TX_EN";

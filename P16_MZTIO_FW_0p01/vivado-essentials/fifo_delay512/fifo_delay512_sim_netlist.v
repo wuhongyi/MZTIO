@@ -1,18 +1,18 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-// Date        : Tue Jul 16 21:39:38 2019
+// Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+// Date        : Thu Jul 18 10:31:45 2019
 // Host        : localhost.localdomain running 64-bit CentOS Linux release 7.6.1810 (Core)
-// Command     : write_verilog -force -mode funcsim -rename_top fifo_delay512 -prefix
-//               fifo_delay512_ fifo_generator_512_sim_netlist.v
-// Design      : fifo_generator_512
+// Command     : write_verilog -force -mode funcsim
+//               /home/wuhongyi/workgithub/FPGA/MZTIO/P16_MZTIO_FW_0p01/vivado-essentials/fifo_delay512/fifo_delay512_sim_netlist.v
+// Design      : fifo_delay512
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7z020clg400-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "fifo_generator_512,fifo_generator_v13_2_3,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "fifo_generator_v13_2_3,Vivado 2018.3" *) 
+(* CHECK_LICENSE_TYPE = "fifo_delay512,fifo_generator_v13_2_4,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "fifo_generator_v13_2_4,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module fifo_delay512
    (clk,
@@ -368,7 +368,7 @@ module fifo_delay512
   (* C_WR_PNTR_WIDTH_WDCH = "10" *) 
   (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
   (* C_WR_RESPONSE_LATENCY = "1" *) 
-  fifo_delay512_fifo_generator_v13_2_3 U0
+  fifo_delay512_fifo_generator_v13_2_4 U0
        (.almost_empty(NLW_U0_almost_empty_UNCONNECTED),
         .almost_full(NLW_U0_almost_full_UNCONNECTED),
         .axi_ar_data_count(NLW_U0_axi_ar_data_count_UNCONNECTED[4:0]),
@@ -602,6 +602,7 @@ module fifo_delay512
         .wr_rst_busy(NLW_U0_wr_rst_busy_UNCONNECTED));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module fifo_delay512_blk_mem_gen_generic_cstr
    (DOADO,
     clk,
@@ -640,6 +641,7 @@ module fifo_delay512_blk_mem_gen_generic_cstr
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module fifo_delay512_blk_mem_gen_prim_width
    (DOADO,
     clk,
@@ -678,6 +680,7 @@ module fifo_delay512_blk_mem_gen_prim_width
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module fifo_delay512_blk_mem_gen_prim_wrapper
    (DOADO,
     clk,
@@ -866,6 +869,7 @@ module fifo_delay512_blk_mem_gen_prim_wrapper
         .WEBWE({\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 ,\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 ,\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 ,\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 }));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module fifo_delay512_blk_mem_gen_top
    (DOADO,
     clk,
@@ -904,7 +908,8 @@ module fifo_delay512_blk_mem_gen_top
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-module fifo_delay512_blk_mem_gen_v8_4_2
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3" *) 
+module fifo_delay512_blk_mem_gen_v8_4_3
    (DOADO,
     clk,
     tmp_ram_rd_en,
@@ -931,7 +936,7 @@ module fifo_delay512_blk_mem_gen_v8_4_2
   wire srst;
   wire tmp_ram_rd_en;
 
-  fifo_delay512_blk_mem_gen_v8_4_2_synth inst_blk_mem_gen
+  fifo_delay512_blk_mem_gen_v8_4_3_synth inst_blk_mem_gen
        (.\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram (\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram ),
         .\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 (\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 ),
         .\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_1 (\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_1 ),
@@ -942,7 +947,8 @@ module fifo_delay512_blk_mem_gen_v8_4_2
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-module fifo_delay512_blk_mem_gen_v8_4_2_synth
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3_synth" *) 
+module fifo_delay512_blk_mem_gen_v8_4_3_synth
    (DOADO,
     clk,
     tmp_ram_rd_en,
@@ -980,6 +986,7 @@ module fifo_delay512_blk_mem_gen_v8_4_2_synth
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
+(* ORIG_REF_NAME = "compare" *) 
 module fifo_delay512_compare
    (comp0,
     \gmux.gm[4].gms.ms_0 ,
@@ -1001,7 +1008,7 @@ module fifo_delay512_compare
   wire [3:0]\NLW_gmux.gm[4].gms.ms_CARRY4_O_UNCONNECTED ;
   wire [3:1]\NLW_gmux.gm[4].gms.ms_CARRY4_S_UNCONNECTED ;
 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[0].gm1.m1_CARRY4 
@@ -1011,7 +1018,7 @@ module fifo_delay512_compare
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(\NLW_gmux.gm[0].gm1.m1_CARRY4_O_UNCONNECTED [3:0]),
         .S(\gmux.gm[4].gms.ms_0 ));
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[4].gms.ms_CARRY4 
@@ -1058,7 +1065,7 @@ module fifo_delay512_compare_0
   wire [3:0]\NLW_gmux.gm[4].gms.ms_CARRY4_O_UNCONNECTED ;
   wire [3:1]\NLW_gmux.gm[4].gms.ms_CARRY4_S_UNCONNECTED ;
 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[0].gm1.m1_CARRY4 
@@ -1068,7 +1075,7 @@ module fifo_delay512_compare_0
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(\NLW_gmux.gm[0].gm1.m1_CARRY4_O_UNCONNECTED [3:0]),
         .S(\gmux.gm[4].gms.ms_0 ));
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[4].gms.ms_CARRY4 
@@ -1120,7 +1127,7 @@ module fifo_delay512_compare_1
   wire [3:0]\NLW_gmux.gm[4].gms.ms_CARRY4_O_UNCONNECTED ;
   wire [3:1]\NLW_gmux.gm[4].gms.ms_CARRY4_S_UNCONNECTED ;
 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[0].gm1.m1_CARRY4 
@@ -1130,7 +1137,7 @@ module fifo_delay512_compare_1
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(\NLW_gmux.gm[0].gm1.m1_CARRY4_O_UNCONNECTED [3:0]),
         .S({\gmux.gm[4].gms.ms_0 ,\gmux.gm[3].gms.ms_0 ,\gmux.gm[2].gms.ms_0 ,\gmux.gm[1].gms.ms_0 }));
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[4].gms.ms_CARRY4 
@@ -1180,7 +1187,7 @@ module fifo_delay512_compare_2
   wire [3:0]\NLW_gmux.gm[4].gms.ms_CARRY4_O_UNCONNECTED ;
   wire [3:1]\NLW_gmux.gm[4].gms.ms_CARRY4_S_UNCONNECTED ;
 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[0].gm1.m1_CARRY4 
@@ -1190,7 +1197,7 @@ module fifo_delay512_compare_2
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(\NLW_gmux.gm[0].gm1.m1_CARRY4_O_UNCONNECTED [3:0]),
         .S(v1_reg));
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \gmux.gm[4].gms.ms_CARRY4 
@@ -1212,6 +1219,7 @@ module fifo_delay512_compare_2
         .O(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "dc_ss_fwft" *) 
 module fifo_delay512_dc_ss_fwft
    (Q,
     out,
@@ -1242,6 +1250,7 @@ module fifo_delay512_dc_ss_fwft
         .srst(srst));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module fifo_delay512_fifo_generator_ramfifo
    (data_count,
     empty,
@@ -1339,6 +1348,7 @@ module fifo_delay512_fifo_generator_ramfifo
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module fifo_delay512_fifo_generator_top
    (DATA_COUNT,
     empty,
@@ -1448,8 +1458,8 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "9" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) 
-module fifo_delay512_fifo_generator_v13_2_3
+(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_4" *) 
+module fifo_delay512_fifo_generator_v13_2_4
    (backup,
     backup_marker,
     clk,
@@ -2444,7 +2454,7 @@ module fifo_delay512_fifo_generator_v13_2_3
        (.G(\<const0> ));
   VCC VCC
        (.P(\<const1> ));
-  fifo_delay512_fifo_generator_v13_2_3_synth inst_fifo_gen
+  fifo_delay512_fifo_generator_v13_2_4_synth inst_fifo_gen
        (.clk(clk),
         .data_count(data_count),
         .din(din),
@@ -2456,7 +2466,8 @@ module fifo_delay512_fifo_generator_v13_2_3
         .wr_en(wr_en));
 endmodule
 
-module fifo_delay512_fifo_generator_v13_2_3_synth
+(* ORIG_REF_NAME = "fifo_generator_v13_2_4_synth" *) 
+module fifo_delay512_fifo_generator_v13_2_4_synth
    (data_count,
     empty,
     full,
@@ -2498,6 +2509,7 @@ module fifo_delay512_fifo_generator_v13_2_3_synth
         .wr_en(wr_en));
 endmodule
 
+(* ORIG_REF_NAME = "memory" *) 
 module fifo_delay512_memory
    (dout,
     clk,
@@ -2529,7 +2541,7 @@ module fifo_delay512_memory
   wire srst;
   wire tmp_ram_rd_en;
 
-  fifo_delay512_blk_mem_gen_v8_4_2 \gbm.gbmg.gbmga.ngecc.bmg 
+  fifo_delay512_blk_mem_gen_v8_4_3 \gbm.gbmg.gbmga.ngecc.bmg 
        (.\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram (\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram ),
         .\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 (\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_0 ),
         .\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_1 (\DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram_1 ),
@@ -2548,6 +2560,7 @@ module fifo_delay512_memory
         .R(srst));
 endmodule
 
+(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module fifo_delay512_rd_bin_cntr
    (\gc0.count_reg[8]_0 ,
     v1_reg,
@@ -2952,6 +2965,7 @@ module fifo_delay512_rd_bin_cntr
         .O(\gc0.count_d1_reg[6]_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "rd_fwft" *) 
 module fifo_delay512_rd_fwft
    (empty,
     out,
@@ -3147,6 +3161,7 @@ module fifo_delay512_rd_fwft
         .R(srst));
 endmodule
 
+(* ORIG_REF_NAME = "rd_logic" *) 
 module fifo_delay512_rd_logic
    (empty,
     out,
@@ -3264,6 +3279,7 @@ module fifo_delay512_rd_logic
         .v1_reg_1(\c2/v1_reg ));
 endmodule
 
+(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module fifo_delay512_rd_status_flags_ss
    (out,
     \gmux.gm[1].gms.ms ,
@@ -3350,6 +3366,7 @@ module fifo_delay512_rd_status_flags_ss
         .S(srst));
 endmodule
 
+(* ORIG_REF_NAME = "updn_cntr" *) 
 module fifo_delay512_updn_cntr
    (Q,
     out,
@@ -3572,6 +3589,7 @@ module fifo_delay512_updn_cntr
         .S({1'b0,1'b0,1'b0,\count[9]_i_3_n_0 }));
 endmodule
 
+(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module fifo_delay512_wr_bin_cntr
    (Q,
     v1_reg,
@@ -3863,6 +3881,7 @@ module fifo_delay512_wr_bin_cntr
         .O(\gcc0.gc0.count_d1_reg[8]_2 ));
 endmodule
 
+(* ORIG_REF_NAME = "wr_logic" *) 
 module fifo_delay512_wr_logic
    (out,
     full,
@@ -3951,6 +3970,7 @@ module fifo_delay512_wr_logic
         .v1_reg_0(\c1/v1_reg ));
 endmodule
 
+(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module fifo_delay512_wr_status_flags_ss
    (out,
     full,

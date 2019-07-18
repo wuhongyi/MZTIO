@@ -36,6 +36,7 @@ module xillydemo
    wire 	 fronttrigger;
    wire 	 backtrigger;
    wire [31:0] 	 delayandwidth1;
+   wire [31:0] 	 downscale1;
    
    // experiment 
    
@@ -242,6 +243,9 @@ module xillydemo
    // 132   LVDSIO_Cena	  
 
    // 030   [15:0] delay  [31:16] width
+   // 031   [15:0] DS
+
+
    
    // output data array     Output register
    wire [31:0] 	 evdata[0:511];  // 512 words, 32bit wide
@@ -366,7 +370,7 @@ module xillydemo
 
    // wuhongyi
    assign delayandwidth1[31:0] = {litearray3[9'h30][7:0],litearray2[9'h30][7:0],litearray1[9'h30][7:0],litearray0[9'h30][7:0]};
-   
+   assign downscale1[31:0] = {litearray3[9'h31][7:0],litearray2[9'h31][7:0],litearray1[9'h31][7:0],litearray0[9'h31][7:0]}; 
 
    
    
@@ -453,143 +457,6 @@ module xillydemo
    assign evdata[9'h113] = {24'h000000, sumT};
    assign evdata[9'h114] = {24'h000000, sumE};  
 
-
-   reg [31:0] 	cnt1s    ;
-   wire 	add_cnt1s;
-   wire 	end_cnt1s;
-   always @(posedge user_clk) begin
-      if(add_cnt1s) begin
-	 if(end_cnt1s)
-	   cnt1s <= 0;
-	 else
-	   cnt1s <= cnt1s + 1;
-      end
-   end
-   assign add_cnt1s = 1;//condition: add 1 
-   assign end_cnt1s = add_cnt1s && cnt1s == 100000000 - 1; //End condition, last value
-
-   reg [31:0] 	scaler0[0:31];
-   reg [31:0] 	scaler0_tmp[0:31];
-
-   reg sign_1b_0 , sign_2b_0 , sign_pos_0;
-   always @(posedge user_clk) begin
-      sign_1b_0 <= fronttrigger;
-      sign_2b_0 <= sign_1b_0; 
-   end
-   always @(posedge user_clk) begin
-      if(sign_2b_0 && !sign_1b_0) 
-	sign_pos_0 <= 1;
-      else
-	sign_pos_0 <= 0;
-   end
-   always  @(posedge user_clk)begin
-      if(sign_pos_0 && end_cnt1s)begin
-	 scaler0_tmp[5'h0] <= 1;
-      end
-      else if(end_cnt1s)begin
-	 scaler0_tmp[5'h0] <= 0;
-      end
-      else if(sign_pos_0)begin
-	 scaler0_tmp[5'h0] <= scaler0_tmp[5'h0]+1;
-      end
-   end
-   always @(posedge user_clk) begin
-      if(end_cnt1s) begin
-	 scaler0[5'h0] <= scaler0_tmp[5'h0];
-      end
-   end
-   assign evdata[9'h1E0] = scaler0[5'h0];
-
-
-   
-   reg sign_1b_1 , sign_2b_1 , sign_pos_1;
-   always @(posedge user_clk) begin
-      sign_1b_1 <= backtrigger;
-      sign_2b_1 <= sign_1b_1; 
-   end
-   always @(posedge user_clk) begin
-      if(sign_2b_1 && !sign_1b_1) 
-	sign_pos_1 <= 1;
-      else
-	sign_pos_1 <= 0;
-   end
-   always  @(posedge user_clk)begin
-      if(sign_pos_1 && end_cnt1s)begin
-	 scaler0_tmp[5'h1] <= 1;
-      end
-      else if(end_cnt1s)begin
-	 scaler0_tmp[5'h1] <= 0;
-      end
-      else if(sign_pos_1)begin
-	 scaler0_tmp[5'h1] <= scaler0_tmp[5'h1]+1;
-      end
-   end
-   always @(posedge user_clk) begin
-      if(end_cnt1s) begin
-	 scaler0[5'h1] <= scaler0_tmp[5'h1];
-      end
-   end
-   assign evdata[9'h1E1] = scaler0[5'h1];
-
-   
-   reg sign_1b_2 , sign_2b_2 , sign_pos_2;
-   always @(posedge user_clk) begin
-      sign_1b_2 <= frontbackor;
-      sign_2b_2 <= sign_1b_2; 
-   end
-   always @(posedge user_clk) begin
-      if(sign_2b_2 && !sign_1b_2) 
-	sign_pos_2 <= 1;
-      else
-	sign_pos_2 <= 0;
-   end
-   always  @(posedge user_clk)begin
-      if(sign_pos_2 && end_cnt1s)begin
-	 scaler0_tmp[5'h2] <= 1;
-      end
-      else if(end_cnt1s)begin
-	 scaler0_tmp[5'h2] <= 0;
-      end
-      else if(sign_pos_2)begin
-	 scaler0_tmp[5'h2] <= scaler0_tmp[5'h2]+1;
-      end
-   end
-   always @(posedge user_clk) begin
-      if(end_cnt1s) begin
-	 scaler0[5'h2] <= scaler0_tmp[5'h2];
-      end
-   end
-   assign evdata[9'h1E2] = scaler0[5'h2];
-
-   
-   reg sign_1b_3 , sign_2b_3 , sign_pos_3;
-   always @(posedge user_clk) begin
-      sign_1b_3 <= frontbackcoin;
-      sign_2b_3 <= sign_1b_3; 
-   end
-   always @(posedge user_clk) begin
-      if(sign_2b_3 && !sign_1b_3) 
-   	sign_pos_3 <= 1;
-      else
-   	sign_pos_3 <= 0;
-   end
-   always  @(posedge user_clk)begin
-      if(sign_pos_3 && end_cnt1s)begin
-   	 scaler0_tmp[5'h3] <= 1;
-      end
-      else if(end_cnt1s)begin
-   	 scaler0_tmp[5'h3] <= 0;
-      end
-      else if(sign_pos_3)begin
-   	 scaler0_tmp[5'h3] <= scaler0_tmp[5'h3]+1;
-      end
-   end
-   always @(posedge user_clk) begin
-      if(end_cnt1s) begin
-   	 scaler0[5'h3] <= scaler0_tmp[5'h3];
-      end
-   end
-   assign evdata[9'h1E3] = scaler0[5'h3];   
    
    // *************************************************************
    // ****************  Processing Logic **************************
@@ -762,71 +629,82 @@ module xillydemo
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 4 )? {16{coincresult[12]}} : 16'bzzzz ; 
    // assign FrontIO_Cin[15:0] = (frontC_output_select == 5 )? {16{runticks[8]}} : 16'bzzzz ; 
 
-
-   wire [9:0] delay;
-   wire       delay_we_en;
-   wire       delay_rd_en;
-   wire       delayoutput_tmp;
-   reg 	      delayoutput;
-   wire       empty;
-   wire       full;
-
-
-   assign delay_rd_en = (delay>0 && delay >= delayandwidth1[9:0]);//(~empty && delay >= delayandwidth1[9:0]);  // empty threshold 4
-   assign delay_we_en = (~full && delay <= delayandwidth1[9:0]);
-   
+   reg [31:0] 	cnt1s    ;
+   wire 	add_cnt1s;
+   wire 	end_cnt1s;
    always @(posedge user_clk) begin
-	 if(delay_rd_en)
-	   delayoutput <= delayoutput_tmp;
+      if(add_cnt1s) begin
+	 if(end_cnt1s)
+	   cnt1s <= 0;
+	 else
+	   cnt1s <= cnt1s + 1;
+      end
    end
+   assign add_cnt1s = 1;//condition: add 1 
+   assign end_cnt1s = add_cnt1s && cnt1s == 100000000 - 1; //End condition, last value
 
-   fifo_delay512 signaldealy
+   wire delayoutput;
+   wire dsoutput;
+   wire widthoutput;
+   scaler counter001
      (
-      .clk(user_clk), 
-      .srst(0),
       .din(fronttrigger),
-      .wr_en(delay_we_en),
-      .rd_en(delay_rd_en),
-      .dout(delayoutput_tmp),
-      .full(full),
-      .empty(empty), 
-      .data_count(delay)
+      .dout(evdata[9'h1E0]),
+      .endcount(end_cnt1s),
+      .clk(user_clk)
+      );
+
+   scaler counter002
+     (
+      .din(backtrigger),
+      .dout(evdata[9'h1E1]),
+      .endcount(end_cnt1s),
+      .clk(user_clk)
+      );
+   
+   scaler counter003
+     (
+      .din(frontbackor),
+      .dout(evdata[9'h1E2]),
+      .endcount(end_cnt1s),
+      .clk(user_clk)
+      );   
+
+   scaler counter004
+     (
+      .din(dsoutput),
+      .dout(evdata[9'h1E3]),
+      .endcount(end_cnt1s),
+      .clk(user_clk)
       );
 
 
    
-   reg widthoutput_tmp;
-   reg widthoutput;   
-   always @(posedge user_clk) begin
-	widthoutput_tmp <= delayoutput;
-   end
+   signaldelay512 delay001
+     (
+      .din(fronttrigger),
+      .dout(delayoutput),
+      .delay(delayandwidth1[9:0]),
+      .clk(user_clk)
+      );
 
-   reg [9 :0]   cntwidth    ;
-   wire 	add_cntwidth;
-   wire 	end_cntwidth;
-   reg 		add_flag;
    
-   always @(posedge user_clk) begin
-      if(add_cntwidth) begin
-	 if(end_cntwidth)
-	   cntwidth <= 0;
-	 else
-	   cntwidth <= cntwidth + 1;
-      end
-   end
-   assign add_cntwidth = add_flag==1;//condition: add 1 
-   assign end_cntwidth = add_cntwidth && cntwidth == delayandwidth1[25:16]-1; //End condition, last value
+   signalextend512 extend001
+     (
+      .din(delayoutput),
+      .dout(widthoutput),
+      .extend(delayandwidth1[25:16]),
+      .clk(user_clk)
+      );
 
-   always  @(posedge user_clk)begin
-      if(delayoutput && ~widthoutput_tmp)begin
-	 add_flag <= 1;
-	 widthoutput <= 1;
-      end
-      else if(end_cntwidth)begin
-	 add_flag <= 0;
-	 widthoutput <= 0;
-      end
-   end   
+   
+   downscale ds001
+     (
+      .din(fronttrigger),
+      .dout(dsoutput),
+      .down(downscale1[15:0]),
+      .clk(user_clk)
+      );
 
    assign fronttrigger = ~FrontIO_Aout[3];
    assign backtrigger = (~FrontIO_Aout[7]) || (~FrontIO_Aout[11]) || (~FrontIO_Aout[15]);
@@ -839,7 +717,7 @@ module xillydemo
    assign FrontIO_Ain[14] = frontbackcoin;
 
    assign FrontIO_Cin[9] = fronttrigger;
-   assign FrontIO_Cin[10] = backtrigger;   
+   assign FrontIO_Cin[10] = dsoutput;   
    assign FrontIO_Cin[13] = delayoutput;
    assign FrontIO_Cin[14] = widthoutput;   
    

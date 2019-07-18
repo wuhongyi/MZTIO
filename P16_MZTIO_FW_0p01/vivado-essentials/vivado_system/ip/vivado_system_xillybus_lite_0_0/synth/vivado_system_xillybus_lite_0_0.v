@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2018 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -138,7 +138,7 @@ output wire [31 : 0] user_addr;
 endmodule
 // End of netlist blackbox
 
-(* X_CORE_INFO = "xillybus_lite,Vivado 2018.3" *)
+(* X_CORE_INFO = "xillybus_lite,Vivado 2019.1" *)
 (* CHECK_LICENSE_TYPE = "vivado_system_xillybus_lite_0_0,xillybus_lite,{}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module vivado_system_xillybus_lite_0_0 (

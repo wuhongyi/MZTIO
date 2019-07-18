@@ -5,12 +5,14 @@
       "device": "xc7z020clg400-1",
       "name": "vivado_system",
       "synth_flow_mode": "None",
-      "tool_version": "2018.3",
+      "tool_version": "2019.1",
       "validated": "true"
     },
     "design_tree": {
-      "mii_to_rmii_0": "",
       "processing_system7_0": "",
+      "rst_processing_system7_0_100M": "",
+      "xillybus_lite_0": "",
+      "mii_to_rmii_0": "",
       "processing_system7_0_axi_periph": {
         "xbar": "",
         "s00_couplers": {
@@ -21,8 +23,6 @@
           "auto_pc": ""
         }
       },
-      "rst_processing_system7_0_100M": "",
-      "xillybus_lite_0": "",
       "xlconcat_0": ""
     },
     "interface_ports": {
@@ -196,15 +196,6 @@
       }
     },
     "components": {
-      "mii_to_rmii_0": {
-        "vlnv": "xilinx.com:ip:mii_to_rmii:2.0",
-        "xci_name": "vivado_system_mii_to_rmii_0_0",
-        "parameters": {
-          "C_MODE": {
-            "value": "1"
-          }
-        }
-      },
       "processing_system7_0": {
         "vlnv": "xilinx.com:ip:processing_system7:5.5",
         "xci_name": "vivado_system_processing_system7_0_0",
@@ -1876,6 +1867,23 @@
           }
         }
       },
+      "rst_processing_system7_0_100M": {
+        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+        "xci_name": "vivado_system_rst_processing_system7_0_100M_0"
+      },
+      "xillybus_lite_0": {
+        "vlnv": "xillybus:xillybus:xillybus_lite:1.0",
+        "xci_name": "vivado_system_xillybus_lite_0_0"
+      },
+      "mii_to_rmii_0": {
+        "vlnv": "xilinx.com:ip:mii_to_rmii:2.0",
+        "xci_name": "vivado_system_mii_to_rmii_0_0",
+        "parameters": {
+          "C_MODE": {
+            "value": "1"
+          }
+        }
+      },
       "processing_system7_0_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
         "xci_name": "vivado_system_processing_system7_0_axi_periph_0",
@@ -2037,16 +2045,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_s00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -2209,28 +2217,10 @@
           }
         },
         "interface_nets": {
-          "m01_couplers_to_processing_system7_0_axi_periph": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m01_couplers": {
-            "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
-            ]
-          },
           "m00_couplers_to_processing_system7_0_axi_periph": {
             "interface_ports": [
               "M00_AXI",
               "m00_couplers/M_AXI"
-            ]
-          },
-          "processing_system7_0_axi_periph_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
             ]
           },
           "xbar_to_m00_couplers": {
@@ -2243,6 +2233,24 @@
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
+            ]
+          },
+          "processing_system7_0_axi_periph_to_s00_couplers": {
+            "interface_ports": [
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
+            ]
+          },
+          "m01_couplers_to_processing_system7_0_axi_periph": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
             ]
           }
         },
@@ -2303,30 +2311,16 @@
           }
         }
       },
-      "rst_processing_system7_0_100M": {
-        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
-        "xci_name": "vivado_system_rst_processing_system7_0_100M_0"
-      },
-      "xillybus_lite_0": {
-        "vlnv": "xillybus:xillybus:xillybus_lite:1.0",
-        "xci_name": "vivado_system_xillybus_lite_0_0"
-      },
       "xlconcat_0": {
         "vlnv": "xilinx.com:ip:xlconcat:2.1",
         "xci_name": "vivado_system_xlconcat_0_0"
       }
     },
     "interface_nets": {
-      "processing_system7_0_axi_periph_M01_AXI": {
+      "processing_system7_0_GMII_ETHERNET_0": {
         "interface_ports": [
-          "processing_system7_0_axi_periph/M01_AXI",
-          "xillybus_lite_0/S_AXI"
-        ]
-      },
-      "processing_system7_0_FIXED_IO": {
-        "interface_ports": [
-          "FIXED_IO",
-          "processing_system7_0/FIXED_IO"
+          "processing_system7_0/GMII_ETHERNET_0",
+          "mii_to_rmii_0/GMII"
         ]
       },
       "processing_system7_0_M_AXI_GP0": {
@@ -2335,10 +2329,16 @@
           "processing_system7_0_axi_periph/S00_AXI"
         ]
       },
-      "processing_system7_0_GMII_ETHERNET_0": {
+      "processing_system7_0_FIXED_IO": {
         "interface_ports": [
-          "processing_system7_0/GMII_ETHERNET_0",
-          "mii_to_rmii_0/GMII"
+          "FIXED_IO",
+          "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "processing_system7_0_axi_periph_M01_AXI": {
+        "interface_ports": [
+          "processing_system7_0_axi_periph/M01_AXI",
+          "xillybus_lite_0/S_AXI"
         ]
       },
       "processing_system7_0_GPIO_0": {
@@ -2353,16 +2353,16 @@
           "processing_system7_0/MDIO_ETHERNET_0"
         ]
       },
-      "processing_system7_0_DDR": {
-        "interface_ports": [
-          "DDR",
-          "processing_system7_0/DDR"
-        ]
-      },
       "processing_system7_0_USBIND_0": {
         "interface_ports": [
           "USBIND_0",
           "processing_system7_0/USBIND_0"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR",
+          "processing_system7_0/DDR"
         ]
       }
     },
