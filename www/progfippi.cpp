@@ -293,10 +293,10 @@ int main(void)
   FRONT_A_OUTENA = it->second;
   it = label_to_values.find(0x101);
   if (it == label_to_values.end()) printf("Can't find register 0x101\n");
-  FRONT_A_OUTENA = it->second;
+  FRONT_B_OUTENA = it->second;
   it = label_to_values.find(0x102);
   if (it == label_to_values.end()) printf("Can't find register 0x102\n");
-  FRONT_A_OUTENA = it->second;
+  FRONT_C_OUTENA = it->second;
   it = label_to_values.find(0x130);
   if (it == label_to_values.end()) printf("Can't find register 0x130\n");
   LVDS_A_OUTENA = it->second;
