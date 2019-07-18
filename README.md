@@ -4,12 +4,15 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 7月 17 18:11:11 2019 (+0800)
-;; Last-Updated: 三 7月 17 18:17:21 2019 (+0800)
+;; Last-Updated: 四 7月 18 14:11:44 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # README
+
+**If you need firmware, please contact Hongyi Wu(wuhongyi@qq.com)**
+
 
 > http://wuhongyi.cn/MZTIO/
 

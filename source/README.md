@@ -4,12 +4,15 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 六 6月 15 14:04:58 2019 (+0800)
+;; Last-Updated: 四 7月 18 14:14:52 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 48
+;;     Update #: 49
 ;; URL: http://wuhongyi.cn -->
 
 # README
+
+**If you need firmware, please contact Hongyi Wu(wuhongyi@qq.com)**
+
 
 https://support.xia.com/default.asp?W372
 
