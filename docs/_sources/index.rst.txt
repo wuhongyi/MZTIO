@@ -17,6 +17,7 @@ Welcome to MZTIO's documentation!
    :caption: 指南
 
    README.md
+   webgui.rst
    RemoteControl.md
    ubuntu.md
    Vivado.md

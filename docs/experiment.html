@@ -85,6 +85,7 @@
               <p class="caption"><span class="caption-text">指南</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">remote control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
@@ -163,14 +164,15 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 5月 28 10:38:45 2019 (+0800)
-;; Last-Updated: 六 6月 15 14:04:58 2019 (+0800)
+;; Last-Updated: 六 7月 20 19:57:33 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn --><div class="section" id="experiment">
 <h1>experiment<a class="headerlink" href="#experiment" title="永久链接至标题">¶</a></h1>
 <ul class="simple">
 <li><p>当多重性为 0 时，输出高电平</p></li>
 <li><p>当多重性大于等于 1 时，默认输出低电平，有触发时为高电平</p></li>
+<li><p>MSRB bit6为1时，才能有同步指示信号，才能DPM的输出信息，才有FT，VT信息</p></li>
 </ul>
 <div class="section" id="id1">
 <h2>在线监视<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>

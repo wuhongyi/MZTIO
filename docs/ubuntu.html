@@ -85,6 +85,7 @@
               <p class="caption"><span class="caption-text">指南</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">remote control</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ubuntu</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">基本配置</a><ul>
@@ -95,6 +96,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sd">恢复SD卡原始空间</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update-the-boot-files">update the boot files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dev-mmcblk0p1">/dev/mmcblk0p1</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
@@ -170,9 +172,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:25:03 2019 (+0800)
-;; Last-Updated: 一 5月 27 21:26:16 2019 (+0800)
+;; Last-Updated: 五 7月 19 18:17:55 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn --><div class="section" id="ubuntu">
 <h1>ubuntu<a class="headerlink" href="#ubuntu" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
@@ -276,6 +278,12 @@ apt-get install libqt4-dev
 <li><p>reboot or power cycle ( reboot)</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> scp xillydemo.bit root@222.29.111.157:~
+</pre></div>
+</div>
+</div>
+<div class="section" id="dev-mmcblk0p1">
+<h2>/dev/mmcblk0p1<a class="headerlink" href="#dev-mmcblk0p1" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot</span><span class="o">.</span><span class="n">bin</span>  <span class="n">devicetree</span><span class="o">.</span><span class="n">dtb</span>  <span class="n">uImage</span>  <span class="n">xillydemo</span><span class="o">.</span><span class="n">bit</span>
 </pre></div>
 </div>
 <!-- ubuntu.md ends here --></div>

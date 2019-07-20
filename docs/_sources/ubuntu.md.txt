@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:25:03 2019 (+0800)
-;; Last-Updated: 一 5月 27 21:26:16 2019 (+0800)
+;; Last-Updated: 五 7月 19 18:17:55 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # ubuntu
@@ -128,5 +128,13 @@ So the precedure would be
 ```bash
  scp xillydemo.bit root@222.29.111.157:~
 ```
+
+
+## /dev/mmcblk0p1
+
+```
+boot.bin  devicetree.dtb  uImage  xillydemo.bit
+```
+
 
 <!-- ubuntu.md ends here -->
