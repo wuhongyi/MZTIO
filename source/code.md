@@ -4,40 +4,50 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 15 13:40:28 2019 (+0800)
-;; Last-Updated: 三 7月 17 18:24:29 2019 (+0800)
+;; Last-Updated: 日 7月 21 21:34:30 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 
-# 程序说明
+# Code
+
+## PS code
+
 
 ```bash
-PixieNetCommon.c          
-PixieNetCommon.h          
-PixieNetConfig.cpp        
-PixieNetConfig.h          
-PixieNetDefs.h            
+docs
+static
+webops
 
-makefile            
-cgistats.c                
-clockprog.c         
-monitordaq.c        
-progfippi.c    
-runstats.c     
-writeI2C.c     
+Pixie16_MZTrigIO_Manual.pdf
 
-d3.v3.min.js        
-defaults.ini        
-settings.ini   
+MZTIOCommon.c
+MZTIOCommon.h
+MZTIODefs.h
+clockprog.c
+progfippi.cc
+settings.ini
+status.c
+status.cgi
+test.cc
+makefile
 
-Xia_LLC_web_header.jpg    
-dygraph-combined.js 
-index.html          
-plotly-latest.min.js
-rspage.html    
-webopspasswords 存放网页密码
+pkulogo100.jpg
+webopspasswords
+why.jpg
+index.html
+log.html
+status.html
+support.html
 ```
+
+----
+
+## PL code
+
+About firmware
+
 
 ----
 

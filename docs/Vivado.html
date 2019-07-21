@@ -82,7 +82,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">指南</span></p>
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
 <li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
@@ -90,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Vivado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">程序说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
 </ul>
 
             
@@ -161,15 +161,16 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:21:23 2019 (+0800)
-;; Last-Updated: 六 7月 13 17:01:30 2019 (+0800)
+;; Last-Updated: 日 7月 21 18:38:35 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn --><div class="section" id="vivado">
 <h1>Vivado<a class="headerlink" href="#vivado" title="永久链接至标题">¶</a></h1>
+<p>When you open it for the first time, you need to clear the <code class="docutils literal notranslate"><span class="pre">P16_MZTIO_FW_0p01/build</span></code> folder.</p>
 <p>首次打开时，需要清空 <code class="docutils literal notranslate"><span class="pre">P16_MZTIO_FW_0p01/build</span></code> 文件夹</p>
 <ul class="simple">
-<li><p>Open Vivado. Use Tools &gt; Run Tcl Script to run project generating script …/verilog/xillydemo-vivado.tcl. The resulting project file is in …\verilog\vivado
-There have been cases where the script crashes Vivado, and then the compile has ~100 pin property critical warnings. In such cases, start over.</p></li>
+<li><p>Open Vivado. Use Tools &gt; Run Tcl Script to run project generating script …/verilog/xillydemo-vivado.tcl. The resulting project file is in …\verilog\vivado</p></li>
+<li><p>There have been cases where the script crashes Vivado, and then the compile has ~100 pin property critical warnings. In such cases, start over.</p></li>
 <li><p>Compile demo project (generate bitstream). Ignore warnings and critical warnings.</p></li>
 <li><p>Check build/xillydemo.runs/impl_1/xillydemo.bit</p></li>
 </ul>

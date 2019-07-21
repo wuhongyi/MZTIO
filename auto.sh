@@ -15,3 +15,5 @@ mv build/latex/mztio.pdf README.pdf
 make clean
 
 touch docs/.nojekyll
+
+cp source/README.md .

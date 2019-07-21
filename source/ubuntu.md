@@ -4,18 +4,22 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:25:03 2019 (+0800)
-;; Last-Updated: 五 7月 19 18:17:55 2019 (+0800)
+;; Last-Updated: 日 7月 21 18:36:38 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # ubuntu
 
-## 基本配置
+## basic configuration
 
 ### ubuntu 18
 
+If the operating system is the latest version, no additional source configuration is required.
+
 如果操作系统是当前最新版本，则不需要进行额外的源配置。
+
+If you want to install CERN ROOT, add the following line to /etc/apt/sources.list
 
 如果要安装CERN ROOT，则在 /etc/apt/sources.list 中添加以下行
 
@@ -25,14 +29,19 @@ deb http://ports.ubuntu.com/ xenial main universe multiverse
 
 ### ubuntu 12
 
+If the operating system version is the previous version, you need to modify the source configuration as follows.
+
 如果操作系统版本是之前的老版本，则需要按照以下进行源的修改配置。
 
+Edit source list file
+
 编辑源列表文件
+
 ```
 vim /etc/apt/sources.list
 ```
 
-修改为
+change into:
 ```
 deb http://old-releases.ubuntu.com/ubuntu vivid main restricted universe multiverse   
 deb http://old-releases.ubuntu.com/ubuntu vivid-security main restricted universe multiverse   
@@ -49,21 +58,20 @@ deb http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 ```
 
-### 软件升级
+### software upgrade
 
-运行
 ```bash
 apt-get update
 ```
 
 
 ```bash
-#安装 firefox
+#install firefox
 apt-get install firefox
-# 安装emacs
+# install emacs
 apt-get install emacs
 
-# ROOT 依赖库文件
+# ROOT dependent library
 apt-get install cmake
 apt-get install libx11-dev
 apt-get install libxpm-dev
@@ -89,6 +97,8 @@ apt-get install libqt4-dev
 apt-get install root-system-bin
 ```
 
+Ubuntu color configuration, place the color configuration file .dircolors in the personal directory, the file name is .dir_colors in the readhat system.
+
 ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors
 
 
@@ -112,9 +122,11 @@ df -h
 ## update the boot files
 
 To mount the SD card boot partition to a folder /mnt/sd, execute
+
 ```bash
 mount /dev/mmcblk0p1 /mnt/sd
 ```
+
 this is useful to update the boot files without removing the SD card. The Pixie-16 MZ-TrigIO has to be rebooted before the new boot files become effective.
 
 So the precedure would be 
@@ -122,11 +134,11 @@ So the precedure would be
 - copy to shared Linux folder on the SD card (/var/www)
 - mount boot partition mount /dev/mmcblk0p1 /mnt/sd (create /mnt/sd if not already there) 
 - copy files e.g. cp /var/www/xillydemo.bit /mnt/sd
-- reboot or power cycle ( reboot)
+- reboot or power cycle (reboot)
 
 
 ```bash
- scp xillydemo.bit root@222.29.111.157:~
+scp xillydemo.bit root@222.29.111.157:~
 ```
 
 

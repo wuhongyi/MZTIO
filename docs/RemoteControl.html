@@ -82,19 +82,19 @@
               
             
             
-              <p class="caption"><span class="caption-text">指南</span></p>
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
 <li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">remote control</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#minicom">minicom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ip">静态IP设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#static-ip-setting">static IP setting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">程序说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
 </ul>
 
             
@@ -165,14 +165,16 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:23:17 2019 (+0800)
-;; Last-Updated: 二 7月 16 19:35:17 2019 (+0800)
+;; Last-Updated: 日 7月 21 21:30:50 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn --><div class="section" id="remote-control">
 <h1>remote control<a class="headerlink" href="#remote-control" title="永久链接至标题">¶</a></h1>
 <div class="section" id="minicom">
 <h2>minicom<a class="headerlink" href="#minicom" title="永久链接至标题">¶</a></h2>
+<p>Connect the USB cable to your computer to get the IP</p>
 <p>将 USB 线连接电脑，获取系统 IP</p>
+<p>Serial communication software(minicom) can be used in Linux OS</p>
 <p>在 linux 中可以采用串口通讯软件 minicom</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minicom -s
 </pre></div>
@@ -191,22 +193,29 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>进入 Serial port setup，修改 Serial Device 为 /dev/ttyUSB0。Bps/Par/Bits 采用默认的 115200 8N1，底部两个选项均为 NO</p></li>
-<li><p>进入 Modem and dialing ，将A、B、K项内容删除</p></li>
-<li><p>然后选择 Save setup as dfl 保存设置</p></li>
-<li><p>最后选择 Exit 退出配置模式，进入控制模式</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">port</span> <span class="pre">setup</span></code>，modify Serial Device to <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>。Bps/Par/Bits change to <code class="docutils literal notranslate"><span class="pre">115200</span> <span class="pre">8N1</span></code>, the bottom two options are <code class="docutils literal notranslate"><span class="pre">NO</span></code></p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Modem</span> <span class="pre">and</span> <span class="pre">dialing</span></code> , delete A, B, and K items</p></li>
+<li><p>Then select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">setup</span> <span class="pre">as</span> <span class="pre">dfl</span></code> to save the settings</p></li>
+<li><p>Finally, select <code class="docutils literal notranslate"><span class="pre">Exit</span></code> to exit the configuration mode and enter the control mode</p></li>
 </ul>
-<p>user：root
-password: xia17pxn</p>
-<p>密码采用默认的，方便使用者都能登陆</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">Y</span> <span class="n">root</span><span class="nd">@222</span><span class="o">.</span><span class="mf">29.111</span><span class="o">.</span><span class="mi">80</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user：root
+password: xia17pxn
+
+The password is the default, so users can log in.
+密码采用默认的，方便使用者都能登陆
+</pre></div>
+</div>
+<p>Assuming the IP address is 222.29.111.80, you can log in with the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y root@222.29.111.80
 </pre></div>
 </div>
 </div>
-<div class="section" id="ip">
-<h2>静态IP设置<a class="headerlink" href="#ip" title="永久链接至标题">¶</a></h2>
+<div class="section" id="static-ip-setting">
+<h2>static IP setting<a class="headerlink" href="#static-ip-setting" title="永久链接至标题">¶</a></h2>
+<p>Because Ubuntu 18.04 uses netplan to manage the network. So you can create a file ending in yaml in the /etc/netplan/ directory. For example, the 01-netplan.yaml file.</p>
 <p>因为 Ubuntu18.04 采用的是 netplan 来管理 network。所以可以在 /etc/netplan/ 目录下创建一个以 yaml 结尾的文件。比如 01-netplan.yaml 文件。</p>
-<p>然后在此文件下写入以下配置：</p>
+<p>Then write the following configuration under this file(<strong>You need to modify the IP address and gateway</strong>):</p>
+<p>然后在此文件下写入以下配置(你需要修改IP地址及网关)：</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
   <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
   <span class="nt">renderer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networkd</span>
@@ -219,6 +228,7 @@ password: xia17pxn</p>
         <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">8.8.8.8</span><span class="p p-Indicator">,</span> <span class="nv">114.114.114.114</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+<p><strong>It is important to note that the spaces in each line must be there, otherwise the error will be reported and the setting will fail!</strong></p>
 <p><strong>特别要注意的是这里的每一行的空格一定要有的，否则会报错误而设置失败！</strong></p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
   <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
@@ -230,7 +240,9 @@ password: xia17pxn</p>
       <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span> 
 </pre></div>
 </div>
+<p>The above parameters are the configurations used by the CIAE experiment.</p>
 <p>以上参数为CIAE实验使用的配置。</p>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">netplan</span> <span class="pre">apply</span></code> to restart the network service. Use <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> to see if your static IP is set up successfully!</p>
 <p>最后使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">netplan</span> <span class="pre">apply</span></code> 来重启网络服务就可以了。使用 <code class="docutils literal notranslate"><span class="pre">ip</span>&#160; <span class="pre">a</span></code> 查看你的静态IP是否设置成功了！</p>
 <!-- RemoteControl.md ends here --></div>
 </div>

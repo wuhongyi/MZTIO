@@ -82,10 +82,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">指南</span></p>
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">README</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#safety">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logic-programming">Logic programming</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">程序说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
 </ul>
 
             
@@ -164,14 +165,16 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 六 7月 20 21:33:29 2019 (+0800)
+;; Last-Updated: 日 7月 21 18:28:56 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 50
+;;     Update #: 51
 ;; URL: http://wuhongyi.cn --><div class="section" id="readme">
 <h1>README<a class="headerlink" href="#readme" title="永久链接至标题">¶</a></h1>
 <p><strong>If you need firmware, please contact Hongyi Wu(wuhongyi&#64;qq.com)</strong></p>
 <p><strong>如果你需要固件，请联系吴鸿毅(wuhongyi&#64;qq.com)</strong></p>
-<p>https://support.xia.com/default.asp?W372</p>
+<p>If you want to know how PKU uses MZTIO, please click on the link below: http://wuhongyi.cn/MZTIO/</p>
+<p>XIA SUPPORT: https://support.xia.com/default.asp?W372</p>
+<hr class="docutils" />
 <p>The Pixie-16 MZ-TrigIO is designed to route signals from the backplane (rear connectors) to the front panel (front connectors) and make logical combinations between them in FPGA fabric. It has the following features and capabilities:</p>
 <ul class="simple">
 <li><p>Ethernet programmable trigger/coincidence control module for the Pixie-16</p></li>
@@ -183,10 +186,21 @@
 <li><p>Use as standalone desktop unit or in 6U PXI chassis</p></li>
 <li><p>Custom I/O standards via daughtercards</p></li>
 </ul>
+<p>Pixie-16 MZ-TrigIO 设计用于将信号从背板（后连接器）连接到前面板（前连接器），并在 FPGA 架构中实现逻辑组合。它具有以下功能和特性：</p>
+<ul class="simple">
+<li><p>用于 Pixie-16 的以太网可编程触发/符合控制模块</p></li>
+<li><p>48+ Pixie-16 背板触发连接到本地 Zynq 处理器</p></li>
+<li><p>48 个前面板 LVDS 连接到本地 Zynq 处理器</p></li>
+<li><p>带嵌入式 Linux 的 MicroZed Zynq 处理器，作为独立 PC，内置 SD 卡驱动器，USB 主机，10/100 以太网，网络服务器等</p></li>
+<li><p>1588 PTP 和 SyncE 时钟同步</p></li>
+<li><p>开源用户访问软件和固件</p></li>
+<li><p>用作独立桌面设备或 6U PXI 机箱</p></li>
+<li><p>通过子卡自定义 I/O 标准</p></li>
+</ul>
 <hr class="docutils" />
 <div class="section" id="safety">
 <h2>Safety<a class="headerlink" href="#safety" title="永久链接至标题">¶</a></h2>
-<p>Please take a moment to review these safety precautions. They are provided both for your protection and to prevent damage to the Pixie module and connected equipment. This safety information applies to all operators and service personnel.</p>
+<p><strong>Please take a moment to review these safety precautions. They are provided both for your protection and to prevent damage to the Pixie module and connected equipment. This safety information applies to all operators and service personnel.</strong></p>
 <ul class="simple">
 <li><p>Power Source</p>
 <ul>
@@ -225,6 +239,72 @@
 <li><p>Note that all Linux passwords are stored on the SD card.</p></li>
 </ul>
 </li>
+</ul>
+<p><strong>请花点时间查看这些安全预防措施。它们既可以保护您，也可以防止损坏 Pixie 模块和连接的设备。此安全信息适用于所有操作员和维修人员。</strong></p>
+<ul class="simple">
+<li><p>电源</p>
+<ul>
+<li><p>Pixie-16 MZ-TrigIO 模块通过 AC/DC 适配器或 PXI 背板供电。默认适配器具有适用于不同地区的各种 AC 插头附件。</p></li>
+<li><p>在从 Pixie-16 MZ-TrigIO 拔下电源插头或关闭 PXI 机箱电源之前，请记得关闭 Linux 操作系统。</p></li>
+</ul>
+</li>
+<li><p>用户调整/反汇编</p>
+<ul>
+<li><p>为避免人身伤害和/或损坏，在进入模块内部之前，请务必断开电源​​。有一些与有经验的用户可能想要使用的电路板上的时钟相关的跳线。</p></li>
+</ul>
+</li>
+<li><p>电压额定值</p>
+<ul>
+<li><p>输入和输出信号不得超过 ±3.3V。在进行任何连接之前，请查看附录中的引脚分配。</p></li>
+</ul>
+</li>
+<li><p>子卡</p>
+<ul>
+<li><p>子卡可用作前面板和背面输入的替代品，这需要小心避免 FPGA 输出和标准连接器输入的冲突。</p></li>
+</ul>
+</li>
+<li><p>维修和清洁</p>
+<ul>
+<li><p>为避免人身伤害和/或损坏 Pixie 模块或连接的设备，请勿尝试修理或清洁这些设备的内部。</p></li>
+</ul>
+</li>
+<li><p>Linux密码</p>
+<ul>
+<li><p>Pixie-16 MZ-TrigIO Linux 操作系统附带默认用户 ID 和密码，用于1）SSH登录，2）SMB文件共享，以及3）Web操作，如下所述。用户应立即更改这些密码，尤其是当 Pixie-16 MZ-TrigIO 连接到外部网络时。不要让黑客接管你的 Pixie-16 MZ-TrigIO！</p></li>
+</ul>
+</li>
+<li><p>Linux备份</p>
+<ul>
+<li><p>Pixie-16 MZ-TrigIO Linux OS 存储在可移动 SD 卡上。 SD 卡的文件系统可能会损坏，这会使 Linux 系统崩溃并使 Pixie-16 MZ-TrigIO 无法运行。因此，建议定期备份 SD 卡，例如使用 Win32DiskImager。（需要一个字节一个字节的复制）。</p></li>
+<li><p>请注意，所有 Linux 密码都存储在 SD 卡上。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="logic-programming">
+<h2>Logic programming<a class="headerlink" href="#logic-programming" title="永久链接至标题">¶</a></h2>
+<p>In order to meet the needs of medium and low energy experimental nuclear physics, we have developed the following basic functions.</p>
+<ul class="simple">
+<li><p>signal delay</p></li>
+<li><p>signal extend</p></li>
+<li><p>coincidence</p></li>
+<li><p>multiplicity</p></li>
+<li><p>scaler/counter</p></li>
+<li><p>down scale</p></li>
+<li><p>remote parameter adjustment</p></li>
+<li><p>……</p></li>
+</ul>
+<p>为了适应中低能实验核物理的需求，我们发展了以下基本功能：</p>
+<ul class="simple">
+<li><p>信号延迟</p></li>
+<li><p>信号展宽</p></li>
+<li><p>符合</p></li>
+<li><p>多重性选择</p></li>
+<li><p>scaler计数器</p></li>
+<li><p>down scale 分除</p></li>
+<li><p>远程参数调节</p></li>
+<li><p>。。。。。。</p></li>
 </ul>
 <!-- README.md ends here --></div>
 </div>

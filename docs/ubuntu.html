@@ -82,16 +82,16 @@
               
             
             
-              <p class="caption"><span class="caption-text">指南</span></p>
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
 <li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">remote control</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ubuntu</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">基本配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-configuration">basic configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-18">ubuntu 18</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-12">ubuntu 12</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">软件升级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-upgrade">software upgrade</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sd">恢复SD卡原始空间</a></li>
@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">程序说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
 </ul>
 
             
@@ -172,16 +172,18 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:25:03 2019 (+0800)
-;; Last-Updated: 五 7月 19 18:17:55 2019 (+0800)
+;; Last-Updated: 日 7月 21 18:36:38 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn --><div class="section" id="ubuntu">
 <h1>ubuntu<a class="headerlink" href="#ubuntu" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>基本配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="basic-configuration">
+<h2>basic configuration<a class="headerlink" href="#basic-configuration" title="永久链接至标题">¶</a></h2>
 <div class="section" id="ubuntu-18">
 <h3>ubuntu 18<a class="headerlink" href="#ubuntu-18" title="永久链接至标题">¶</a></h3>
+<p>If the operating system is the latest version, no additional source configuration is required.</p>
 <p>如果操作系统是当前最新版本，则不需要进行额外的源配置。</p>
+<p>If you want to install CERN ROOT, add the following line to /etc/apt/sources.list</p>
 <p>如果要安装CERN ROOT，则在 /etc/apt/sources.list 中添加以下行</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ports</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="n">xenial</span> <span class="n">main</span> <span class="n">universe</span> <span class="n">multiverse</span>
 </pre></div>
@@ -189,12 +191,14 @@
 </div>
 <div class="section" id="ubuntu-12">
 <h3>ubuntu 12<a class="headerlink" href="#ubuntu-12" title="永久链接至标题">¶</a></h3>
+<p>If the operating system version is the previous version, you need to modify the source configuration as follows.</p>
 <p>如果操作系统版本是之前的老版本，则需要按照以下进行源的修改配置。</p>
+<p>Edit source list file</p>
 <p>编辑源列表文件</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span>
 </pre></div>
 </div>
-<p>修改为</p>
+<p>change into:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
 <span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">security</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
 <span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">updates</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
@@ -211,18 +215,17 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>软件升级<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>运行</p>
+<div class="section" id="software-upgrade">
+<h3>software upgrade<a class="headerlink" href="#software-upgrade" title="永久链接至标题">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get update
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#安装 firefox</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#install firefox</span>
 apt-get install firefox
-<span class="c1"># 安装emacs</span>
+<span class="c1"># install emacs</span>
 apt-get install emacs
 
-<span class="c1"># ROOT 依赖库文件</span>
+<span class="c1"># ROOT dependent library</span>
 apt-get install cmake
 apt-get install libx11-dev
 apt-get install libxpm-dev
@@ -247,6 +250,7 @@ apt-get install libqt4-dev
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install root-system-bin
 </pre></div>
 </div>
+<p>Ubuntu color configuration, place the color configuration file .dircolors in the personal directory, the file name is .dir_colors in the readhat system.</p>
 <p>ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors</p>
 </div>
 </div>
@@ -275,9 +279,9 @@ apt-get install libqt4-dev
 <li><p>copy to shared Linux folder on the SD card (/var/www)</p></li>
 <li><p>mount boot partition mount /dev/mmcblk0p1 /mnt/sd (create /mnt/sd if not already there)</p></li>
 <li><p>copy files e.g. cp /var/www/xillydemo.bit /mnt/sd</p></li>
-<li><p>reboot or power cycle ( reboot)</p></li>
+<li><p>reboot or power cycle (reboot)</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> scp xillydemo.bit root@222.29.111.157:~
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp xillydemo.bit root@222.29.111.157:~
 </pre></div>
 </div>
 </div>

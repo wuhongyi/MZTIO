@@ -14,7 +14,7 @@ Welcome to MZTIO's documentation!
 
 .. toctree::
    :maxdepth: 3
-   :caption: 指南
+   :caption: GUIDE
 
    README.md
    webgui.rst

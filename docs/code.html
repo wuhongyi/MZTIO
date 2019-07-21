@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>程序说明 &mdash; MZTIO 0.0 文档</title>
+  <title>Code &mdash; MZTIO 0.0 文档</title>
   
 
   
@@ -81,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">指南</span></p>
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
 <li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
@@ -89,7 +89,9 @@
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">程序说明</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ps-code">PS code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pl-code">PL code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xillydemo">xillydemo</a></li>
 </ul>
 </li>
@@ -138,7 +140,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>程序说明</li>
+      <li>Code</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,36 +165,44 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 15 13:40:28 2019 (+0800)
-;; Last-Updated: 三 7月 17 18:24:29 2019 (+0800)
+;; Last-Updated: 日 7月 21 21:34:30 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
-;; URL: http://wuhongyi.cn --><div class="section" id="id1">
-<h1>程序说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PixieNetCommon.c          
-PixieNetCommon.h          
-PixieNetConfig.cpp        
-PixieNetConfig.h          
-PixieNetDefs.h            
+;;     Update #: 7
+;; URL: http://wuhongyi.cn --><div class="section" id="code">
+<h1>Code<a class="headerlink" href="#code" title="永久链接至标题">¶</a></h1>
+<div class="section" id="ps-code">
+<h2>PS code<a class="headerlink" href="#ps-code" title="永久链接至标题">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docs
+static
+webops
 
-makefile            
-cgistats.c                
-clockprog.c         
-monitordaq.c        
-progfippi.c    
-runstats.c     
-writeI2C.c     
+Pixie16_MZTrigIO_Manual.pdf
 
-d3.v3.min.js        
-defaults.ini        
-settings.ini   
+MZTIOCommon.c
+MZTIOCommon.h
+MZTIODefs.h
+clockprog.c
+progfippi.cc
+settings.ini
+status.c
+status.cgi
+test.cc
+makefile
 
-Xia_LLC_web_header.jpg    
-dygraph-combined.js 
-index.html          
-plotly-latest.min.js
-rspage.html    
-webopspasswords 存放网页密码
+pkulogo100.jpg
+webopspasswords
+why.jpg
+index.html
+log.html
+status.html
+support.html
 </pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pl-code">
+<h2>PL code<a class="headerlink" href="#pl-code" title="永久链接至标题">¶</a></h2>
+<p>About firmware</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="xillydemo">
