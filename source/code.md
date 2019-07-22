@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 15 13:40:28 2019 (+0800)
-;; Last-Updated: 日 7月 21 21:34:30 2019 (+0800)
+;; Last-Updated: 一 7月 22 16:37:09 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 8
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -16,8 +16,8 @@
 
 
 ```bash
-docs
-static
+docs   #PKU MZTIO GUIDES
+static  # css js
 webops
 
 Pixie16_MZTrigIO_Manual.pdf
@@ -30,12 +30,11 @@ progfippi.cc
 settings.ini
 status.c
 status.cgi
-test.cc
 makefile
 
 pkulogo100.jpg
-webopspasswords
 why.jpg
+webopspasswords
 index.html
 log.html
 status.html
@@ -46,7 +45,108 @@ support.html
 
 ## PL code
 
-About firmware
+### downscale
+
+```verilog
+module downscale
+  (
+   din,
+   dout,
+   down,
+   clk
+   );
+   
+   parameter DATA_W = 16;
+   input [DATA_W-1:0]  down;
+   input din;
+   output dout;
+   reg 	  dout;
+   input clk;
+endmodule
+```
+
+### scaler
+
+```verilog
+module scaler
+  (
+   din,
+   dout ,
+   endcount,
+   clk
+   );
+   
+   parameter DATA_W = 32;
+   output[DATA_W-1:0]  dout;
+   reg   [DATA_W-1:0]  dout;
+   
+   input din;
+   input endcount;
+   input clk;
+endmodule
+```
+
+### signaldelay512
+
+```verilog
+module signaldelay512
+  (
+   din,
+   dout,
+   delay,
+   clk
+   );
+
+   output dout;
+   reg    dout;
+   input [9:0] delay;
+   input       din;
+   input clk;
+endmodule
+```
+
+### signalextend512
+
+```verilog
+module signalextend512
+  (
+   din,
+   dout,
+   extend,
+   clk
+   );
+
+   input din;
+   output dout;
+   reg 	  dout;
+   input [9:0] extend;
+   input clk;
+endmodule
+```
+
+
+### IP core
+
+**FIFO**
+
+```verilog
+module fifo_delay512(clk, srst, din, wr_en, rd_en, dout, full, empty, 
+  data_count)
+/* synthesis syn_black_box black_box_pad_pin="clk,srst,din[0:0],wr_en,rd_en,dout[0:0],full,empty,data_count[9:0]" */;
+  input clk;
+  input srst;
+  input [0:0]din;
+  input wr_en;
+  input rd_en;
+  output [0:0]dout;
+  output full;
+  output empty;
+  output [9:0]data_count;
+endmodule
+```
+
+
+
 
 
 ----

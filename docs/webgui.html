@@ -85,7 +85,19 @@
               <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">WEB Control GUI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WEB Control GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#register">register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web-pages">web pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-page">main page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-page">status page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-page">log page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-page">support page</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#oscilloscope">Oscilloscope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fifo-ip-code-limits">FIFO IP code limits</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">remote control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
@@ -157,11 +169,54 @@
             
   <div class="section" id="web-control-gui">
 <h1>WEB Control GUI<a class="headerlink" href="#web-control-gui" title="永久链接至标题">¶</a></h1>
+<div class="section" id="register">
+<h2>register<a class="headerlink" href="#register" title="永久链接至标题">¶</a></h2>
+<p>The user can easily adjust the experimental logic by modifying the control registers in the settings.ini file.</p>
+<p>Of course, for different types of experiments, we have specialized software, please refer to the manual of the experiment for the specific register control method.</p>
 <img alt="_images/settingpars.png" src="_images/settingpars.png" />
+</div>
+<div class="section" id="web-pages">
+<h2>web pages<a class="headerlink" href="#web-pages" title="永久链接至标题">¶</a></h2>
+<div class="section" id="main-page">
+<h3>main page<a class="headerlink" href="#main-page" title="永久链接至标题">¶</a></h3>
+<p>The main page of the web, it will provide basic information and precautions for the module.</p>
 <img alt="_images/MainPage.png" src="_images/MainPage.png" />
+</div>
+<div class="section" id="status-page">
+<h3>status page<a class="headerlink" href="#status-page" title="永久链接至标题">¶</a></h3>
+<p>When you aaccess the status page, the page will automatically refresh every 5 second.</p>
+<p>There are currently five columns of monitorable parameters on this page.</p>
+<ul class="simple">
+<li><p>The fourth row of the first column indicates the date the solid is allowed to be used.</p></li>
+<li><p>The fifteenth line of the first column indicates the running time of the current round of DAQ.</p></li>
+<li><p>The first column, line 16, represents the percentage of DPMFULL and total runtime.</p></li>
+</ul>
+<p>The parameters of the third column, the fourth column and the fifth column are determined by the settings of each experiment. For details, please refer to the manual of the specific experiment settings.</p>
 <img alt="_images/StatusPage.png" src="_images/StatusPage.png" />
+</div>
+<div class="section" id="log-page">
+<h3>log page<a class="headerlink" href="#log-page" title="永久链接至标题">¶</a></h3>
+<p>In development, this page will save the status parameters and read the historical parameters.</p>
+</div>
+<div class="section" id="support-page">
+<h3>support page<a class="headerlink" href="#support-page" title="永久链接至标题">¶</a></h3>
+<p>This page provides some basic instructions, including XIA instructions, PKU instructions, and more.</p>
+</div>
+</div>
+<div class="section" id="oscilloscope">
+<h2>Oscilloscope<a class="headerlink" href="#oscilloscope" title="永久链接至标题">¶</a></h2>
+<p>Output signals to the oscilloscope through the MZTIO daughter board.</p>
+<p>Most oscilloscopes have only 4 channels, so our monitor settings are set by default for 4 channels. If you want to monitor 8 channels at the same time, you can do it with 2 oscilloscopes.</p>
+<p>Of course, the monitored signal can be switched by modifying the control register. For instructions on how to monitor different signals, please read the instructions for the specific experiment.</p>
+<p>The following figure is an example of oscilloscope monitoring. Line 1 represents the trigger signal, line 2 is the down scale 10, line 3 represents the signal after line 1 is delayed by 400 ns, and line 4 represents line 3 is extend to 500 ns.</p>
+<img alt="_images/DS10DelayExtend.png" src="_images/DS10DelayExtend.png" />
+</div>
+<div class="section" id="fifo-ip-code-limits">
+<h2>FIFO IP code limits<a class="headerlink" href="#fifo-ip-code-limits" title="永久链接至标题">¶</a></h2>
+<p>The figure below shows the settable range of the FIFO IP core parameters.</p>
 <img alt="_images/FIFO_IP_LIMIT.png" src="_images/FIFO_IP_LIMIT.png" />
-<p>由于受到FIFO IP核的限制，延迟最小设置为 4 个时钟</p>
+<p>Due to the limitation of the FIFO IP core, the delay is set to a minimum of 4 clocks.</p>
+</div>
 </div>
 
 

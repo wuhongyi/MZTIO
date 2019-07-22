@@ -91,7 +91,14 @@
 <li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Code</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ps-code">PS code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pl-code">PL code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pl-code">PL code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#downscale">downscale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scaler">scaler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signaldelay512">signaldelay512</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signalextend512">signalextend512</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ip-core">IP core</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#xillydemo">xillydemo</a></li>
 </ul>
 </li>
@@ -165,15 +172,15 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 15 13:40:28 2019 (+0800)
-;; Last-Updated: 日 7月 21 21:34:30 2019 (+0800)
+;; Last-Updated: 一 7月 22 16:37:09 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 8
 ;; URL: http://wuhongyi.cn --><div class="section" id="code">
 <h1>Code<a class="headerlink" href="#code" title="永久链接至标题">¶</a></h1>
 <div class="section" id="ps-code">
 <h2>PS code<a class="headerlink" href="#ps-code" title="永久链接至标题">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docs
-static
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docs   <span class="c1">#PKU MZTIO GUIDES</span>
+static  <span class="c1"># css js</span>
 webops
 
 Pixie16_MZTrigIO_Manual.pdf
@@ -186,12 +193,11 @@ progfippi.cc
 settings.ini
 status.c
 status.cgi
-test.cc
 makefile
 
 pkulogo100.jpg
-webopspasswords
 why.jpg
+webopspasswords
 index.html
 log.html
 status.html
@@ -202,7 +208,104 @@ support.html
 <hr class="docutils" />
 <div class="section" id="pl-code">
 <h2>PL code<a class="headerlink" href="#pl-code" title="永久链接至标题">¶</a></h2>
-<p>About firmware</p>
+<div class="section" id="downscale">
+<h3>downscale<a class="headerlink" href="#downscale" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">downscale</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span><span class="p">,</span>
+   <span class="n">down</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+   
+   <span class="k">parameter</span> <span class="no">DATA_W</span> <span class="o">=</span> <span class="mh">16</span><span class="p">;</span>
+   <span class="k">input</span> <span class="p">[</span><span class="no">DATA_W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">down</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">din</span><span class="p">;</span>
+   <span class="k">output</span> <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span> 	  <span class="n">dout</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scaler">
+<h3>scaler<a class="headerlink" href="#scaler" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">scaler</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span> <span class="p">,</span>
+   <span class="n">endcount</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+   
+   <span class="k">parameter</span> <span class="no">DATA_W</span> <span class="o">=</span> <span class="mh">32</span><span class="p">;</span>
+   <span class="k">output</span><span class="p">[</span><span class="no">DATA_W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span>   <span class="p">[</span><span class="no">DATA_W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">dout</span><span class="p">;</span>
+   
+   <span class="k">input</span> <span class="n">din</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">endcount</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="signaldelay512">
+<h3>signaldelay512<a class="headerlink" href="#signaldelay512" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">signaldelay512</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span><span class="p">,</span>
+   <span class="n">delay</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+
+   <span class="k">output</span> <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span>    <span class="n">dout</span><span class="p">;</span>
+   <span class="k">input</span> <span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">delay</span><span class="p">;</span>
+   <span class="k">input</span>       <span class="n">din</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="signalextend512">
+<h3>signalextend512<a class="headerlink" href="#signalextend512" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">signalextend512</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span><span class="p">,</span>
+   <span class="n">extend</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+
+   <span class="k">input</span> <span class="n">din</span><span class="p">;</span>
+   <span class="k">output</span> <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span> 	  <span class="n">dout</span><span class="p">;</span>
+   <span class="k">input</span> <span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">extend</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip-core">
+<h3>IP core<a class="headerlink" href="#ip-core" title="永久链接至标题">¶</a></h3>
+<p><strong>FIFO</strong></p>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">fifo_delay512</span><span class="p">(</span><span class="n">clk</span><span class="p">,</span> <span class="n">srst</span><span class="p">,</span> <span class="n">din</span><span class="p">,</span> <span class="n">wr_en</span><span class="p">,</span> <span class="n">rd_en</span><span class="p">,</span> <span class="n">dout</span><span class="p">,</span> <span class="n">full</span><span class="p">,</span> <span class="n">empty</span><span class="p">,</span> 
+  <span class="n">data_count</span><span class="p">)</span>
+<span class="cm">/* synthesis syn_black_box black_box_pad_pin=&quot;clk,srst,din[0:0],wr_en,rd_en,dout[0:0],full,empty,data_count[9:0]&quot; */</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">srst</span><span class="p">;</span>
+  <span class="k">input</span> <span class="p">[</span><span class="mh">0</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">din</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">wr_en</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">rd_en</span><span class="p">;</span>
+  <span class="k">output</span> <span class="p">[</span><span class="mh">0</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">dout</span><span class="p">;</span>
+  <span class="k">output</span> <span class="n">full</span><span class="p">;</span>
+  <span class="k">output</span> <span class="n">empty</span><span class="p">;</span>
+  <span class="k">output</span> <span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">data_count</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="xillydemo">
