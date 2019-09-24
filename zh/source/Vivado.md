@@ -4,16 +4,18 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:21:23 2019 (+0800)
-;; Last-Updated: 一 7月 22 17:07:39 2019 (+0800)
+;; Last-Updated: 二 9月 24 20:53:44 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
 # Vivado
 
-## Compile
+## 安装
 
-When you open it for the first time, you need to clear the ```P16_MZTIO_FW_0p01/build``` folder.
+
+
+## 编译
 
 首次打开时，需要清空 ```P16_MZTIO_FW_0p01/build``` 文件夹
 

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 5月 28 10:38:45 2019 (+0800)
-;; Last-Updated: 日 7月 21 21:19:02 2019 (+0800)
+;; Last-Updated: 二 9月 24 20:21:44 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 # experiment
@@ -23,8 +23,6 @@ About multiplicity output in RJ45 in PKU firmware
 - have the DPMFULL output information
 - have back plane FT, VT information
 
-
-- MSRB bit6为1时，才能有同步指示信号，才能DPM的输出信息，才有FT，VT信息
 
 ## online monitor
 

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 5月 27 21:25:03 2019 (+0800)
-;; Last-Updated: 日 7月 21 18:36:38 2019 (+0800)
+;; Last-Updated: 二 9月 24 20:52:14 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
 # ubuntu
@@ -17,11 +17,7 @@
 
 If the operating system is the latest version, no additional source configuration is required.
 
-如果操作系统是当前最新版本，则不需要进行额外的源配置。
-
 If you want to install CERN ROOT, add the following line to /etc/apt/sources.list
-
-如果要安装CERN ROOT，则在 /etc/apt/sources.list 中添加以下行
 
 ```
 deb http://ports.ubuntu.com/ xenial main universe multiverse
@@ -31,11 +27,7 @@ deb http://ports.ubuntu.com/ xenial main universe multiverse
 
 If the operating system version is the previous version, you need to modify the source configuration as follows.
 
-如果操作系统版本是之前的老版本，则需要按照以下进行源的修改配置。
-
 Edit source list file
-
-编辑源列表文件
 
 ```
 vim /etc/apt/sources.list
@@ -99,23 +91,25 @@ apt-get install root-system-bin
 
 Ubuntu color configuration, place the color configuration file .dircolors in the personal directory, the file name is .dir_colors in the readhat system.
 
-ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors
-
 
 ----
 
-## 恢复SD卡原始空间
+## Restore SD card space
 
-为了加快镜像装载速度，实际上只格式化了8/16G左右的SD卡空间，我16/32G的SD卡还有8/16G多的空间都没用到，为了能够进行使用进行如下操作
+In order to speed up the installation speed of the image, only the SD card space of about 8/16G is actually formatted. The 16/32G SD card and the 8/16G space are not used. In order to be able to use, the following operations are performed.
 
+```bash
 fdisk /dev/mmcblk0
-然后分别输入: d [ENTER],2 [ENTER],n[ENTER] [ENTER],[ENTER],[ENTER],[ENTER],w[ENTER]， 若中间出现问题详细参考Getting started with Xillinux for Zynq-7000 EPP ， 然后重启linux 开机后
+# Then enter: d [ENTER],2 [ENTER],n[ENTER] [ENTER],[ENTER],[ENTER],[ENTER],w[ENTER]. Then reboot the OS. If there is a problem, please refer to *Getting started with Xillinux for Zynq-7000 EPP* 
+```
 
+```bash
+# Execute the following command
 resize2fs /dev/mmcblk0p2
-并使用
 
+# Use the following command to view the result
 df -h
-查看最后追加的结果
+```
 
 ----
 
