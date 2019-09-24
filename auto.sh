@@ -5,7 +5,7 @@ module load texlive/2019
 rm -rf docs/doctrees/*
 rm -rf docs/en/*
 rm -rf docs/zh/*
-cp index.html docs/
+cp -e index/* docs/
 touch docs/.nojekyll
 
 
