@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>网页控制界面 &mdash; MZTIO 0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="远程控制" href="RemoteControl.html" />
+    <link rel="prev" title="README" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MZTIO
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">网页控制界面</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">寄存器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">网页</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-page">main page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-page">status page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-page">log page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-page">support page</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">示波器监视</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fifo-ip">FIFO IP 核的限制</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">远程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MZTIO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>网页控制界面</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/webgui.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>网页控制界面<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>寄存器<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>用户可以通过修改 settings.ini 文件中的控制寄存器来轻松调整实验逻辑。</p>
+<p>当然，对于不同类型的实验，我们有专门的软件，有关特定的寄存器控制方法，请参阅实验手册。</p>
+<img alt="_images/settingpars.png" src="_images/settingpars.png" />
+</div>
+<div class="section" id="id3">
+<h2>网页<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="main-page">
+<h3>main page<a class="headerlink" href="#main-page" title="永久链接至标题">¶</a></h3>
+<p>主页，它将提供该模块的基本信息和注意事项。</p>
+<img alt="_images/MainPage.png" src="_images/MainPage.png" />
+</div>
+<div class="section" id="status-page">
+<h3>status page<a class="headerlink" href="#status-page" title="永久链接至标题">¶</a></h3>
+<p>当您访问状态页面时，该页面将每 5 秒钟自动刷新一次。</p>
+<p>当前，此页面上有五列可监视参数。</p>
+<ul class="simple">
+<li><p>第一列的第四行表示允许使用该固体的日期。</p></li>
+<li><p>第一列的第十五行指示当前 DAQ 的运行时间。</p></li>
+<li><p>第一列第16行代表 DPMFULL 和总运行时间的百分比。</p></li>
+</ul>
+<img alt="_images/StatusPage.png" src="_images/StatusPage.png" />
+</div>
+<div class="section" id="log-page">
+<h3>log page<a class="headerlink" href="#log-page" title="永久链接至标题">¶</a></h3>
+<p>在开发中，此页面将保存状态参数并读取历史参数。</p>
+</div>
+<div class="section" id="support-page">
+<h3>support page<a class="headerlink" href="#support-page" title="永久链接至标题">¶</a></h3>
+<p>该页面提供了一些基本说明，包括XIA说明，PKU说明等。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>示波器监视<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>通过 MZTIO 子板将信号输出到示波器。</p>
+<p>大多数示波器只有 4 个通道，因此我们的监视器设置默认设置为 4 个通道。 如果要同时监视 8 个通道，则可以用 2 台示波器完成。</p>
+<p>当然，可以通过修改控制寄存器来切换监视信号。有关如何监视不同信号的说明，请阅读特定实验的说明。</p>
+<p>下图是示波器监视的示例。线 1 表示触发逻辑信号，线 2 表示触发逻辑信号10倍分除之后的结果，线 3 表示线 1 延迟 400 ns 后的信号，线 4 代表线 3 展宽到 500 ns。</p>
+<img alt="_images/DS10DelayExtend.png" src="_images/DS10DelayExtend.png" />
+</div>
+<div class="section" id="fifo-ip">
+<h2>FIFO IP 核的限制<a class="headerlink" href="#fifo-ip" title="永久链接至标题">¶</a></h2>
+<p>下图显示了 FIFO IP 核参数的可设置范围。</p>
+<img alt="_images/FIFO_IP_LIMIT.png" src="_images/FIFO_IP_LIMIT.png" />
+<p>由于 FIFO IP 核的限制，延迟设置为最少 4 个时钟。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="RemoteControl.html" class="btn btn-neutral float-right" title="远程控制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="README" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

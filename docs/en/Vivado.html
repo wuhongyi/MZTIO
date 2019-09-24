@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vivado &mdash; MZTIO 0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="experiment" href="experiment.html" />
+    <link rel="prev" title="ubuntu" href="ubuntu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MZTIO
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">remote control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vivado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile">Compile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-system-debug">In system debug</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MZTIO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Vivado</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Vivado.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- Vivado.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 一 5月 27 21:21:23 2019 (+0800)
+;; Last-Updated: 二 9月 24 20:53:37 2019 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 5
+;; URL: http://wuhongyi.cn --><div class="section" id="vivado">
+<h1>Vivado<a class="headerlink" href="#vivado" title="永久链接至标题">¶</a></h1>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="compile">
+<h2>Compile<a class="headerlink" href="#compile" title="永久链接至标题">¶</a></h2>
+<p>When you open it for the first time, you need to clear the <code class="docutils literal notranslate"><span class="pre">P16_MZTIO_FW_0p01/build</span></code> folder.</p>
+<ul class="simple">
+<li><p>Open Vivado. Use Tools &gt; Run Tcl Script to run project generating script …/verilog/xillydemo-vivado.tcl. The resulting project file is in …\verilog\vivado</p></li>
+<li><p>There have been cases where the script crashes Vivado, and then the compile has ~100 pin property critical warnings. In such cases, start over.</p></li>
+<li><p>Compile demo project (generate bitstream). Ignore warnings and critical warnings.</p></li>
+<li><p>Check build/xillydemo.runs/impl_1/xillydemo.bit</p></li>
+</ul>
+</div>
+<div class="section" id="in-system-debug">
+<h2>In system debug<a class="headerlink" href="#in-system-debug" title="永久链接至标题">¶</a></h2>
+<p>Is possible???</p>
+<!-- https://www.cnblogs.com/bayunaner/articles/9522618.html --><!-- Vivado.md ends here --></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="experiment.html" class="btn btn-neutral float-right" title="experiment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ubuntu.html" class="btn btn-neutral float-left" title="ubuntu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

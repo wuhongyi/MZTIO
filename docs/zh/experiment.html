@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>实验 &mdash; MZTIO 0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Code" href="code.html" />
+    <link rel="prev" title="Vivado" href="Vivado.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MZTIO
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">网页控制界面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">远程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">实验</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">在线监视</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">实验模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gamma">在束 gamma 谱学</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beta">beta 衰变</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">核反应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">超重核</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MZTIO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>实验</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/experiment.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- experiment.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 5月 28 10:38:45 2019 (+0800)
+;; Last-Updated: 二 9月 24 20:21:28 2019 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 7
+;; URL: http://wuhongyi.cn --><div class="section" id="id1">
+<h1>实验<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>关于 PKU 固件从前面板网口 RJ45 输出多重性选择的结果</p>
+<ul class="simple">
+<li><p>当设置 multiplicity==0, 输出高电平</p></li>
+<li><p>当设置 multiplicity&gt;=1, 默认输出低电平，只有满足多重性条件时才有高电平。</p></li>
+</ul>
+<p><strong>MSRB bit6为1时</strong></p>
+<ul class="simple">
+<li><p>才能有同步指示信号</p></li>
+<li><p>才能 DPM 的输出信息</p></li>
+<li><p>才有FT，VT信息</p></li>
+</ul>
+<div class="section" id="id2">
+<h2>在线监视<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在修改参数文件 <code class="docutils literal notranslate"><span class="pre">settings.ini</span></code> 之后，你需要运行以下程序来修改寄存器的设置。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./progfippi
+</pre></div>
+</div>
+<p><strong>需要注意的是，运行 DAQ 时不允许执行该程序</strong></p>
+<p>您可以在网页中查看参数设置，以及计数器等情况。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>实验模式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>我们将为以下四种类型的实验提供固件和软件的通用组合。</p>
+</div>
+<div class="section" id="gamma">
+<h2>在束 gamma 谱学<a class="headerlink" href="#gamma" title="永久链接至标题">¶</a></h2>
+<p><strong>设计中…</strong></p>
+</div>
+<div class="section" id="beta">
+<h2>beta 衰变<a class="headerlink" href="#beta" title="永久链接至标题">¶</a></h2>
+<p><strong>设计中…</strong></p>
+</div>
+<div class="section" id="id4">
+<h2>核反应<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>设计中…</strong></p>
+</div>
+<div class="section" id="id5">
+<h2>超重核<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><strong>设计中…</strong></p>
+<!-- experiment.md ends here --></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="code.html" class="btn btn-neutral float-right" title="Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Vivado.html" class="btn btn-neutral float-left" title="Vivado" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

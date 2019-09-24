@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Code &mdash; MZTIO 0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="实验" href="experiment.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MZTIO
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">网页控制界面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">远程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">实验</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ps-code">PS code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pl-code">PL code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#downscale">downscale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scaler">scaler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signaldelay512">signaldelay512</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signalextend512">signalextend512</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ip-core">IP core</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#xillydemo">xillydemo</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MZTIO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/code.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- code.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 六 6月 15 13:40:28 2019 (+0800)
+;; Last-Updated: 一 7月 22 16:37:09 2019 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 8
+;; URL: http://wuhongyi.cn --><div class="section" id="code">
+<h1>Code<a class="headerlink" href="#code" title="永久链接至标题">¶</a></h1>
+<div class="section" id="ps-code">
+<h2>PS code<a class="headerlink" href="#ps-code" title="永久链接至标题">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docs   <span class="c1">#PKU MZTIO GUIDES</span>
+static  <span class="c1"># css js</span>
+webops
+
+Pixie16_MZTrigIO_Manual.pdf
+
+MZTIOCommon.c
+MZTIOCommon.h
+MZTIODefs.h
+clockprog.c
+progfippi.cc
+settings.ini
+status.c
+status.cgi
+makefile
+
+pkulogo100.jpg
+why.jpg
+webopspasswords
+index.html
+log.html
+status.html
+support.html
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pl-code">
+<h2>PL code<a class="headerlink" href="#pl-code" title="永久链接至标题">¶</a></h2>
+<div class="section" id="downscale">
+<h3>downscale<a class="headerlink" href="#downscale" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">downscale</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span><span class="p">,</span>
+   <span class="n">down</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+   
+   <span class="k">parameter</span> <span class="no">DATA_W</span> <span class="o">=</span> <span class="mh">16</span><span class="p">;</span>
+   <span class="k">input</span> <span class="p">[</span><span class="no">DATA_W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">down</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">din</span><span class="p">;</span>
+   <span class="k">output</span> <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span> 	  <span class="n">dout</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scaler">
+<h3>scaler<a class="headerlink" href="#scaler" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">scaler</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span> <span class="p">,</span>
+   <span class="n">endcount</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+   
+   <span class="k">parameter</span> <span class="no">DATA_W</span> <span class="o">=</span> <span class="mh">32</span><span class="p">;</span>
+   <span class="k">output</span><span class="p">[</span><span class="no">DATA_W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span>   <span class="p">[</span><span class="no">DATA_W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>  <span class="n">dout</span><span class="p">;</span>
+   
+   <span class="k">input</span> <span class="n">din</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">endcount</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="signaldelay512">
+<h3>signaldelay512<a class="headerlink" href="#signaldelay512" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">signaldelay512</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span><span class="p">,</span>
+   <span class="n">delay</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+
+   <span class="k">output</span> <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span>    <span class="n">dout</span><span class="p">;</span>
+   <span class="k">input</span> <span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">delay</span><span class="p">;</span>
+   <span class="k">input</span>       <span class="n">din</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="signalextend512">
+<h3>signalextend512<a class="headerlink" href="#signalextend512" title="永久链接至标题">¶</a></h3>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">signalextend512</span>
+  <span class="p">(</span>
+   <span class="n">din</span><span class="p">,</span>
+   <span class="n">dout</span><span class="p">,</span>
+   <span class="n">extend</span><span class="p">,</span>
+   <span class="n">clk</span>
+   <span class="p">);</span>
+
+   <span class="k">input</span> <span class="n">din</span><span class="p">;</span>
+   <span class="k">output</span> <span class="n">dout</span><span class="p">;</span>
+   <span class="kt">reg</span> 	  <span class="n">dout</span><span class="p">;</span>
+   <span class="k">input</span> <span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">extend</span><span class="p">;</span>
+   <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip-core">
+<h3>IP core<a class="headerlink" href="#ip-core" title="永久链接至标题">¶</a></h3>
+<p><strong>FIFO</strong></p>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">fifo_delay512</span><span class="p">(</span><span class="n">clk</span><span class="p">,</span> <span class="n">srst</span><span class="p">,</span> <span class="n">din</span><span class="p">,</span> <span class="n">wr_en</span><span class="p">,</span> <span class="n">rd_en</span><span class="p">,</span> <span class="n">dout</span><span class="p">,</span> <span class="n">full</span><span class="p">,</span> <span class="n">empty</span><span class="p">,</span> 
+  <span class="n">data_count</span><span class="p">)</span>
+<span class="cm">/* synthesis syn_black_box black_box_pad_pin=&quot;clk,srst,din[0:0],wr_en,rd_en,dout[0:0],full,empty,data_count[9:0]&quot; */</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">srst</span><span class="p">;</span>
+  <span class="k">input</span> <span class="p">[</span><span class="mh">0</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">din</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">wr_en</span><span class="p">;</span>
+  <span class="k">input</span> <span class="n">rd_en</span><span class="p">;</span>
+  <span class="k">output</span> <span class="p">[</span><span class="mh">0</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">dout</span><span class="p">;</span>
+  <span class="k">output</span> <span class="n">full</span><span class="p">;</span>
+  <span class="k">output</span> <span class="n">empty</span><span class="p">;</span>
+  <span class="k">output</span> <span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">data_count</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="xillydemo">
+<h2>xillydemo<a class="headerlink" href="#xillydemo" title="永久链接至标题">¶</a></h2>
+<p><img alt="_images/MZTIO_DB.png" src="_images/MZTIO_DB.png" />DB</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>   <span class="c1">// The configuration of the FrontIO_A/B/C is completely flexible. For example, if you connect the RJ-45 of a Pixie-16 to FrontI/O A 0-3 (the upper RJ-45 on the trigger board), signals will connect</span>
+   <span class="c1">// FO5 - Front I/O A 3      FrontIO_Aena==0</span>
+   <span class="c1">// FO1 - Front I/O A 0      FrontIO_Aena==0</span>
+   <span class="c1">// FI5 - Front I/O A 1      FrontIO_Aena==1</span>
+   <span class="c1">// FI1 - Front I/O A 2      FrontIO_Aena==1</span>
+
+   <span class="c1">// F0  5p/5n  synchronization status / multiplicity result channel 0(pku firmware)</span>
+   <span class="c1">// FO  1p/1n  not used / multiplicity result channel 1(pku firmware) </span>
+   <span class="c1">// FI  5p/5n  external fast trigger</span>
+   <span class="c1">// FI  1p/1n  external validation trigger</span>
+
+   <span class="c1">// FrontIO_Aout [3] [0]  [7] [4]  [11] [8]  [15] [12]</span>
+   <span class="c1">// FrontIO_Ain  [1] [2]  [5] [6]  [9] [10]  [13] [14]</span>
+</pre></div>
+</div>
+<ul>
+<li><p>FRONT_X_OUTENA</p>
+<ul class="simple">
+<li><p>== 1 表示从 MZ 往前面板驱动输出，代码里面操作out</p></li>
+<li><p>== 0 表示从前面板往 MZ 驱动输入，代码里面操作in</p></li>
+</ul>
+</li>
+<li><p>LVDS_X_OUTTENA</p>
+<ul class="simple">
+<li><p>== 1 表示驱动网口向外输出</p></li>
+<li><p>== 0 表示驱动网口向里输入</p></li>
+</ul>
+<p>如果MEZZ01开启输入模式，则必须设置 <code class="docutils literal notranslate"><span class="pre">FRONT_X_OUTENA==0</span> <span class="pre">&amp;&amp;</span> <span class="pre">LVDS_X_OUTTENA==1</span></code>	，其余模式下，MEZZ01跳针全部设置成输出模式，此时网口可用于输入或者输出模式。</p>
+</li>
+</ul>
+<p>当前，在前面板 C 口配置 一个 MEZZ01 模块，其中前四通道设置为信号输入，分别连接[1]/[2]/[5]/[6]，后四个通道设置为信号输出，分别连接[9]/[10]/[13]/[14]。 该配置模式下，C口对应的四个网口仍然可用于多重性的输出，此时参数 FrontIO = 0x6600, LVDSIO = 0x6666。如果不使用 MEZZ01 模块，只连接网口与P16模块，则参数 FrontIO/LVDSIO 均设置为 0x6666。</p>
+<!-- code.md ends here --></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="experiment.html" class="btn btn-neutral float-left" title="实验" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

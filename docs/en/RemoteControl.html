@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>remote control &mdash; MZTIO 0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="ubuntu" href="ubuntu.html" />
+    <link rel="prev" title="WEB Control GUI" href="webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MZTIO
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">remote control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#minicom">minicom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#static-ip-setting">static IP setting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MZTIO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>remote control</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/RemoteControl.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- RemoteControl.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 一 5月 27 21:23:17 2019 (+0800)
+;; Last-Updated: 二 9月 24 20:39:08 2019 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 7
+;; URL: http://wuhongyi.cn --><div class="section" id="remote-control">
+<h1>remote control<a class="headerlink" href="#remote-control" title="永久链接至标题">¶</a></h1>
+<div class="section" id="minicom">
+<h2>minicom<a class="headerlink" href="#minicom" title="永久链接至标题">¶</a></h2>
+<p>Connect the USB cable to your computer to get the IP</p>
+<p>Serial communication software(minicom) can be used in Linux OS</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minicom -s
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----</span><span class="p">[</span><span class="n">configuration</span><span class="p">]</span><span class="o">------+</span>
+<span class="o">|</span> <span class="n">Filenames</span> <span class="ow">and</span> <span class="n">paths</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="n">File</span> <span class="n">transfer</span> <span class="n">protocols</span>  <span class="o">|</span>
+<span class="o">|</span> <span class="n">Serial</span> <span class="n">port</span> <span class="n">setup</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="n">Modem</span> <span class="ow">and</span> <span class="n">dialing</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="n">Screen</span> <span class="ow">and</span> <span class="n">keyboard</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="n">Save</span> <span class="n">setup</span> <span class="k">as</span> <span class="n">dfl</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="n">Save</span> <span class="n">setup</span> <span class="k">as</span><span class="o">..</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="n">Exit</span>                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">Exit</span> <span class="kn">from</span> <span class="nn">Minicom</span>        <span class="o">|</span>
+<span class="o">+--------------------------+</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">port</span> <span class="pre">setup</span></code>，modify Serial Device to <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>。Bps/Par/Bits change to <code class="docutils literal notranslate"><span class="pre">115200</span> <span class="pre">8N1</span></code>, the bottom two options are <code class="docutils literal notranslate"><span class="pre">NO</span></code></p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Modem</span> <span class="pre">and</span> <span class="pre">dialing</span></code> , delete A, B, and K items</p></li>
+<li><p>Then select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">setup</span> <span class="pre">as</span> <span class="pre">dfl</span></code> to save the settings</p></li>
+<li><p>Finally, select <code class="docutils literal notranslate"><span class="pre">Exit</span></code> to exit the configuration mode and enter the control mode</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user：root
+password: xia17pxn
+
+The password is the default, so users can log in.
+</pre></div>
+</div>
+<p>Assuming the IP address is 222.29.111.80, you can log in with the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y root@222.29.111.80
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-ip-setting">
+<h2>static IP setting<a class="headerlink" href="#static-ip-setting" title="永久链接至标题">¶</a></h2>
+<p>Because Ubuntu 18.04 uses netplan to manage the network. So you can create a file ending in yaml in the /etc/netplan/ directory. For example, the 01-netplan.yaml file.</p>
+<p>Then write the following configuration under this file(<strong>You need to modify the IP address and gateway</strong>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">renderer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networkd</span>
+  <span class="nt">ethernets</span><span class="p">:</span>
+    <span class="nt">enp3s0</span><span class="p">:</span>
+      <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+      <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">192.168.1.110/24</span><span class="p p-Indicator">]</span>
+      <span class="nt">gateway4</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
+      <span class="nt">nameservers</span><span class="p">:</span>
+        <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">8.8.8.8</span><span class="p p-Indicator">,</span> <span class="nv">114.114.114.114</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p><strong>It is important to note that the spaces in each line must be there, otherwise the error will be reported and the setting will fail!</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">renderer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networkd</span>
+  <span class="nt">ethernets</span><span class="p">:</span>
+    <span class="nt">eth0</span><span class="p">:</span>
+      <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">10.10.6.33/24</span><span class="p p-Indicator">]</span>
+      <span class="nt">gateway4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.6.10</span>
+      <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span> 
+</pre></div>
+</div>
+<p>The above parameters are the configurations used by the CIAE experiment.</p>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">netplan</span> <span class="pre">apply</span></code> to restart the network service. Use <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> to see if your static IP is set up successfully!</p>
+<!-- RemoteControl.md ends here --></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ubuntu.html" class="btn btn-neutral float-right" title="ubuntu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="webgui.html" class="btn btn-neutral float-left" title="WEB Control GUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
