@@ -22,4 +22,4 @@ Welcome to MZTIO's documentation!
    ubuntu.rst
    Vivado.rst
    experiment.rst
-   code.md
+   code.rst
