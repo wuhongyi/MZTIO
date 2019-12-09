@@ -18,8 +18,8 @@ Welcome to MZTIO's documentation!
 
    README.md
    webgui.rst
-   RemoteControl.md
-   ubuntu.md
+   RemoteControl.rst
+   ubuntu.rst
    Vivado.rst
    experiment.rst
    code.md

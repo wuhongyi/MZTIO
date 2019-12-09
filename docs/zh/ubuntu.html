@@ -88,14 +88,14 @@
 <li class="toctree-l1"><a class="reference internal" href="webgui.html">网页控制界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">远程控制</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ubuntu</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#basic-configuration">basic configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">基础配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-18">ubuntu 18</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-12">ubuntu 12</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#software-upgrade">software upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">软件升级</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sd">恢复SD卡原始空间</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">升级启动文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">升级启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dev-mmcblk0p1">/dev/mmcblk0p1</a></li>
 </ul>
 </li>
@@ -153,7 +153,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/ubuntu.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/ubuntu.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,19 +166,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <!-- ubuntu.md --- 
-;; 
-;; Description: 
-;; Author: Hongyi Wu(吴鸿毅)
-;; Email: wuhongyi@qq.com 
-;; Created: 一 5月 27 21:25:03 2019 (+0800)
-;; Last-Updated: 二 9月 24 20:52:07 2019 (+0800)
-;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
-;; URL: http://wuhongyi.cn --><div class="section" id="ubuntu">
+  <div class="section" id="ubuntu">
 <h1>ubuntu<a class="headerlink" href="#ubuntu" title="永久链接至标题">¶</a></h1>
-<div class="section" id="basic-configuration">
-<h2>basic configuration<a class="headerlink" href="#basic-configuration" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h2>基础配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="ubuntu-18">
 <h3>ubuntu 18<a class="headerlink" href="#ubuntu-18" title="永久链接至标题">¶</a></h3>
 <p>如果操作系统是当前最新版本，则不需要进行额外的源配置。</p>
@@ -191,28 +182,28 @@
 <h3>ubuntu 12<a class="headerlink" href="#ubuntu-12" title="永久链接至标题">¶</a></h3>
 <p>如果操作系统版本是之前的老版本，则需要按照以下进行源的修改配置。</p>
 <p>编辑源列表文件</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim /etc/apt/sources.list
 </pre></div>
 </div>
-<p>change into:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">security</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">updates</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">proposed</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">backports</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">security</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">updates</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">proposed</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span>   
-<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">old</span><span class="o">-</span><span class="n">releases</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span> <span class="n">vivid</span><span class="o">-</span><span class="n">backports</span> <span class="n">main</span> <span class="n">restricted</span> <span class="n">universe</span> <span class="n">multiverse</span> 
+<p>修改为：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb http://old-releases.ubuntu.com/ubuntu vivid main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu vivid-security main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu vivid-updates main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu vivid-proposed main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu vivid-backports main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu vivid main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-security main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-updates main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-proposed main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu vivid-backports main restricted universe multiverse
 
-<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">ustc</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span> <span class="n">vivid</span> <span class="n">main</span> <span class="n">universe</span>
-<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">ustc</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span> <span class="n">vivid</span> <span class="n">main</span> <span class="n">universe</span>
+deb http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ vivid main universe
 </pre></div>
 </div>
 </div>
-<div class="section" id="software-upgrade">
-<h3>software upgrade<a class="headerlink" href="#software-upgrade" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id2">
+<h3>软件升级<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get update
 </pre></div>
 </div>
@@ -225,21 +216,21 @@ apt-get install emacs
 apt-get install cmake
 apt-get install libx11-dev
 apt-get install libxpm-dev
-apt-get install libxft-dev 
+apt-get install libxft-dev
 apt-get install libxext-dev
-apt-get install gfortran 
-apt-get install libssl-dev 
-apt-get install xlibmesa-glu-dev 
-apt-get install libglew1.5-dev 
-apt-get install libftgl-dev 
-apt-get install libmysqlclient-dev 
-apt-get install libfftw3-dev 
-apt-get install libcfitsio-dev 
+apt-get install gfortran
+apt-get install libssl-dev
+apt-get install xlibmesa-glu-dev
+apt-get install libglew1.5-dev
+apt-get install libftgl-dev
+apt-get install libmysqlclient-dev
+apt-get install libfftw3-dev
+apt-get install libcfitsio-dev
 apt-get install graphviz-dev
-apt-get install libavahi-compat-libdnssd-dev 
-apt-get install libxml2-dev 
-apt-get install libkrb5-dev 
-apt-get install libgsl0-dev 
+apt-get install libavahi-compat-libdnssd-dev
+apt-get install libxml2-dev
+apt-get install libkrb5-dev
+apt-get install libgsl0-dev
 apt-get install libqt4-dev
 </pre></div>
 </div>
@@ -266,14 +257,14 @@ df -h
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id1">
-<h2>升级启动文件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>升级启动文件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>要将 SD 卡启动分区挂载到 /mnt/sd 文件夹，请执行</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount /dev/mmcblk0p1 /mnt/sd
 </pre></div>
 </div>
 <p>这在不删除 SD 卡的情况下更新启动文件很有用。在新的启动文件生效之前，必须重新启动 Pixie-16 MZ-TrigIO。</p>
-<p>操作流程如下</p>
+<p>操作流程如下：</p>
 <ul class="simple">
 <li><p>在台式机上生成固件文件</p></li>
 <li><p>复制文件到 SD 卡上的文件夹（/var/www）</p></li>
@@ -287,10 +278,10 @@ df -h
 </div>
 <div class="section" id="dev-mmcblk0p1">
 <h2>/dev/mmcblk0p1<a class="headerlink" href="#dev-mmcblk0p1" title="永久链接至标题">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot</span><span class="o">.</span><span class="n">bin</span>  <span class="n">devicetree</span><span class="o">.</span><span class="n">dtb</span>  <span class="n">uImage</span>  <span class="n">xillydemo</span><span class="o">.</span><span class="n">bit</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>boot.bin  devicetree.dtb  uImage  xillydemo.bit
 </pre></div>
 </div>
-<!-- ubuntu.md ends here --></div>
+</div>
 </div>
 
 

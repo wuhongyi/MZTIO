@@ -146,7 +146,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/RemoteControl.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/RemoteControl.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,16 +159,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <!-- RemoteControl.md --- 
-;; 
-;; Description: 
-;; Author: Hongyi Wu(吴鸿毅)
-;; Email: wuhongyi@qq.com 
-;; Created: 一 5月 27 21:23:17 2019 (+0800)
-;; Last-Updated: 二 9月 24 20:39:08 2019 (+0800)
-;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
-;; URL: http://wuhongyi.cn --><div class="section" id="remote-control">
+  <div class="section" id="remote-control">
 <h1>remote control<a class="headerlink" href="#remote-control" title="永久链接至标题">¶</a></h1>
 <div class="section" id="minicom">
 <h2>minicom<a class="headerlink" href="#minicom" title="永久链接至标题">¶</a></h2>
@@ -177,26 +168,26 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minicom -s
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----</span><span class="p">[</span><span class="n">configuration</span><span class="p">]</span><span class="o">------+</span>
-<span class="o">|</span> <span class="n">Filenames</span> <span class="ow">and</span> <span class="n">paths</span>      <span class="o">|</span>
-<span class="o">|</span> <span class="n">File</span> <span class="n">transfer</span> <span class="n">protocols</span>  <span class="o">|</span>
-<span class="o">|</span> <span class="n">Serial</span> <span class="n">port</span> <span class="n">setup</span>        <span class="o">|</span>
-<span class="o">|</span> <span class="n">Modem</span> <span class="ow">and</span> <span class="n">dialing</span>        <span class="o">|</span>
-<span class="o">|</span> <span class="n">Screen</span> <span class="ow">and</span> <span class="n">keyboard</span>      <span class="o">|</span>
-<span class="o">|</span> <span class="n">Save</span> <span class="n">setup</span> <span class="k">as</span> <span class="n">dfl</span>        <span class="o">|</span>
-<span class="o">|</span> <span class="n">Save</span> <span class="n">setup</span> <span class="k">as</span><span class="o">..</span>          <span class="o">|</span>
-<span class="o">|</span> <span class="n">Exit</span>                     <span class="o">|</span>
-<span class="o">|</span> <span class="n">Exit</span> <span class="kn">from</span> <span class="nn">Minicom</span>        <span class="o">|</span>
-<span class="o">+--------------------------+</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>+-----<span class="o">[</span>configuration<span class="o">]</span>------+
+<span class="p">|</span> Filenames and paths      <span class="p">|</span>
+<span class="p">|</span> File transfer protocols  <span class="p">|</span>
+<span class="p">|</span> Serial port setup        <span class="p">|</span>
+<span class="p">|</span> Modem and dialing        <span class="p">|</span>
+<span class="p">|</span> Screen and keyboard      <span class="p">|</span>
+<span class="p">|</span> Save setup as dfl        <span class="p">|</span>
+<span class="p">|</span> Save setup as..          <span class="p">|</span>
+<span class="p">|</span> Exit                     <span class="p">|</span>
+<span class="p">|</span> Exit from Minicom        <span class="p">|</span>
++--------------------------+
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">port</span> <span class="pre">setup</span></code>，modify Serial Device to <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>。Bps/Par/Bits change to <code class="docutils literal notranslate"><span class="pre">115200</span> <span class="pre">8N1</span></code>, the bottom two options are <code class="docutils literal notranslate"><span class="pre">NO</span></code></p></li>
-<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Modem</span> <span class="pre">and</span> <span class="pre">dialing</span></code> , delete A, B, and K items</p></li>
-<li><p>Then select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">setup</span> <span class="pre">as</span> <span class="pre">dfl</span></code> to save the settings</p></li>
-<li><p>Finally, select <code class="docutils literal notranslate"><span class="pre">Exit</span></code> to exit the configuration mode and enter the control mode</p></li>
+<li><p>Enter <cite>Serial port setup</cite> ，modify Serial Device to <cite>/dev/ttyUSB0</cite> 。Bps/Par/Bits change to <cite>115200 8N1</cite>, the bottom two options are <cite>NO</cite></p></li>
+<li><p>Enter <cite>Modem and dialing</cite> , delete A, B, and K items</p></li>
+<li><p>Then select <cite>Save setup as dfl</cite> to save the settings</p></li>
+<li><p>Finally, select <cite>Exit</cite> to exit the configuration mode and enter the control mode</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user：root
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user：root
 password: xia17pxn
 
 The password is the default, so users can log in.
@@ -231,12 +222,12 @@ The password is the default, so users can log in.
     <span class="nt">eth0</span><span class="p">:</span>
       <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">10.10.6.33/24</span><span class="p p-Indicator">]</span>
       <span class="nt">gateway4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.6.10</span>
-      <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span> 
+      <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
 </pre></div>
 </div>
 <p>The above parameters are the configurations used by the CIAE experiment.</p>
-<p>Finally, use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">netplan</span> <span class="pre">apply</span></code> to restart the network service. Use <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> to see if your static IP is set up successfully!</p>
-<!-- RemoteControl.md ends here --></div>
+<p>Finally, use <cite>sudo netplan apply</cite> to restart the network service. Use <cite>ip a</cite> to see if your static IP is set up successfully!</p>
+</div>
 </div>
 
 
