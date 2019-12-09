@@ -91,11 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">experiment</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#online-monitor">online monitor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#experiment-mode">experiment mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#in-beam-gamma">in beam gamma</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#beta-decay">beta decay</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nuclear-reaction">nuclear reaction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#super-heavy-nucleus">Super heavy nucleus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#experiment-mode">experiment mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#in-beam-gamma">in beam gamma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beta-decay">beta decay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nuclear-reaction">nuclear reaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#super-heavy-nucleus">Super heavy nucleus</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
@@ -150,7 +152,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/experiment.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/experiment.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,16 +165,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <!-- experiment.md --- 
-;; 
-;; Description: 
-;; Author: Hongyi Wu(吴鸿毅)
-;; Email: wuhongyi@qq.com 
-;; Created: 二 5月 28 10:38:45 2019 (+0800)
-;; Last-Updated: 二 9月 24 20:21:44 2019 (+0800)
-;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
-;; URL: http://wuhongyi.cn --><div class="section" id="experiment">
+  <div class="section" id="experiment">
 <h1>experiment<a class="headerlink" href="#experiment" title="永久链接至标题">¶</a></h1>
 <p>About multiplicity output in RJ45 in PKU firmware</p>
 <ul class="simple">
@@ -198,23 +191,84 @@
 <div class="section" id="experiment-mode">
 <h2>experiment mode<a class="headerlink" href="#experiment-mode" title="永久链接至标题">¶</a></h2>
 <p>We will provide a common combination of firmware and software for the following four types of experiments.</p>
-</div>
 <div class="section" id="in-beam-gamma">
-<h2>in beam gamma<a class="headerlink" href="#in-beam-gamma" title="永久链接至标题">¶</a></h2>
+<h3>in beam gamma<a class="headerlink" href="#in-beam-gamma" title="永久链接至标题">¶</a></h3>
 <p><strong>designing…</strong></p>
 </div>
 <div class="section" id="beta-decay">
-<h2>beta decay<a class="headerlink" href="#beta-decay" title="永久链接至标题">¶</a></h2>
+<h3>beta decay<a class="headerlink" href="#beta-decay" title="永久链接至标题">¶</a></h3>
+<img alt="_images/betadecay.jpg" src="_images/betadecay.jpg" />
+<p>Listed below is the silicon detector information in the detection array:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>QSDΔE1</dt><dd><ul>
+<li><p>MICRON MSQ25, Junction 4, 50.0mm x 50.0mm, 309um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSDΔE2</dt><dd><ul>
+<li><p>CIAE Q300, Junction 4, 50.0mm x 50.0mm, 300um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>DSSD1</dt><dd><ul>
+<li><p>MICRON W1, Junction 16, Ohmic 16, 49.5mm x 49.5mm, 142um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>DSSD2</dt><dd><ul>
+<li><p>MICRON W1, Junction 16, Ohmic 16, 49.5mm x 49.5mm, 142um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>DSSD3</dt><dd><ul>
+<li><p>MICRON W1, Junction 16, Ohmic 16, 49.5mm x 49.5mm, 142um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSD1</dt><dd><ul>
+<li><p>MICRON MSQ25, Junction 4, 50.0mm x 50.0mm, 1546um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSD2</dt><dd><ul>
+<li><p>CIAE Q300, Junction 4, 50.0mm x 50.0mm, 300um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSD3</dt><dd><ul>
+<li><p>CIAE Q300, Junction 4, 50.0mm x 50.0mm, 300um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The signals of the plastic scintillator T1 and T2 are converted into pulse amplitude information by TAC, which can be collected using 100MSPS module.</p>
 <p><strong>designing…</strong></p>
 </div>
 <div class="section" id="nuclear-reaction">
-<h2>nuclear reaction<a class="headerlink" href="#nuclear-reaction" title="永久链接至标题">¶</a></h2>
+<h3>nuclear reaction<a class="headerlink" href="#nuclear-reaction" title="永久链接至标题">¶</a></h3>
 <p><strong>designing…</strong></p>
 </div>
 <div class="section" id="super-heavy-nucleus">
-<h2>Super heavy nucleus<a class="headerlink" href="#super-heavy-nucleus" title="永久链接至标题">¶</a></h2>
+<h3>Super heavy nucleus<a class="headerlink" href="#super-heavy-nucleus" title="永久链接至标题">¶</a></h3>
 <p><strong>designing…</strong></p>
-<!-- experiment.md ends here --></div>
+</div>
+</div>
 </div>
 
 

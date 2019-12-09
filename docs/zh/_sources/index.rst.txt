@@ -20,6 +20,6 @@ Welcome to MZTIO's documentation!
    webgui.rst
    RemoteControl.md
    ubuntu.md
-   Vivado.md
-   experiment.md
+   Vivado.rst
+   experiment.rst
    code.md

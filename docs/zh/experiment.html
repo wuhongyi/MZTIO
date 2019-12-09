@@ -91,11 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">实验</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">在线监视</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">实验模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gamma">在束 gamma 谱学</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#beta">beta 衰变</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">核反应</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">超重核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">实验模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gamma">在束 gamma 谱学</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beta">beta 衰变</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">核反应</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">超重核</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
@@ -150,7 +152,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/experiment.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/experiment.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,16 +165,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <!-- experiment.md --- 
-;; 
-;; Description: 
-;; Author: Hongyi Wu(吴鸿毅)
-;; Email: wuhongyi@qq.com 
-;; Created: 二 5月 28 10:38:45 2019 (+0800)
-;; Last-Updated: 二 9月 24 20:21:28 2019 (+0800)
-;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
-;; URL: http://wuhongyi.cn --><div class="section" id="id1">
+  <div class="section" id="id1">
 <h1>实验<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>关于 PKU 固件从前面板网口 RJ45 输出多重性选择的结果</p>
 <ul class="simple">
@@ -198,23 +191,84 @@
 <div class="section" id="id3">
 <h2>实验模式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>我们将为以下四种类型的实验提供固件和软件的通用组合。</p>
-</div>
 <div class="section" id="gamma">
-<h2>在束 gamma 谱学<a class="headerlink" href="#gamma" title="永久链接至标题">¶</a></h2>
+<h3>在束 gamma 谱学<a class="headerlink" href="#gamma" title="永久链接至标题">¶</a></h3>
 <p><strong>设计中…</strong></p>
 </div>
 <div class="section" id="beta">
-<h2>beta 衰变<a class="headerlink" href="#beta" title="永久链接至标题">¶</a></h2>
+<h3>beta 衰变<a class="headerlink" href="#beta" title="永久链接至标题">¶</a></h3>
+<img alt="_images/betadecay.jpg" src="_images/betadecay.jpg" />
+<p>以下列出探测阵列中的硅探测器信息：</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>QSDΔE1</dt><dd><ul>
+<li><p>MICRON MSQ25, Junction 4, 50.0mm x 50.0mm, 309um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSDΔE2</dt><dd><ul>
+<li><p>CIAE Q300, Junction 4, 50.0mm x 50.0mm, 300um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>DSSD1</dt><dd><ul>
+<li><p>MICRON W1, Junction 16, Ohmic 16, 49.5mm x 49.5mm, 142um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>DSSD2</dt><dd><ul>
+<li><p>MICRON W1, Junction 16, Ohmic 16, 49.5mm x 49.5mm, 142um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>DSSD3</dt><dd><ul>
+<li><p>MICRON W1, Junction 16, Ohmic 16, 49.5mm x 49.5mm, 142um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSD1</dt><dd><ul>
+<li><p>MICRON MSQ25, Junction 4, 50.0mm x 50.0mm, 1546um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSD2</dt><dd><ul>
+<li><p>CIAE Q300, Junction 4, 50.0mm x 50.0mm, 300um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>QSD3</dt><dd><ul>
+<li><p>CIAE Q300, Junction 4, 50.0mm x 50.0mm, 300um</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>塑料闪烁体 T1，T2 信号经过 TAC 将时间差转为脉冲幅度信息，则可以使用 100MSPS 模块进行采集。</p>
 <p><strong>设计中…</strong></p>
 </div>
 <div class="section" id="id4">
-<h2>核反应<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h3>核反应<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p><strong>设计中…</strong></p>
 </div>
 <div class="section" id="id5">
-<h2>超重核<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h3>超重核<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p><strong>设计中…</strong></p>
-<!-- experiment.md ends here --></div>
+</div>
+</div>
 </div>
 
 
