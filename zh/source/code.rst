@@ -4,7 +4,7 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 6月 15 13:40:28 2019 (+0800)
-.. Last-Updated: 一 12月  9 12:49:00 2019 (+0800)
+.. Last-Updated: 二 12月 10 16:15:17 2019 (+0800)
 ..			 By: Hongyi Wu(吴鸿毅)
 ..	   Update #: 8
 .. URL: http://wuhongyi.cn 
@@ -203,9 +203,46 @@ xillydemo
 
 .. image:: img/lemo_4input4output.png
 
+示波器监视模式：
+	   
+- 0:  A1_1
+- 1:  A1_2 
+- 2:  A2_1
+- 3:  A2_2 
+- 4:  A3_1
+- 5:  A3_2
+- 6:  A4_1
+- 7:  A4_2
+- 8:  B1_1
+- 9:  B1_2
+- 10: B2_1
+- 11: B2_2
+- 12: B3_1
+- 13: B3_2
+- 14: B4_1
+- 15: B4_2
+- 16: C1_1
+- 17: C1_2
+- 18: C2_1
+- 19: C2_2
+- 20: C3_1
+- 21: C3_2
+- 22: C4_1
+- 23: C4_2
+- 24: DPM FULL 时处于低电平，统计处于高电平时间即为不丢失数据的时间
+- 25: SYNCOUT，start=1，stop=0
+- 26: Ext_ValidTrig_In 有信号时处于 High
+- 27: Ext_FastTrig_In  有信号时处于 High
+- 28: debug ch1
+- 29: debug ch2
+- 30: debug ch3
+- 31: debug ch4
+- 32:
+- 33:
+- 34:
+- 35: 
 
-
-
+  
 
 	      
 ..

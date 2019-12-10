@@ -338,6 +338,45 @@ support.html
 <p>如果MEZZ01开启输入模式，则必须设置 <code class="docutils literal notranslate"><span class="pre">FRONT_X_OUTENA==0</span> <span class="pre">&amp;&amp;</span> <span class="pre">LVDS_X_OUTTENA==1</span></code> ，其余模式下，MEZZ01跳针全部设置成输出模式，此时网口可用于输入或者输出模式。</p>
 <p>当前，在前面板 C 口配置 一个 MEZZ01 模块，其中前四通道设置为信号输入，分别连接[1]/[2]/[5]/[6]，后四个通道设置为信号输出，分别连接[9]/[10]/[13]/[14]。 该配置模式下，C口对应的四个网口仍然可用于多重性的输入，此时参数 FrontIO = 0x6600, LVDSIO = 0x6666。如果不使用 MEZZ01 模块，只连接网口与P16模块，则参数 FrontIO/LVDSIO 均设置为 0x6666。</p>
 <img alt="_images/lemo_4input4output.png" src="_images/lemo_4input4output.png" />
+<p>示波器监视模式：</p>
+<ul class="simple">
+<li><p>0:  A1_1</p></li>
+<li><p>1:  A1_2</p></li>
+<li><p>2:  A2_1</p></li>
+<li><p>3:  A2_2</p></li>
+<li><p>4:  A3_1</p></li>
+<li><p>5:  A3_2</p></li>
+<li><p>6:  A4_1</p></li>
+<li><p>7:  A4_2</p></li>
+<li><p>8:  B1_1</p></li>
+<li><p>9:  B1_2</p></li>
+<li><p>10: B2_1</p></li>
+<li><p>11: B2_2</p></li>
+<li><p>12: B3_1</p></li>
+<li><p>13: B3_2</p></li>
+<li><p>14: B4_1</p></li>
+<li><p>15: B4_2</p></li>
+<li><p>16: C1_1</p></li>
+<li><p>17: C1_2</p></li>
+<li><p>18: C2_1</p></li>
+<li><p>19: C2_2</p></li>
+<li><p>20: C3_1</p></li>
+<li><p>21: C3_2</p></li>
+<li><p>22: C4_1</p></li>
+<li><p>23: C4_2</p></li>
+<li><p>24: DPM FULL 时处于低电平，统计处于高电平时间即为不丢失数据的时间</p></li>
+<li><p>25: SYNCOUT，start=1，stop=0</p></li>
+<li><p>26: Ext_ValidTrig_In 有信号时处于 High</p></li>
+<li><p>27: Ext_FastTrig_In  有信号时处于 High</p></li>
+<li><p>28: debug ch1</p></li>
+<li><p>29: debug ch2</p></li>
+<li><p>30: debug ch3</p></li>
+<li><p>31: debug ch4</p></li>
+<li><p>32:</p></li>
+<li><p>33:</p></li>
+<li><p>34:</p></li>
+<li><p>35:</p></li>
+</ul>
 </div>
 </div>
 
