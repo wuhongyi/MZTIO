@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pixie-Net Web Operations</title>
+	<style type="text/css">
+		body { background-color:#d0d0d0; font-family:sans-serif; }
+		h1 { margin:0; font-size:24px }
+		h2 { margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040 }
+		p { font-size:14px }
+		li { font-size:14px }
+		a { color:#6060d0; text-decoration:none }
+		a:hover { text-decoration:underline }
+
+		.header { padding: 20px; text-align: center; background: #1e73be; color: white; }
+		.header h1 { font-size: 40px; 	}
+
+		/* Ensure proper sizing */
+		* { box-sizing: border-box; }
+
+		/* Column container */
+		.row { display: flex; flex-wrap: wrap; }
+
+		/* Sidebar/left column */
+		.side { height: 100%; width: 180px; position: fixed; background-color: white; padding: 20px; }
+		.side a { float: left; display: block; color: #002b80; text-align: left; padding: 10px 10px; text-decoration: none; }
+		.side a:hover { background-color: #ddd; color: #1e73be; }
+
+		/* bottom help section */
+		.fixed_bot { position: fixed; bottom: 0; left: 0; width: 180px; padding: 20px }
+		.fixed_bot  p {font-size: 11px; }
+		.fixed_bot  a {font-size: 12px; }
+
+		/* Main column */
+		.main { margin-left: 180px; padding: 20px; }
+
+		.w3-card-2{
+			background-color:white;
+			border-radius:3px;
+			padding: 10px;
+			margin-bottom: 20px;
+			box-shadow:0 4px 10px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+		}
+
+		.tooltip { position: relative; display: inline-block; border-bottom: 1px dotted black; }
+		.tooltip .tooltiptext {
+			visibility: hidden;
+			width: 250px;
+			background-color: #1e73be;
+			color: white;
+			text-align: left;
+			border-radius: 6px;
+			padding: 5px 5px;
+			position: absolute;
+			z-index: 1;
+		}
+		.tooltip:hover .tooltiptext { visibility: visible; width: 250px; top: 100%; left: 80%; margin-left: -60px;	}
+
+
+	</style>
+</head>
+
+
+<body>
+<div class="header">
+	<h1>Pixie-Net Web Operations</h1>
+</div>
+
+<div class="row">
+	<div class="side">
+		<img src="xialogo.jpg" width="140" height=auto alt="XIA Logo">
+		<p> </p>
+		<a href="/index.html"> Home  </a>
+		<a href="adcsetuppage.html"> ADC setup </a>
+		<a href="daqpage.html"> DAQ control </a>
+		<a href="mcapage.html">Most recent <br> MCA spectra</a>
+		<a href="cgistats.cgi"> Current run statistics </a>
+		<a href="/webops/webopsindex.html"> Web interface </a>
+
+		<div class="fixed_bot">
+			<h2>Help</h2>
+			<i style="font-size: 11px"><p> This set of pages allows DAQ and parameter control (after login). 
+			Proceed to ADC setup to boot and configure the input parameters.
+				For more help, see </i> </p>
+			<a href="Pixie_Net_Manual.pdf"> Pixie-Net manual </a>
+			<a href="http://support.xia.com/default.asp?W772"> XIA Pixie-Net website</a>
+			<div class="tooltip"> <b style="font-size: 11px"> or try the tooltips</b>
+				<span class="tooltiptext">Hoover over bold underlined text for more information </span>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="main">
+
+		<div class="w3-card-2">
+			<h2> Current Status (cgi) </h2>
+				<p> <div class="tooltip"> <b>When no other task is in progress</b>
+				<span class="tooltiptext">These links execute cgi scripts on the Pixie-Net XL and display the result in webpages. DAQ must not be active during such cgi tasks.</span>
+				</div>, view/refresh
+			<ul>
+				<li> <a href="adcsetuppage.html"> ADC setup: </a> Displays ADC waveforms together with parameter settings</li>
+				<li> <a href="daqpage.html"> DAQ control: </a> Set run type and time, start DAQ</li>
+				<li> <a href="cgitraces.cgi"> ADC traces: </a> Displays ADC waveforms read just read from Pixie-Net	   </li>
+				<li> <a href="cgistats.cgi"> Run statistics: </a> Displays Run statistics read just read from Pixie-Net (full) </li>
+			</ul>
+
+			<p><b>Run executables as if typed in terminal</b>:
+			<ul>
+				<li> <a href="progfippi.cgi"> progfippi </a>  </li>
+				<li> <a href="startdaq.cgi"> startdaq </a>  </li>
+  		      <li> <a href="acquire.cgi"> acquire </a>    </li>
+            <li> <a href="coincdaq.cgi"> coincdaq </a>  </li>
+				<li> <a href="findsettings.cgi"> findsettings </a>  </li>
+				<li> <a href="gettraces.cgi"> gettraces </a>  </li>
+				<li> <a href="runstats.cgi"> runstats </a>  </li>
+			</ul></p>
+		</div>
+
+		<div class="w3-card-2">
+			<h2>DAQ Monitoring</h2>
+				<p> <div class="tooltip"> <b>During</b>
+				<span class="tooltiptext">These pages display the contents of files that are constantly updated during the DAQ</span>
+				</div>
+				or after the data acquisition, view most the recent
+			<ul>
+				<li> <a href="mcapage.html">MCA spectra</a>
+				<li> <a href="rspage.html">Run statistics</a> (short)
+				<li> PSA <a href="psahistpage.html">histogram</a>, <a href="psahistprojpage.html">with projections</a> or <a href="psasurfacepage.html">surface</a> plot
+			</ul>
+		</div>
+
+		<div class="w3-card-2">
+			<h2>DAQ Results</h2>
+				<p> <div class="tooltip"> <b>After</b>
+				<span class="tooltiptext">These links point to files generated by the DAQ (startdaq, acquire, etc).
+				Clicking on them will prompt for download actions</span>
+				</div>
+				the data acquisition, open/download
+			<ul>
+   			 <li> <a href="LMdata.txt">  List mode data with waveforms </a>(from run type 0x500, text) </li>
+				 <li> <a href="LMdata.dat">  List mode data without waveforms </a>(from run type 0x501, csv) </li>
+				 <li> <a href="LMdata.dt2">  List mode data with PSA </a>(from run type 0x502, csv)</li>
+				 <li> <a href="LMdata.dt3">  List mode coincidence data </a>(from run type 0x503, csv)</li>
+				 <li> <a href="LMdata.b00">  Binary list mode data </a>(from run types 0x400, 0x402)</li>
+			    <li> <a href="MCA.csv"> MCA spectra </a> as csv file</li>
+			    <li> <a href="RS.csv"> Run statistics </a> as csv file (full)</li>
+				<li> <a href="psa2D.csv"> PSA histogram </a> as csv file</li>
+			</ul>
+
+			<p>View most recent data<b> in plots and tables</b> </p>
+			<ul>
+				<li> <a href="mcapage.html">MCA spectra</a>
+			   <li> <a href="rspage.html">Run status</a>
+				<li> PSA <a href="psahistpage.html">histogram</a>, <a href="psahistprojpage.html">with projections</a> or <a href="psasurfacepage.html">surface</a> plot
+			   <li> <a href="adcpage.html"> ADC traces</a>.
+			</ul>
+		</div>
+
+	</div>
+
+</div>
+			
+</body>
+</html>

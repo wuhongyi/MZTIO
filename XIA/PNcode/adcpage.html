@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pixie-Net ADC (file) </title>
+<style type="text/css">
+	body { background-color:#d0d0d0; font-family:sans-serif; }
+	h1 { margin:0; font-size:24px }
+	h2 { margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040 }
+	p { font-size:14px }
+	li { font-size:14px }
+	a { color:#6060d0; text-decoration:none }
+	a:hover { text-decoration:underline }
+
+	.header { padding: 20px; text-align: center; background: #1e73be; color: white; }
+	.header h1 { font-size: 40px; 	}
+
+	/* Ensure proper sizing */
+	* { box-sizing: border-box; }
+
+	/* Column container */
+	.row { display: flex; flex-wrap: wrap; }
+
+	/* Sidebar/left column */
+	.side { height: 100%; width: 180px; position: fixed; background-color: white; padding: 20px; }
+	.side a { float: left; display: block; color: #002b80; text-align: left; padding: 10px 10px; text-decoration: none; }
+	.side a:hover { background-color: #ddd; color: #1e73be; }
+
+    /* bottom help section */
+	.fixed_bot { position: fixed; bottom: 0; left: 0; width: 180px; padding: 20px }
+	.fixed_bot  p {font-size: 11px; }
+	.fixed_bot  a {font-size: 12px; }
+
+	/* Main column */
+	.main { margin-left: 180px; padding: 20px; }
+
+	.w3-card-2{
+		background-color:white;
+		border-radius:3px;
+		padding: 10px;
+		margin-bottom: 20px;
+		box-shadow:0 4px 10px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+	}
+
+</style>
+
+<script type="text/javascript"  src="dygraph-combined.js"></script>
+</head>
+
+
+
+<body>
+<div class="header">
+	<h1>Pixie-Net ADC Traces (file)</h1>
+</div>
+
+<div class="row">
+	<div class="side">
+		<img src="xialogo.jpg" width="140" height=auto alt="XIA Logo">
+		<p> </p>
+		<a href="/index.html"> Home </a>
+		<a href="cgitraces.cgi"> Current ADC traces </a>
+		<a href="cgistats.cgi"> Current run statistics </a>
+		<a href="mcapage.html">Most recent <br> MCA spectra</a>
+		<a href="/webops/webopsindex.html"> Web interface </a>
+
+		<div class="fixed_bot">
+			<h2>Help</h2>
+     <i><p>This page displays the ADC waveforms saved to file ADC.csv by gettraces. </p>
+        <p>Double click to auto zoom. <br> Click and drag to zoom. <br> Alt click and drag to pan. </p> 
+        <p>Use browser button to refresh. </p>
+        <p>Roughly 200 nanoseconds between samples </p></i>
+
+
+
+		</div>
+	</div>
+
+	<div class="main">
+		<div class="w3-card-2">
+			<div id="graphdiv2"  style="width:500px; height:300px;"></div>
+		</div>
+	</div>
+			
+</div>
+
+
+<script type="text/javascript">
+
+  Dygraph.Interaction.DEBUG = true;
+
+  var g2 = new Dygraph(
+    document.getElementById("graphdiv2"),	   
+    "ADC.csv", // path to CSV file			 // copy up to this line in cgi function (e.g if line 41, loop k from 0 to k <40) 
+    {legend: 'always',						    	
+	  title: ' ',
+	  ylabel: 'ADC value',
+	  xlabel: 'Sample number'}          // options
+  );
+      var graphs = [ g2 ];
+      var scales = { x : false, y : false };
+      function setLogScale(axis, val) {
+        if (axis === 'y') {
+          for (var idx = 0; idx < graphs.length; idx++) {
+            graphs[idx].updateOptions({ logscale: val });
+          }
+        } else {
+          for (var idx = 0; idx < graphs.length; idx++) {
+            graphs[idx].updateOptions({ axes : { x : {  logscale : val } } });
+          }
+        }
+        scales[axis] = val;
+        var text = "y: " + (scales.y ? "log" : "linear") + ", x: " + (scales.x ? "log" : "linear");
+        document.getElementById("description").innerText = text;
+      }
+
+      setLogScale('y', false);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
