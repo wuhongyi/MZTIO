@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 7月 20 21:12:49 2019 (+0800)
-.. Last-Updated: 一 7月 22 16:26:20 2019 (+0800)
+.. Last-Updated: 六 1月 18 21:23:06 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 7
+..     Update #: 8
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -36,6 +36,15 @@ main page
 The main page of the web, it will provide basic information and precautions for the module.
 
 .. image:: img/MainPage.png
+
+----------------------------------------------------------------------
+control page
+----------------------------------------------------------------------
+
+The control register is used to change the experimental trigger mode, delay and stretch of logic signals, and so on.
+
+.. image:: img/ControlPage.png
+
 
 ----------------------------------------------------------------------
 status page
