@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 二 5月 28 10:38:45 2019 (+0800)
-.. Last-Updated: 一 12月  9 10:40:35 2019 (+0800)
+.. Last-Updated: 二 2月 11 16:57:43 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 16
+..     Update #: 17
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -62,7 +62,7 @@ in beam gamma
 beta decay
 ----------------------------------------------------------------------
 
-.. image:: img/betadecay.jpg
+.. image:: /_static/img/betadecay.jpg
 
 Listed below is the silicon detector information in the detection array:
 	   

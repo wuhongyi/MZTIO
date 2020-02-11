@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 二 5月 28 10:38:45 2019 (+0800)
-.. Last-Updated: 一 12月  9 10:40:53 2019 (+0800)
+.. Last-Updated: 二 2月 11 16:54:38 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 16
+..     Update #: 17
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -58,7 +58,7 @@
 beta 衰变
 ----------------------------------------------------------------------
 
-.. image:: img/betadecay.jpg
+.. image:: /_static/img/betadecay.jpg
 
 以下列出探测阵列中的硅探测器信息：
 	   

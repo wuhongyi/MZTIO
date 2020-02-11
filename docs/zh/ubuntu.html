@@ -92,10 +92,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-18">ubuntu 18</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-12">ubuntu 12</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">软件升级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">时区选择</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sd">恢复SD卡原始空间</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">升级启动文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">升级启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dev-mmcblk0p1">/dev/mmcblk0p1</a></li>
 </ul>
 </li>
@@ -239,6 +240,22 @@ apt-get install libqt4-dev
 </div>
 <p>ubuntu 颜色配置，个人目录下放置颜色配置文件 .dircolors，该文件在 readhat 系统中文件名为 .dir_colors</p>
 </div>
+<div class="section" id="id3">
+<h3>时区选择<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#先查看当前系统时间</span>
+date -R
+<span class="c1">#查看结果显示的时区，如果与当地时区不一致，则可以通过以下方式进行修改</span>
+
+tzselect
+<span class="c1"># 下图中展示了中国用户如何修改成当地的时区，其它地区用户进行对应的选择即可</span>
+cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+
+<span class="c1">#查看是否修改成功</span>
+date -R
+</pre></div>
+</div>
+<img alt="_images/ubuntu_tzselect.png" src="_images/ubuntu_tzselect.png" />
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="sd">
@@ -257,8 +274,8 @@ df -h
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h2>升级启动文件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h2>升级启动文件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>要将 SD 卡启动分区挂载到 /mnt/sd 文件夹，请执行</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount /dev/mmcblk0p1 /mnt/sd
 </pre></div>
@@ -304,7 +321,7 @@ df -h
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+        &copy; Copyright 2019-2020, Hongyi Wu(吴鸿毅)
 
     </p>
   </div>

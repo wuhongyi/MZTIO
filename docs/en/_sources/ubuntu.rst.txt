@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 5月 27 21:25:03 2019 (+0800)
-.. Last-Updated: 一 12月  9 11:04:28 2019 (+0800)
+.. Last-Updated: 二 2月 11 16:53:33 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 6
+..     Update #: 7
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -105,6 +105,27 @@ software upgrade
 
 
 Ubuntu color configuration, place the color configuration file .dircolors in the personal directory, the file name is .dir_colors in the readhat system.
+
+----------------------------------------------------------------------
+Time zone select
+----------------------------------------------------------------------
+
+.. code:: bash
+	  
+   #First check the current system time
+   date -R   
+   #Check the displayed time zone. If it is not consistent with the local time zone, you can modify it in the following ways:
+
+   tzselect
+   #The figure below shows how Chinese users can modify the local time zone. Users in other regions can make corresponding selections.
+   cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+
+   #Check if the modification is successful
+   date -R  
+
+.. image:: /_static/img/ubuntu_tzselect.png
+ 
+
 
 
 ----

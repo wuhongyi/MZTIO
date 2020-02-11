@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 7月 20 21:12:49 2019 (+0800)
-.. Last-Updated: 六 1月 18 21:23:07 2020 (+0800)
+.. Last-Updated: 二 2月 11 16:54:17 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 9
+..     Update #: 10
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -21,7 +21,7 @@
 
 当然，对于不同类型的实验，我们有专门的软件，有关特定的寄存器控制方法，请参阅实验手册。
 
-.. image:: img/settingpars.png
+.. image:: /_static/img/settingpars.png
 
 
 ============================================================
@@ -34,7 +34,7 @@ main page
 
 主页，它将提供该模块的基本信息和注意事项。
 
-.. image:: img/MainPage.png
+.. image:: /_static/img/MainPage.png
 
 ----------------------------------------------------------------------
 control page
@@ -42,7 +42,7 @@ control page
 
 通过控制寄存器来改变实验触发模式，逻辑信号的延迟与展宽等。
 
-.. image:: img/ControlPage.png
+.. image:: /_static/img/ControlPage.png
 	   
 ----------------------------------------------------------------------
 status page
@@ -56,7 +56,7 @@ status page
 - 第一列的第十五行指示当前 DAQ 的运行时间。
 - 第一列第16行代表 DPMFULL 和总运行时间的百分比。
 
-.. image:: img/StatusPage.png
+.. image:: /_static/img/StatusPage.png
 
 	   
 ----------------------------------------------------------------------
@@ -83,7 +83,7 @@ support page
 
 下图是示波器监视的示例。线 1 表示触发逻辑信号，线 2 表示触发逻辑信号10倍分除之后的结果，线 3 表示线 1 延迟 400 ns 后的信号，线 4 代表线 3 展宽到 500 ns。
 
-.. image:: img/DS10DelayExtend.png
+.. image:: /_static/img/DS10DelayExtend.png
 	   
 
 ============================================================
@@ -92,7 +92,7 @@ FIFO IP 核的限制
 
 下图显示了 FIFO IP 核参数的可设置范围。
    
-.. image:: img/FIFO_IP_LIMIT.png
+.. image:: /_static/img/FIFO_IP_LIMIT.png
 
 由于 FIFO IP 核的限制，延迟设置为最少 4 个时钟。
 	   

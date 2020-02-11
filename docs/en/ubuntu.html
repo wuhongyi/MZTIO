@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-18">ubuntu 18</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-12">ubuntu 12</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#software-upgrade">software upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-zone-select">Time zone select</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#restore-sd-card-space">Restore SD card space</a></li>
@@ -239,6 +240,22 @@ apt-get install libqt4-dev
 </div>
 <p>Ubuntu color configuration, place the color configuration file .dircolors in the personal directory, the file name is .dir_colors in the readhat system.</p>
 </div>
+<div class="section" id="time-zone-select">
+<h3>Time zone select<a class="headerlink" href="#time-zone-select" title="永久链接至标题">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#First check the current system time</span>
+date -R
+<span class="c1">#Check the displayed time zone. If it is not consistent with the local time zone, you can modify it in the following ways:</span>
+
+tzselect
+<span class="c1">#The figure below shows how Chinese users can modify the local time zone. Users in other regions can make corresponding selections.</span>
+cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+
+<span class="c1">#Check if the modification is successful</span>
+date -R
+</pre></div>
+</div>
+<img alt="_images/ubuntu_tzselect.png" src="_images/ubuntu_tzselect.png" />
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="restore-sd-card-space">
@@ -304,7 +321,7 @@ df -h
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+        &copy; Copyright 2019-2020, Hongyi Wu(吴鸿毅)
 
     </p>
   </div>

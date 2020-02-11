@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 5月 27 21:21:23 2019 (+0800)
-.. Last-Updated: 六 1月 18 21:40:50 2020 (+0800)
+.. Last-Updated: 二 2月 11 16:58:46 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 8
+..     Update #: 9
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -24,31 +24,31 @@ Install
   ./xsetup
 
 
-.. image:: img/Vivado_install0.png
+.. image:: /_static/img/Vivado_install0.png
 
 Click "continue" to choose not to download the latest version, then click "Next" to go to the next step
 
-.. image:: img/Vivado_install1.png
+.. image:: /_static/img/Vivado_install1.png
 
 Click on the three optional boxes and then click "Next" to go to the next step
 
-.. image:: img/Vivado_install2.png
+.. image:: /_static/img/Vivado_install2.png
 
 Select "Vinado HL Design Edition" and click "Next" to go to the next step
 
-.. image:: img/Vivado_install3.png
+.. image:: /_static/img/Vivado_install3.png
 
 Click "Next" directly to enter the next step 
 
-.. image:: img/Vivado_install4.png
+.. image:: /_static/img/Vivado_install4.png
 
 Select the installation directory, here I choose to install to "/home/wuhongyi/Xilinx", and then click "Next" to enter the next step  
 
-.. image:: img/Vivado_install5.png
+.. image:: /_static/img/Vivado_install5.png
 
 Wait for the installation to complete
 
-.. image:: img/Vivado_install6.png
+.. image:: /_static/img/Vivado_install6.png
 
 **The following two steps are not necessary.**
 	   
@@ -56,13 +56,13 @@ Copy the "vivadoLicence.lic" file to the installation directory, here is "/home/
 
 After the installation is complete, the following interface will pop up
 	   
-.. image:: img/Vivado_install7.png
+.. image:: /_static/img/Vivado_install7.png
 
 Click on the "Load License" in the upper left and select our "vivadoLicence.lic" file
 
 Then click "View License Status" in the upper left to view the authorized IP core	   
 
-.. image:: img/Vivado_install8.png
+.. image:: /_static/img/Vivado_install8.png
 
 
 ============================================================

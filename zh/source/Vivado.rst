@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 5月 27 21:21:23 2019 (+0800)
-.. Last-Updated: 六 1月 18 21:40:19 2020 (+0800)
+.. Last-Updated: 二 2月 11 16:53:39 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 10
+..     Update #: 11
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -25,31 +25,31 @@ Vivado
   ./xsetup
 
 
-.. image:: img/Vivado_install0.png
+.. image:: /_static/img/Vivado_install0.png
 
 点击 continue选择不下载最新版本，然后点击 Next 进入下一步  
 
-.. image:: img/Vivado_install1.png
+.. image:: /_static/img/Vivado_install1.png
 
 点击三个可选框，然后点击Next进入下一步  
 
-.. image:: img/Vivado_install2.png
+.. image:: /_static/img/Vivado_install2.png
 
 选择 Vinado HL Design Edition，然后点击Next进入下一步  
 
-.. image:: img/Vivado_install3.png
+.. image:: /_static/img/Vivado_install3.png
 
 直接点击Next进入下一步  
 
-.. image:: img/Vivado_install4.png
+.. image:: /_static/img/Vivado_install4.png
 
 选择安装目录，这里我选择安装到 /home/wuhongyi/Xilinx ，然后点击Next进入下一步  
 
-.. image:: img/Vivado_install5.png
+.. image:: /_static/img/Vivado_install5.png
 
 等待安装完成
 
-.. image:: img/Vivado_install6.png
+.. image:: /_static/img/Vivado_install6.png
 
 以下两个步骤不是必须的。
 	   
@@ -57,13 +57,13 @@ Vivado
 
 安装完成之后会弹出以下界面
 
-.. image:: img/Vivado_install7.png
+.. image:: /_static/img/Vivado_install7.png
 
 点击左上方的 Load License，选择我们的 vivadoLicence.lic 文件
 
 然后点击左上方的 View License Status 可查看破解的IP核
 
-.. image:: img/Vivado_install8.png
+.. image:: /_static/img/Vivado_install8.png
 
 
 

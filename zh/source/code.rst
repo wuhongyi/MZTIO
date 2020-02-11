@@ -4,7 +4,7 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 6月 15 13:40:28 2019 (+0800)
-.. Last-Updated: 二 12月 10 16:15:17 2019 (+0800)
+.. Last-Updated: 二 2月 11 16:55:17 2020 (+0800)
 ..			 By: Hongyi Wu(吴鸿毅)
 ..	   Update #: 8
 .. URL: http://wuhongyi.cn 
@@ -170,7 +170,7 @@ IP core
 xillydemo
 ============================================================
 
-.. image:: img/MZTIO_DB.png
+.. image:: /_static/img/MZTIO_DB.png
 
 .. code:: cpp
 	  
@@ -201,7 +201,7 @@ xillydemo
 
 当前，在前面板 C 口配置 一个 MEZZ01 模块，其中前四通道设置为信号输入，分别连接[1]/[2]/[5]/[6]，后四个通道设置为信号输出，分别连接[9]/[10]/[13]/[14]。 该配置模式下，C口对应的四个网口仍然可用于多重性的输入，此时参数 FrontIO = 0x6600, LVDSIO = 0x6666。如果不使用 MEZZ01 模块，只连接网口与P16模块，则参数 FrontIO/LVDSIO 均设置为 0x6666。
 
-.. image:: img/lemo_4input4output.png
+.. image:: /_static/img/lemo_4input4output.png
 
 示波器监视模式：
 	   
