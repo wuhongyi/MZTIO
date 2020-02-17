@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 5月 27 21:25:03 2019 (+0800)
-.. Last-Updated: 二 2月 11 16:55:51 2020 (+0800)
+.. Last-Updated: 一 2月 17 21:51:50 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 7
+..     Update #: 9
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -78,7 +78,7 @@ ubuntu 12
    apt-get install firefox
    # install emacs
    apt-get install emacs
-    
+
    # ROOT dependent library
    apt-get install cmake
    apt-get install libx11-dev
@@ -100,7 +100,10 @@ ubuntu 12
    apt-get install libgsl0-dev 
    apt-get install libqt4-dev
 
-
+   #install django
+   apt install python3-pip
+   pip3 install django==2.2
+   
 .. code:: bash
 	  
    apt-get install root-system-bin

@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 5月 27 21:25:03 2019 (+0800)
-.. Last-Updated: 二 2月 11 16:53:33 2020 (+0800)
+.. Last-Updated: 一 2月 17 21:41:10 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 7
+..     Update #: 8
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -97,7 +97,11 @@ software upgrade
    apt-get install libkrb5-dev 
    apt-get install libgsl0-dev 
    apt-get install libqt4-dev
-
+   
+   #install django
+   apt install python3-pip
+   pip3 install django==2.2
+   
 
 .. code:: bash
 	  
