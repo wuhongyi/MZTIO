@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 二 5月 28 10:38:45 2019 (+0800)
-.. Last-Updated: 二 2月 11 16:54:38 2020 (+0800)
+.. Last-Updated: 二 3月  3 20:04:24 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 17
+..     Update #: 19
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -54,6 +54,17 @@
 
 **设计中. . .**
 
+
+
+
+.. image:: /_static/img/expinbeamgamma_1.png
+
+.. image:: /_static/img/expinbeamgamma_2.png
+
+
+
+
+
 ----------------------------------------------------------------------
 beta 衰变
 ----------------------------------------------------------------------
@@ -84,6 +95,12 @@ beta 衰变
       
 **设计中. . .**
 
+.. image:: /_static/img/expbetabecay_1.png
+
+.. image:: /_static/img/expbetabecay_2.png	   
+
+
+
 ----------------------------------------------------------------------
 核反应
 ----------------------------------------------------------------------
@@ -96,6 +113,14 @@ beta 衰变
 
 **设计中. . .**
 
+
+.. image:: /_static/img/expsuperheavy_1.png
+
+.. image:: /_static/img/expsuperheavy_2.png
+	   
+
+      
+      
 
 
 ..

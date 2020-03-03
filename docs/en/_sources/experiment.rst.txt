@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 二 5月 28 10:38:45 2019 (+0800)
-.. Last-Updated: 二 2月 11 16:57:43 2020 (+0800)
+.. Last-Updated: 二 3月  3 20:03:49 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 17
+..     Update #: 18
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -58,6 +58,12 @@ in beam gamma
 
 **designing. . .**
 
+.. image:: /_static/img/expinbeamgamma_1.png
+
+.. image:: /_static/img/expinbeamgamma_2.png
+	   
+
+
 ----------------------------------------------------------------------
 beta decay
 ----------------------------------------------------------------------
@@ -88,6 +94,12 @@ The signals of the plastic scintillator T1 and T2 are converted into pulse ampli
 	   
 **designing. . .**
 
+.. image:: /_static/img/expbetabecay_1.png
+
+.. image:: /_static/img/expbetabecay_2.png	   
+
+
+
 ----------------------------------------------------------------------
 nuclear reaction
 ----------------------------------------------------------------------
@@ -99,6 +111,12 @@ Super heavy nucleus
 ----------------------------------------------------------------------
 
 **designing. . .**
+
+.. image:: /_static/img/expsuperheavy_1.png
+
+.. image:: /_static/img/expsuperheavy_2.png
+	   
+
 
 
 
