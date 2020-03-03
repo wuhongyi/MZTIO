@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 12月 20 20:21:20 2018 (+0800)
-;; Last-Updated: 二 1月 28 21:58:57 2020 (+0800)
+;; Last-Updated: 二 3月  3 20:16:08 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 56
+;;     Update #: 57
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -15,7 +15,7 @@
 
 **如果你需要固件，请联系吴鸿毅(wuhongyi@qq.com / wuhongyi@pku.edu.cn)**
 
-If you want to know how PKU uses MZTIO, please click on the link below: [PKUMZTIO](http://wuhongyi.cn/MZTIO/)
+If you want to know how PKU uses MZTIO, please click on the link below: [stable](https://pkunucexp.github.io/MZTIO/) [alpha](http://wuhongyi.cn/MZTIO/)
 
 XIA SUPPORT: [XIA](https://support.xia.com/default.asp?W372) [Blog](http://support.xia.com/default.asp?W801)
 
