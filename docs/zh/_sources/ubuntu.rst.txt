@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 5月 27 21:25:03 2019 (+0800)
-.. Last-Updated: 一 2月 17 21:51:50 2020 (+0800)
+.. Last-Updated: 二 6月  9 10:10:34 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 9
+..     Update #: 11
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -22,6 +22,14 @@ ubuntu 18
 ----------------------------------------------------------------------
 
 如果操作系统是当前最新版本，则不需要进行额外的源配置。
+
+使用国内镜像
+
+.. code::
+   
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main universe multiverse
+
 
 如果要安装 CERN ROOT，则在 /etc/apt/sources.list 中添加以下行
 
@@ -80,25 +88,7 @@ ubuntu 12
    apt-get install emacs
 
    # ROOT dependent library
-   apt-get install cmake
-   apt-get install libx11-dev
-   apt-get install libxpm-dev
-   apt-get install libxft-dev 
-   apt-get install libxext-dev
-   apt-get install gfortran 
-   apt-get install libssl-dev 
-   apt-get install xlibmesa-glu-dev 
-   apt-get install libglew1.5-dev 
-   apt-get install libftgl-dev 
-   apt-get install libmysqlclient-dev 
-   apt-get install libfftw3-dev 
-   apt-get install libcfitsio-dev 
-   apt-get install graphviz-dev
-   apt-get install libavahi-compat-libdnssd-dev 
-   apt-get install libxml2-dev 
-   apt-get install libkrb5-dev 
-   apt-get install libgsl0-dev 
-   apt-get install libqt4-dev
+   apt-get install cmake libx11-dev libxpm-dev libxft-dev libxext-dev gfortran libssl-dev xlibmesa-glu-dev libglew1.5-dev libftgl-dev libmysqlclient-dev libfftw3-dev libcfitsio-dev graphviz-dev libavahi-compat-libdnssd-dev libxml2-dev libkrb5-dev libgsl0-dev libqt4-dev
 
    #install django
    apt install python3-pip

@@ -174,6 +174,11 @@
 <div class="section" id="ubuntu-18">
 <h3>ubuntu 18<a class="headerlink" href="#ubuntu-18" title="永久链接至标题">¶</a></h3>
 <p>如果操作系统是当前最新版本，则不需要进行额外的源配置。</p>
+<p>使用国内镜像</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">ports</span><span class="o">/</span> <span class="n">bionic</span> <span class="n">main</span> <span class="n">universe</span> <span class="n">multiverse</span>
+<span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">ports</span><span class="o">/</span> <span class="n">bionic</span><span class="o">-</span><span class="n">updates</span> <span class="n">main</span> <span class="n">universe</span> <span class="n">multiverse</span>
+</pre></div>
+</div>
 <p>如果要安装 CERN ROOT，则在 /etc/apt/sources.list 中添加以下行</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ports</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="n">xenial</span> <span class="n">main</span> <span class="n">universe</span> <span class="n">multiverse</span>
 </pre></div>
@@ -214,25 +219,7 @@ apt-get install firefox
 apt-get install emacs
 
 <span class="c1"># ROOT dependent library</span>
-apt-get install cmake
-apt-get install libx11-dev
-apt-get install libxpm-dev
-apt-get install libxft-dev
-apt-get install libxext-dev
-apt-get install gfortran
-apt-get install libssl-dev
-apt-get install xlibmesa-glu-dev
-apt-get install libglew1.5-dev
-apt-get install libftgl-dev
-apt-get install libmysqlclient-dev
-apt-get install libfftw3-dev
-apt-get install libcfitsio-dev
-apt-get install graphviz-dev
-apt-get install libavahi-compat-libdnssd-dev
-apt-get install libxml2-dev
-apt-get install libkrb5-dev
-apt-get install libgsl0-dev
-apt-get install libqt4-dev
+apt-get install cmake libx11-dev libxpm-dev libxft-dev libxext-dev gfortran libssl-dev xlibmesa-glu-dev libglew1.5-dev libftgl-dev libmysqlclient-dev libfftw3-dev libcfitsio-dev graphviz-dev libavahi-compat-libdnssd-dev libxml2-dev libkrb5-dev libgsl0-dev libqt4-dev
 
 <span class="c1">#install django</span>
 apt install python3-pip
