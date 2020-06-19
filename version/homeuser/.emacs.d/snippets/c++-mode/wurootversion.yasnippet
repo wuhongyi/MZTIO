@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: wurootversion
+# --
+//#include "RVersion.h"
+#if ROOT_VERSION_CODE < ROOT_VERSION(${1:6},${2:0},${3:0})
+  std::cout<<"-_- ROOT 软件版本太低，请使用${1:$(yas/substr text "[^: ]*")}.${2:$(yas/substr text "[^: ]*")}.${3:$(yas/substr text "[^: ]*")} 及以上版本 ##"<<std::endl;
+  gSystem->Exit(1);
+#endif
+$0

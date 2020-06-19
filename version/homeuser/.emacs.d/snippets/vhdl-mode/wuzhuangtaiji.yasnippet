@@ -1,0 +1,64 @@
+# -*- mode: snippet -*-
+# name: wuzhuangtaiji
+# key: wuzhuangtaiji
+# --
+type m_state is (S0,S1,S2,S3);
+signal state_c${1:_name} ,state_n${1:$(yas/substr text "[^: ]*")} : m_state;
+
+signal state_s02s1_start,state_s12s2_start,state_s22s3_start : boolean;
+state_s02s1_start <= state_c=S0 and ;
+state_s12s2_start <= state_c=S1 and ;
+state_s22s3_start <= state_c=S2 and ;
+
+process(clk,rst_n)
+begin
+  if(rst_n = '0')then
+    state_c${1:$(yas/substr text "[^: ]*")} <= S0;
+  elsif(clk'event and clk = '1')then
+    state_c${1:$(yas/substr text "[^: ]*")} <= state_n${1:$(yas/substr text "[^: ]*")};
+  end if;
+end process;
+
+process(state_c${1:$(yas/substr text "[^: ]*")},)--转态转移条件
+begin
+  case (state_c${1:$(yas/substr text "[^: ]*")}) is
+    when S0 =>
+      if(state_s02s1_start)then
+        state_n${1:$(yas/substr text "[^: ]*")} <= S1;
+        else
+          state_n${1:$(yas/substr text "[^: ]*")} <= state_c${1:$(yas/substr text "[^: ]*")};
+      end if;
+    when S1 =>
+      if(state_s12s2_start)then
+        state_n${1:$(yas/substr text "[^: ]*")} <= S2;
+        else
+          state_n${1:$(yas/substr text "[^: ]*")} <= state_c${1:$(yas/substr text "[^: ]*")};
+      end if;
+    when S2 =>
+      if(state_s22s3_start)then
+        state_n${1:$(yas/substr text "[^: ]*")} <= S3;
+        else
+          state_n${1:$(yas/substr text "[^: ]*")} <= state_c${1:$(yas/substr text "[^: ]*")};
+      end if;
+    when others =>
+      -- null;
+      state_n${1:$(yas/substr text "[^: ]*")} <= S0;
+  end case;
+end process;
+
+
+
+
+process(clk,rst_n)
+begin
+  if(rst_n = '0')then
+    
+  elsif(clk'event and clk = '1')then
+    if(state_c${1:$(yas/substr text "[^: ]*")}=S1)then
+
+    else
+      
+    end if;
+  end if;
+end process;
+$0

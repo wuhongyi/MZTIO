@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: wurootTGTextButton
+# --
+TGTextButton *${1:fButton} = new TGTextButton(${2:Parent},${3:"&Labels"},${4:-1} /*button id*/);// new TGHotString("xxx")
+${2:$(yas/substr text "[^: ]*")}->AddFrame(${1:$(yas/substr text "[^: ]*")},new TGLayoutHints(kLHintsCenterX, 0, 0, 0, 0));
+// ${1:$(yas/substr text "[^: ]*")}->SetTextJustify(kTextLeft);// Mode is an OR of the bits: kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX, kTextCenterY.
+// ${1:$(yas/substr text "[^: ]*")}->ChangeBackground(0x0000ff);
+// ${1:$(yas/substr text "[^: ]*")}->Associate(this);// 继承 widget 的需要调用该函数才能向主窗口发送 Message
+// ${1:$(yas/substr text "[^: ]*")}->SetToolTipText("XXXXX",400);
+// ${1:$(yas/substr text "[^: ]*")}->Connect("Clicked()", "MainFrame", this, "Function()");
+// ${1:$(yas/substr text "[^: ]*")}->Connect("Pressed()", "MainFrame", this, "Function()");
+// ${1:$(yas/substr text "[^: ]*")}->Resize(/*w*/, /*h*/);
+${1:$(yas/substr text "[^: ]*")}->SetTextColor(0x000000, kFALSE);
+${1:$(yas/substr text "[^: ]*")}->SetEnabled(kTRUE); 
+$0

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: wurootTGRadioButton
+# --
+TGRadioButton *${1:fButton} = new TGRadioButton(${2:Parent},${3:"xxx"},${4:-1} /*button id*/);// new TGHotString("xxx")
+${2:$(yas/substr text "[^: ]*")}->AddFrame(${1:$(yas/substr text "[^: ]*")},new TGLayoutHints(kLHintsCenterX, 0, 0, 0, 0));
+// ${1:$(yas/substr text "[^: ]*")}->Associate(this);// 继承 widget 的需要调用该函数才能向主窗口发送 Message
+// ${1:$(yas/substr text "[^: ]*")}->SetToolTipText("XXXXX",400);
+// ${1:$(yas/substr text "[^: ]*")}->Connect("Toggled(Bool_t)/*切换状态*/", "TGButton", fButton, "Function(Bool_t)");
+// ${1:$(yas/substr text "[^: ]*")}->SetOn();
+$0

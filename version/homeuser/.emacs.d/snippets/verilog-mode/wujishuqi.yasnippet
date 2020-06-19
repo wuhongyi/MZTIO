@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: wujishuqi
+# key: wujishuqi
+# --
+reg [  $0:0]   ${1:cnt}    ;
+wire         add_${1:$(yas/substr text "[^: ]*")};
+wire         end_${1:$(yas/substr text "[^: ]*")};
+always @(posedge clk or negedge rst_n)
+begin
+   if(!rst_n)
+   begin
+      ${1:$(yas/substr text "[^: ]*")} <= 0;
+   end
+   else if(add_${1:$(yas/substr text "[^: ]*")})
+   begin
+      if(end_${1:$(yas/substr text "[^: ]*")})
+	${1:$(yas/substr text "[^: ]*")} <= 0;
+      else
+	${1:$(yas/substr text "[^: ]*")} <= ${1:$(yas/substr text "[^: ]*")} + 1;
+   end
+end
+assign add_${1:$(yas/substr text "[^: ]*")} = ;//condition: add 1 
+assign end_${1:$(yas/substr text "[^: ]*")} = add_${1:$(yas/substr text "[^: ]*")} && ${1:$(yas/substr text "[^: ]*")} == ; //End condition, last value

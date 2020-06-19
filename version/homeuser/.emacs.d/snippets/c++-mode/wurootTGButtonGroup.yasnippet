@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: wurootTGButtonGroup
+# --
+TGButtonGroup *${1:fButtonGroup} = new TGButtonGroup(${2:Parent},${3:"title text"});
+${2:$(yas/substr text "[^: ]*")}->AddFrame(${1:$(yas/substr text "[^: ]*")},new TGLayoutHints(kLHintsCenterX, 0, 0, 0, 0));
+// ${1:$(yas/substr text "[^: ]*")}->Connect("Pressed(Int_t)", "MainFrame", this,"Function(Int_t)");
+${1:$(yas/substr text "[^: ]*")}->SetTitlePos(TGGroupFrame::kCenter);
+${1:$(yas/substr text "[^: ]*")}->SetButton(kTextCenterX);
+${1:$(yas/substr text "[^: ]*")}->Show();
+${1:$(yas/substr text "[^: ]*")}->SetState(kTRUE);//是否开启，开启才可以选，不开启是灰色的
+${1:$(yas/substr text "[^: ]*")}->SetRadioButtonExclusive(kTRUE);// RadioButton 是否只能单选
+$0

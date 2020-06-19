@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: wucppwritetxt
+# --
+std::ofstream ${1:Name};//fstream
+${1:$(yas/substr text "[^: ]*")}.open(${2:FileName});//ios::bin ios::app
+if(!${1:$(yas/substr text "[^: ]*")}.is_open())
+{
+  std::cout<<"can't open file."<<std::endl;
+}
+${1:$(yas/substr text "[^: ]*")}<<${3:ParName}<<endl;
+$0
+${1:$(yas/substr text "[^: ]*")}.close();

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: wuclass
+# --
+class ${1:Name}
+{
+private://私有成员
+
+protected://保护成员
+
+public://公有成员
+    ${1:$(yas/substr text "[^: ]*")}($2);
+    virtual ~${1:$(yas/substr text "[^: ]*")}();
+};

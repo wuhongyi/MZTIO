@@ -1,0 +1,86 @@
+# -*- mode: snippet -*-
+# name: wuzhuangtaiji
+# key: wuzhuangtaiji
+# --
+parameter [2:0] S0=3'b000,S1=3'b001,S2=3'b010,S3=3'b011;
+reg [2:0] state_c${1:_name}, state_n${1:$(yas/substr text "[^: ]*")};
+
+wire state_s02s1_start,state_s12s2_start,state_s22s3_start;
+assign state_s02s1_start = state_c${1:$(yas/substr text "[^: ]*")}==S0 && ;
+assign state_s12s2_start = state_c${1:$(yas/substr text "[^: ]*")}==S1 && ;
+assign state_s22s3_start = state_c${1:$(yas/substr text "[^: ]*")}==S2 && ;
+
+always@(posedge clk or negedge rst_n)
+begin
+   if(!rst_n)
+   begin
+      state_c${1:$(yas/substr text "[^: ]*")} <= S0;
+   end
+   else
+   begin
+      state_c${1:$(yas/substr text "[^: ]*")} <= state_n${1:$(yas/substr text "[^: ]*")};
+   end
+end
+
+always @(*)
+begin
+   case(state_c${1:$(yas/substr text "[^: ]*")})
+     S0:
+     begin
+        if(state_s02s1_start)
+	begin
+           state_n${1:$(yas/substr text "[^: ]*")} = S1;
+        end
+        else
+	begin
+           state_n${1:$(yas/substr text "[^: ]*")} = state_c${1:$(yas/substr text "[^: ]*")};
+        end
+     end
+     S1:
+     begin
+        if(state_s12s2_start)
+	begin
+           state_n${1:$(yas/substr text "[^: ]*")} = S2;
+        end
+        else
+	begin
+           state_n${1:$(yas/substr text "[^: ]*")} = state_c${1:$(yas/substr text "[^: ]*")};
+        end
+     end
+     S2:
+     begin
+        if(state_s22s3_start)
+	begin
+	   state_n${1:$(yas/substr text "[^: ]*")} = S3;
+        end
+        else
+	begin
+           state_n${1:$(yas/substr text "[^: ]*")} = state_c${1:$(yas/substr text "[^: ]*")};
+        end
+     end
+     default:
+     begin
+        state_n${1:$(yas/substr text "[^: ]*")} = S0;
+     end
+   endcase
+end
+
+
+
+
+always  @(posedge clk or negedge rst_n)
+begin
+   if(!rst_n)
+   begin
+      out1 <=1'b0;  
+   end
+   else if(state_c${1:$(yas/substr text "[^: ]*")}==S1)
+   begin
+      out1 <= 1'b1;
+   end
+   else
+   begin
+      out1 <= 1'b0;
+   end
+end
+$0

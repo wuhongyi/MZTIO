@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: wurootTTree
+# --
+TTree *${1:Name} = new TTree(${2:"TreeName"},"Hongyi Wu Data");
+// TTree *${1:$(yas/substr text "[^: ]*")} = (TTree*)rootfile->Get(${2:$(yas/substr text "[^: ]*")});
+$0
+
+// Branch / write
+// int ${3:mhit};
+// int ${4:hitdata}[1024];
+// ${1:$(yas/substr text "[^: ]*")}->Branch("${3:$(yas/substr text "[^: ]*")}",&${3:$(yas/substr text "[^: ]*")},"${3:$(yas/substr text "[^: ]*")}/I");
+// ${1:$(yas/substr text "[^: ]*")}->Branch("${4:$(yas/substr text "[^: ]*")}",&${4:$(yas/substr text "[^: ]*")},"${4:$(yas/substr text "[^: ]*")}[${3:$(yas/substr text "[^: ]*")}]/I");
+
+${1:$(yas/substr text "[^: ]*")}->Fill();//loop
+// ${1:$(yas/substr text "[^: ]*")}->Write();
+
+// ${1:$(yas/substr text "[^: ]*")}->GetEntries();//获取entry数
+// ${1:$(yas/substr text "[^: ]*")}->Print("");// "all" friend trees are also printed. "toponly" only the top level branches are printed. "clusters" information about the cluster of baskets is printed.    T.Print("xxx*") will print all branches with name starting with "xxx".
+
+// Branch / read
+// Event *event = 0;  //event must be null or point to a valid object it must be initialized
+// ${1:$(yas/substr text "[^: ]*")}->SetBranchAddress("event",&event);
+// ${1:$(yas/substr text "[^: ]*")}->GetEntry( /*int*/);

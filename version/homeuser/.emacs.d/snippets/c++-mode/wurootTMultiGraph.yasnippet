@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: wurootTMultiGraph
+# --
+TMultiGraph *${1:mg} = new TMultiGraph();
+${1:$(yas/substr text "[^: ]*")}->SetTitle("");
+
+${1:$(yas/substr text "[^: ]*")}->Add(${2:TGraph});
+//${1:$(yas/substr text "[^: ]*")}->Add(/*TGraph*/);
+
+${1:$(yas/substr text "[^: ]*")}->Draw("A");//CL
+$0

@@ -1,0 +1,206 @@
+<!doctype html> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta http-equiv="charset" content="utf-8">
+    <!-- <meta http-equiv="refresh" content="5" /> -->
+    <meta name="author" content="Hongyi Wu">
+    <meta name="description" content="Pixie-16 MZ Trigger IO">
+    <meta name="keywords" content="XIA, Pixie16, MZTIO">
+    <meta name="generator" content="emacs">
+    <meta name="revised" content="Hongyi Wu, 05/27/19">
+
+    <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+    <link style="text/css" rel="stylesheet" href="static/css/bootstrap.css">  
+    <!--导入基本样式的压缩-->
+    <link style="text/css" rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!--导入主题样式  注意：顺序 不可变-->
+    <link style="text/css" rel="stylesheet" href="static/css/bootstrap-theme.css">
+
+
+    <style type="text/css">
+      div {
+    	  margin: auto;/*居中设置*/
+    	  background-color: #FFFFFF;
+    	  /* font-size: 22px; */
+    	  /* font-weight: bold; */
+    	  /* color: red; */
+      }
+
+    </style>
+
+    <script>
+      $(function(){
+
+      $("#shutdownos").click(function(){
+      $.get("shutdown.cgi", function (data) {
+      alert(data);	    
+      })  		// end get
+      });		   // end button click refresh 
+
+      $("#updatefirmware").click(function(){
+      $.get("updatefirmware.cgi", function (data) {
+      alert(data);	    
+      })  		// end get
+      });		   // end button click refresh 
+
+      
+      $("#init").click(function(){		// function for Initialize button
+      $.get("progfippi.cgi", function (data) {	//jQuery get function executes progfippi on MZTIO -> settings file applied
+      alert(data);	    
+      })  		// end get
+      });		   // end button click refresh      
+
+
+      $(".readosc").click(function(){// function for  read settings button
+      $.get("cgireadoscilloscope.cgi", function (data) {	   //jQuery get function executes cgireadsettings on Pixie-Net -> return data is list of analog settings
+      //alert("Data:  " + data);
+      var dataarray = data.split(',');			  // "split" data string at commas
+      //alert("Data[0]:  " + dataarray[0]);
+      $("#osc00").val(dataarray[0]);			// assign values to polarity controls
+      $("#osc01").val(dataarray[1]);
+      $("#osc02").val(dataarray[2]);
+      $("#osc03").val(dataarray[3]);      
+      });  // end get
+      });		  // end button click read  settings
+
+
+
+      $("#changeosc").click(function(){		// function for Initialize button
+      $.get("cgiwriteoscilloscope.cgi",{MONITOR:"MONITOR", 
+					v0:$("#osc00").val(),
+					v1:$("#osc01").val(),
+					v2:$("#osc02").val(),
+					v3:$("#osc03").val()
+				  }, function (data) {	//jQuery get function executes progfippi on MZTIO -> settings file applied
+      alert(data);
+      })  		// end get
+      });		   // end button click refresh 
+
+      
+
+
+      $(".readreg").click(function(){// function for  read settings button
+      $.get("cgireadregister.cgi",{reglab:$("#reglab").val()}, function (data) {	   //jQuery get function executes cgireadsettings on Pixie-Net -> return data is list of analog settings
+      //alert("Data:  " + data);
+      //var dataarray = data.split(',');			  // "split" data string at commas
+      //alert("Data[0]:  " + dataarray[0]);
+      $("#regval").val(data);			// assign values to polarity controls     
+      });  // end get
+      });		  // end button click read  settings
+
+
+
+      $("#writereg").click(function(){		// function for Initialize button
+      $.get("cgiwriteregister.cgi",{register:"write",
+					v0:$("#reglab").val(),
+					v1:$("#regval").val()
+				  }, function (data) {	//jQuery get function executes progfippi on MZTIO -> settings file applied
+      alert(data);
+      })  		// end get
+      });		   // end button click refresh 
+
+      
+
+      
+      });
+    </script>
+  
+    <title>  Pixie-16 MZ Trigger IO  </title>
+  </head>
+  
+  <body style="margin: 0px auto; width: 1200px;">
+    <!-- header -->
+
+    <header style="margin: auto; height: 100px;">
+      <div class="pkulogo" style="width: 100px; float: left;">
+	<img src=pkulogo100.jpg  border=0>
+      </div>
+      <div class="" style="width: 1000px; text-align: center; float: left;">
+	<h1>Pixie-16 MZ Trigger IO</h1>
+	<p>Thank you for using GDDAQ</p>
+      </div>
+      <div class="whylogo" style="width: 100px; float: left;">
+	<img src=why.jpg  border=0>
+      </div>
+    </header>
+
+
+    <!-- nav导航栏 -->
+    <nav style="font-size: 22px;">
+	<ul class="nav nav-tabs">
+	  <li><a href="index.html" data-toggle="tab">Main</a></li>
+	  <li class="active"><a href="control.html" data-toggle="tab">Control</a></li>
+	  <li><a href="register.html" data-toggle="tab">Register</a></li>
+	  <li><a href="status.html" data-toggle="tab">Status</a></li>
+	  <li><a href="timediff.html" data-toggle="tab">TimeDiff</a></li>
+	  <li><a href="log.html" data-toggle="tab">Log</a></li>
+	  <li><a href="support.html" data-toggle="tab">Support</a></li>
+	</ul>
+    </nav>
+    
+    <!-- section内容块 -->
+    <div class="content" style="width: 1200px;">
+
+      <div id="" class="" style="width: 1200px; height: 120px; vertical-align: middle; display: table-cell; float: left;">
+	<h2 style=" margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040"> System Initialization </h2>
+	<p>When you turn on MZTIO, it should be initialized immediately.</p>
+	<p> </p>
+	<b>Initialize:</b>
+	<input id='init' type="button" class="btn btn-primary btn-sm" value="Program FPGA">
+	<p> </p>
+      </div>
+
+      <div id="" class="" style="width: 1200px; vertical-align: middle; display: table-cell; float: left;">
+	<h2 style=" margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040"> Oscilloscope Monitoring </h2>
+
+	<p>The expansion board has 4 channel outputs. Please connect them to the oscilloscope in turn. Then select the output for each channel through the following.</p>
+	<input id="readosc" class="readosc btn btn-primary btn-sm" type="button" value="Read">
+	<input id="changeosc" type="button" class="btn btn-primary btn-sm" value="Change">
+	<p> </p>
+	<table style="width:100%" class="table">
+	  <tr> <th>LEMO output mode</th> <th>ch 1</th> <th>ch 2</th>   <th>ch 3</th>   <th>ch 4</th>   </tr>
+	  <tr id=oscmonitor> <td>Vaule  </td>
+	    <td><label for="osc00"></label><input type="text" size="8" id="osc00" value="NULL"> </td>
+	    <td><label for="osc01"></label><input type="text" size="8" id="osc01" value="NULL"> </td>
+	    <td><label for="osc02"></label><input type="text" size="8" id="osc02" value="NULL">  </td>
+	    <td><label for="osc03"></label><input type="text" size="8" id="osc03" value="NULL">  </td>
+	  </tr>
+	</table>
+
+	<p>00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:DPMFULLOUT 25:SYNCOUT 26:ETLOCAL 27:FTLOCAL 28:DEBUG0 29:DEBUG1 30:DEBUG2 31:DEBUG3 34:lemo1 35:lemo2 36:lemo3 37:lemo4 64:100M 65:10M 66:1M 67:100k 68:10k 69:1k 70:etsclk</p>
+      </div>
+
+
+
+      
+      <div id="" class="" style="width: 1200px; vertical-align: middle; display: table-cell; float: left;">
+	<h2 style=" margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040"> Settings </h2>
+	
+	<P> Control register to change experimental trigger mode, delay and stretch of logic signal </P>
+	<p>Register: <label for="reglab"></label><input type="text" size="8" id="reglab" value="0x511">   Value: <label for="regval"></label><input type="text" size="10" id="regval" value="0x00000000">   <input id="readreg" class="readreg btn btn-primary btn-sm" type="button" value="Read">   <input id="writereg" type="button" class="btn btn-primary btn-sm" value="Write"></p>
+	<p>0x30-0x3F: DelayAndExtend, 0x50/51/52/53/54: TriggerModeFP/BP1/BP2/BP3/BP4(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II), 0x45: external timestamp clock(0:10M 1:1M 2:100k 3: 10k 4:1k)</p>
+      </div>
+
+      <div id="" class="" style="width: 1200px; height: 150px; vertical-align: middle; display: table-cell; float: left;">
+	<h2 style=" margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040"> Shutdown OS / UPDATE FW</h2>
+	<p><b>If you do not know the function of the button here, please do not click.</b> <input id='shutdownos' type="button" title="Clicking the button will shut down the OS. This button is only used before powering off the chassis."  class="btn btn-danger btn-sm" value="SHUTDOWN OS"> <input id='updatefirmware' type="button" title="Clicking the button will update firmware and auto reboot OS. The firmware should be placed in the /root directory." class="btn btn-warning btn-sm" value="UPDATE FW"> </p>
+	
+	
+	<!-- <ul> -->
+	<!--   <li> <a href="progfippi.cgi"> progfippi </a>  </li> -->
+	<!--   <li> <a href="clockprog.cgi"> clockprog </a>  </li> -->
+	<!--   <li> <a href="shutdown.cgi"> shutdown </a>  </li> -->
+	<!-- </ul> -->
+
+      </div>
+     
+      
+    </div>
+
+    <!-- footer -->
+    <footer style="font-weight: bold; text-align: center">
+      <p>Copyright @ Hongyi Wu &nbsp;&nbsp;&nbsp;&nbsp;  Contact information: <a href="mailto:wuhongyi@qq.com"> wuhongyi@qq.com</a></p>
+    </footer>
+  </body>
+</html>

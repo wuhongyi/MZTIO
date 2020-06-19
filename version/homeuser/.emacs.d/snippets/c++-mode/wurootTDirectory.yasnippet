@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: wurootTDirectory
+# --
+
+// TFile *${1:Name} = new TFile(${2:"top.root"},"recreate");
+
+// TDirectory *${3:cdtof} = ${1:$(yas/substr text "[^: ]*")}->mkdir(${4:"tof"});
+// ${3:$(yas/substr text "[^: ]*")}->cd();    // make the "tof" directory the current directory
+
+// // create a new subdirectory for each plane
+// TDirectory *cdplane1;
+// TDirectory *cdplane2;
+
+// ${3:$(yas/substr text "[^: ]*")}->cd();
+// cdplane1 = ${3:$(yas/substr text "[^: ]*")}->mkdir("plane1");
+// cdplane1->cd();
+// // ... new class in this dir
+
+// ${3:$(yas/substr text "[^: ]*")}->cd();
+// cdplane2 = ${3:$(yas/substr text "[^: ]*")}->mkdir("plane2");
+// cdplane2->cd();
+// // ... new class in this dir
+
+// ${3:$(yas/substr text "[^: ]*")}->cd(); // change current directory to top
+// // ... process / fill data ...
+
+// ${1:$(yas/substr text "[^: ]*")}->Write();
+// delete ${1:$(yas/substr text "[^: ]*")};
+$0

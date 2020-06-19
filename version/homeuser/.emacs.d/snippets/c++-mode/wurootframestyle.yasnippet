@@ -1,0 +1,48 @@
+# -*- mode: snippet -*-
+# name: wurootframestyle
+# --
+//---- frame states
+// enum EFrameState {
+//    kIsVisible  = BIT(0), kIsMapped   = kIsVisible, kIsArranged = BIT(1)
+// };
+
+//---- frame cleanup
+// enum EFrameCleanup {
+//    kNoCleanup    = 0, kLocalCleanup = 1, kDeepCleanup  = -1 };
+
+//---- types of frames (and borders)
+// enum EFrameType {
+//    kChildFrame      = 0, kMainFrame       = BIT(0), kVerticalFrame   = BIT(1),
+//    kHorizontalFrame = BIT(2), kSunkenFrame     = BIT(3), kRaisedFrame     = BIT(4),
+//    kDoubleBorder    = BIT(5), kFitWidth        = BIT(6), kFixedWidth      = BIT(7),
+//    kFitHeight       = BIT(8), kFixedHeight     = BIT(9), kFixedSize       = (kFixedWidth | kFixedHeight),
+//    kOwnBackground   = BIT(10), kTransientFrame  = BIT(11), kTempFrame       = BIT(12),
+//    kMdiMainFrame    = BIT(13), kMdiFrame        = BIT(14) };
+
+//---- MWM hints stuff
+// enum EMWMHints {
+//    // functions
+//    kMWMFuncAll      = BIT(0), kMWMFuncResize   = BIT(1), kMWMFuncMove     = BIT(2),
+//    kMWMFuncMinimize = BIT(3), kMWMFuncMaximize = BIT(4), kMWMFuncClose    = BIT(5),
+
+//    // input mode
+//    kMWMInputModeless                = 0, kMWMInputPrimaryApplicationModal = 1,
+//    kMWMInputSystemModal             = 2, kMWMInputFullApplicationModal    = 3,
+
+//    // decorations
+//    kMWMDecorAll      = BIT(0), kMWMDecorBorder   = BIT(1), kMWMDecorResizeH  = BIT(2),
+//    kMWMDecorTitle    = BIT(3), kMWMDecorMenu     = BIT(4), kMWMDecorMinimize = BIT(5),
+//    kMWMDecorMaximize = BIT(6) };
+
+//---- drag and drop
+// enum EDNDFlags {
+//    kIsDNDSource = BIT(0), kIsDNDTarget = BIT(1) };
+
+//---- layout hints
+// enum ELayoutHints {
+//    kLHintsNoHints = 0, kLHintsLeft    = BIT(0), kLHintsCenterX = BIT(1),
+//    kLHintsRight   = BIT(2), kLHintsTop     = BIT(3), kLHintsCenterY = BIT(4),
+//    kLHintsBottom  = BIT(5), kLHintsExpandX = BIT(6), kLHintsExpandY = BIT(7),
+//    kLHintsNormal  = (kLHintsLeft | kLHintsTop)
+//    // bits 8-11 used by ETableLayoutHints };
+$0

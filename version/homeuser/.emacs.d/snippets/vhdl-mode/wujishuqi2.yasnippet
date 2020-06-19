@@ -1,0 +1,43 @@
+# -*- mode: snippet -*-
+# name: wujishuqi2
+# key: wujishuqi2
+# --
+signal ${1:cnt0} : integer range 0 to  $0 ;
+signal add_${1:$(yas/substr text "[^: ]*")} : boolean;
+signal end_${1:$(yas/substr text "[^: ]*")} : boolean;
+process(clk,rst_n)
+begin
+  if(rst_n = '0')then
+    ${1:$(yas/substr text "[^: ]*")} <= 0;
+  elsif(clk'event and clk = '1')then
+    if(add_${1:$(yas/substr text "[^: ]*")} )then
+      if(end_${1:$(yas/substr text "[^: ]*")})then
+        ${1:$(yas/substr text "[^: ]*")} <= 0;
+      else
+        ${1:$(yas/substr text "[^: ]*")} <= ${1:$(yas/substr text "[^: ]*")} + 1;
+      end if;
+    end if;
+  end if;
+end process;
+add_${1:$(yas/substr text "[^: ]*")} <=  ;--add 1   dout_tmp='1'
+end_${1:$(yas/substr text "[^: ]*")} <= add_${1:$(yas/substr text "[^: ]*")} and (${1:$(yas/substr text "[^: ]*")} =  -1);--end
+
+signal ${2:cnt1} : integer range 0 to   ;
+signal add_${2:$(yas/substr text "[^: ]*")} : boolean;
+signal end_${2:$(yas/substr text "[^: ]*")} : boolean;
+process(clk,rst_n)
+begin
+  if(rst_n = '0')then
+    ${2:$(yas/substr text "[^: ]*")} <= 0;
+  elsif(clk'event and clk = '1')then
+    if(add_${2:$(yas/substr text "[^: ]*")} )then
+      if(end_${2:$(yas/substr text "[^: ]*")})then
+        ${2:$(yas/substr text "[^: ]*")} <= 0;
+      else
+        ${2:$(yas/substr text "[^: ]*")} <= ${2:$(yas/substr text "[^: ]*")} + 1;
+      end if;
+    end if;
+  end if;
+end process;
+add_${2:$(yas/substr text "[^: ]*")} <= end_${1:$(yas/substr text "[^: ]*")};
+end_${2:$(yas/substr text "[^: ]*")} <= add_${2:$(yas/substr text "[^: ]*")} and (${2:$(yas/substr text "[^: ]*")} =  -1);--end

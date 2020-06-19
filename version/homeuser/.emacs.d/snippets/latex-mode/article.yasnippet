@@ -1,0 +1,147 @@
+# -*- mode: snippet -*-
+# name:article
+# --
+\documentclass[11pt,a4paper,titlepage]{article}
+%横向排版（可省略参数 landscape），文章的标题单独占据一页（可省略参数 titlepage），标题与文章正文排在同一页面（可省略参数 notitlepage），单双面排版（可省略参数 oneside 与 twoside）
+\usepackage[top=1.2in,bottom=1.2in,left=1.2in,right=1in]{geometry}%页面边距设置
+\usepackage{multicol,multirow} %分栏
+\usepackage{balance}%双栏文档底部对齐
+\usepackage{indentfirst}% 首行缩进
+\usepackage{setspace}% 调节行间距  
+\usepackage{booktabs}% 用于表格中加下划线，cmidrule(r){2-2}
+\usepackage{color,xcolor} % 支持彩色文本、底色、文本框等
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Using Code%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\definecolor{keywordcolor}{rgb}{0.8,0.1,0.5}
+\usepackage{listings}
+\lstset{
+	language=C++, %用于设置语言为C++
+	numbers=left, %设置行号位置
+%     numberstyle=\tiny, %设置行号大小
+	frame=single, %设置边框格式
+    escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
+	keywordstyle=\color{red} \bfseries, %设置关键词为蓝色，需要引xcolor宏包
+	identifierstyle=\color{blue},
+	basicstyle=\ttfamily, 
+	commentstyle=\color{green} \textit,
+	stringstyle=\ttfamily, 
+	numberstyle=\color{magenta},
+	breaklines, %自动折行
+     extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+	xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距
+     tabsize=4, %设置tab空格数
+	showstringspaces=false,
+%	frame=shadowbox, %边框
+	captionpos=b,
+}
+%\begin{lstlisting}
+%...
+%\end{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Using Code%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}                % 用于图像
+%\begin{figure}[!htb]
+%  \centering
+%  \includegraphics[height=85pt]{xemod_1.jpg}
+%\end{figure}
+
+\usepackage[cm-default]{fontspec}%选项[cm-default]主要用来解决使用数学环境时数学符号不能正常显示的问题。fontspec使用其提供的 \setmainfont 命令可设定文稿正文中的中文字体
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+%系统中文查看命令：fc-list :lang=zh
+\setmainfont{WenQuanYi Zen Hei}%文档正文默认字体,设置衬线字体
+%\setsansfont {}%设定无衬线中文字体
+%Sans Serif 无衬线字体 楷体、黑体、幼圆 \sansfont 。Serif 衬线字体 对应中文的 宋、仿宋\mainfont
+\newfontfamily\kai{AR PL UKai CN}%字体重命名，方便使用
+\newfontfamily\ming{AR PL UMing CN}
+%\newfontfamily\song{Droid Sans}
+\defaultfontfeatures{Mapping=tex-text}%如果没有它会有一些tex特殊字符无法正常使用，比如连字符
+\newcommand{\yihao}{\fontsize{26pt}{26pt}\selectfont} % 一号, 单倍行距
+\newcommand{\erhao}{\fontsize{22pt}{22pt}\selectfont} % 二号, 单倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont} % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{16pt}\selectfont} % 三号, 单倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{15pt}\selectfont} % 小三, 单倍行距
+\newcommand{\sihao}{\fontsize{14pt}{14pt}\selectfont} % 四号, 单倍行距
+\newcommand{\banxiaosi}{\fontsize{13pt}{13pt}\selectfont} % 半小四, 单倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{12pt}\selectfont} % 小四, 单倍行距
+\newcommand{\dawuhao}{\fontsize{11.5pt}{11.5pt}\selectfont} % 大五号, 单倍行距
+\newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont} % 五号, 单倍行距
+\newcommand{\xiaowu}{\fontsize{9.5pt}{9.5pt}\selectfont} % 小五号, 单倍行距
+\newcommand{\banbanxiaosi}{\fontsize{12pt}{12pt}\selectfont}% 半半小四, 单倍行距
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下是一些命令或环境的重定义或自定义%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\contentsname}{目录} % 将Contents改为目录
+\renewcommand{\abstractname}{摘要} % 将Abstract改为摘要
+\renewcommand{\refname}{参考文献} % 将References改为参考文献
+
+\usepackage[pagestyles]{titlesec}%章节标题位置center，页眉页脚设置
+% 页眉页脚方式一：
+\newpagestyle{main}{% 页眉页脚
+\sethead{\small\S\,\thesection\quad\sectiontitle}{}{$\cdot$~\thepage~$\cdot$}%页眉
+\setfoot{哈尔滨工程大学}{核科学与技术学院}{\kai 吴鸿毅}%页脚
+\footrule%画页脚线
+\headrule%画页眉线
+}
+\pagestyle{main}
+% 页眉页脚方式二：
+%\usepackage{fancyhdr}                
+%\pagestyle{fancy}
+%\lhead{\small\S\,\thesection\quad\sectiontitle}
+%\chead{}
+%\rhead{$\cdot$~\thepage~$\cdot$}
+%\lfoot{\kai 哈尔滨工程大学}
+%\cfoot{\kai 核科学与技术学院}
+%\rfoot{\kai 吴鸿毅}
+
+%%% espace inter graphe geshi %设置行间距
+%\usepackage{setspace}
+%\singlespacing % interligne normal (par défaut)
+%\onehalfspacing % interligne×1,5
+%\doublespacing % interligne×2
+%\setstretch{baselinestretch}{} % interligne×
+%\begin{singlespace} % interligne normal (par défaut)
+%  ...
+%\end{singlespace}
+%\begin{onehalfspace} % interligne×1,5
+%  ...
+%\end{onehalfspace}
+%\begin{doublespace} % interligne×2
+%...
+%\end{doublespace}
+%\begin{spacing}{2.5} % interligne×2.5
+%...
+%\end{spacing}
+
+%对齐方式
+%一行对齐：\leftline{左对齐} \centerline{居中} \rightline{右对齐}
+%多行或者段落对齐：
+%左对齐 \begin{flushleft}...\end{flushleft}
+%居中 \begin{center}...\end{center}
+%右对齐 \begin{flushright}...\end{flushright}
+
+%\thispagestyle{empty}%该页无页眉页脚
+%\newpage %另起一页
+%\tableofcontents % 插入目录
+%\pagenumbering{arabic}%自此处页码开始计数  
+
+
+\title{\kai\Huge 用~\LaTeX~写科技论文% 论文标题
+\thanks{\kai 这是一个为初学者写的~\LaTeX~论文模板,未经作者允许可以随意下载使用并修改传播,目的是让更多的人迅速上手用~\LaTeX~系统写作。}
+}
+\author{\kai 吴鸿毅\\
+            wuhongyi@qq.com}
+\date{\ming 2014年8月16日 于哈尔滨}
+
+\usepackage{hyperref} %保证它是文档导言区的最后一行命令，超链接
+
+%%%%%%%%%%%%%%%%%%以下正文%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle%显示标题信息
+\tableofcontents%插入目录，需要编译两次才能出现。
+\thispagestyle{empty}%该页无页眉页脚
+%\vspace*{5pt}%插入空白
+\newpage%另起一页
+
+$0
+\end{document}
+

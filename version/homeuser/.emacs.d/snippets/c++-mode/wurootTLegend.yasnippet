@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: wurootTLegend
+# --
+TLegend *${1:Name} = new TLegend(${2:xL},${3:yD},${4:xR},${5:yU});//0.55,0.62,0.80,0.82
+${1:$(yas/substr text "[^: ]*")}->SetHeader(${6:"title"});
+${1:$(yas/substr text "[^: ]*")}->SetTextSize(0.05);
+${1:$(yas/substr text "[^: ]*")}->SetBorderSize(0);
+
+${1:$(yas/substr text "[^: ]*")}->AddEntry(${7:TObject},${8:"LegName"});
+
+${1:$(yas/substr text "[^: ]*")}->Draw();
+$0

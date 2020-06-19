@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: wurootTCanvas
+# --
+TCanvas *${1:Name} = new TCanvas("${1:$(yas/substr text "[^: ]*")}","",${2:wx},${3:wy});
+// gStyle->SetOptStat(0);//不显示统计框
+// ${1:$(yas/substr text "[^: ]*")}->ToggleEventStatus();//底端信息栏
+// ${1:$(yas/substr text "[^: ]*")}->ToggleEditor();
+// ${1:$(yas/substr text "[^: ]*")}->ToggleToolBar();
+// ${1:$(yas/substr text "[^: ]*")}->Clear("");
+// ${1:$(yas/substr text "[^: ]*")}->Divide(/*col*/,/*raw*/);
+// ${1:$(yas/substr text "[^: ]*")}->SetGridx();//SetGridy();
+// ${1:$(yas/substr text "[^: ]*")}->SetLogx();//SetLogy(); SetLogz();
+// ${1:$(yas/substr text "[^: ]*")}->SetName("");
+
+$0
+${1:$(yas/substr text "[^: ]*")}->Update();

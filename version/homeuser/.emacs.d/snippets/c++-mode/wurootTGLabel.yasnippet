@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: wurootTGLabel
+# --
+TGLabel *${1:fLabel} = new TGLabel(${2:Parent},${3:"text"});
+${2:$(yas/substr text "[^: ]*")}->AddFrame(${1:$(yas/substr text "[^: ]*")},new TGLayoutHints(kLHintsCenterX, 0, 0, 0, 0));
+// ${1:$(yas/substr text "[^: ]*")}->Disable(kTRUE); //if (${1:$(yas/substr text "[^: ]*")}->IsDisabled()) ;
+// ${1:$(yas/substr text "[^: ]*")}->SetText(125);// int
+// ${1:$(yas/substr text "[^: ]*")}->SetText(Form("abc%ld",100);
+// ${1:$(yas/substr text "[^: ]*")}->Resize(/*w*/, /*h*/);
+${1:$(yas/substr text "[^: ]*")}->SetTextJustify(kTextLeft);// Mode is an OR of the bits: kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX, kTextCenterY.
+${1:$(yas/substr text "[^: ]*")}->SetTextColor(0x000000, kFALSE);
+${1:$(yas/substr text "[^: ]*")}->Enable();
+${1:$(yas/substr text "[^: ]*")}->SetText("XXX");
+$0

@@ -1,0 +1,69 @@
+# -*- mode: snippet -*-
+# name: wugitbookmcqx
+# key: wugitbookmcqx
+# --
+<!--
+Basic syntax
+
+Each multiple choice question has this basic syntax, they are not optional:
+
+{%mcq ans="o1"%}
+{%title%} This is a question?
+{%o1%} First option
+{%o2%} Second option
+{%o3%} Third option
+{%o4%} Fourth option
+{%endmcq%}
+
+The {%mcq%} tag (line 1) must have the following arguments for it to work:
+ans: the id of correct option (possible values: o1,o2,o3,o4,o5,o6,o7,o8)
+     The content of the multiple choice question is included in the book as a sub-block for the mcq tag (line 2 - 7).
+title: question title (no markdown support for now).
+       o1, o2, o3, o4, o5, o6, o7, o8: text for each options (you can include up to eight optio).
+
+
+
+Display hints
+
+You can add a {%hint%} sub-block to display a hint message. They will be shown when the user click the "Hint" button.
+
+{%mcq ans="o1", count=2%}
+{%title%} This is a question?
+{%o1%} First option
+{%o2%} Second option
+{%o3%} Third option
+{%o4%} Fourth option
+{%hint%} This is a hint.
+{%endmcq%}
+
+Display only a certain number of options
+You can add an optional count parameter to the `{%mcq%} tag to show only a certain number of options.
+
+{%mcq ans="o1", count=2%}
+{%title%} This is a question?
+{%o1%} First option
+{%o2%} Second option
+{%o3%} Third option
+{%o4%} Fourth option
+{%o5%} Fourth option
+{%o6%} Fourth option
+{%o7%} Fourth option
+{%o8%} Fourth option
+{%endmcq%}
+
+In this case, only two options will be displayed for the user to choose (the correct answer will always be included). The order of the options will be random (no matter you set the random=true argument for not).
+
+
+Random
+
+You can add an optional random=true parameter to the {%mcq%} tag to let the order of the options to be randomized.
+
+{%mcq ans="o1", random=true%}
+{%title%} This is a question?
+{%o1%} First option
+{%o2%} Second option
+{%o3%} Third option
+{%o4%} Fourth option
+{%endmcq%}
+-->
+$0

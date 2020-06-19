@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: wurootTH2
+# --
+${1:TH2D} *${2:Name} = new ${1:$(yas/substr text "[^: ]*")}("${2:$(yas/substr text "[^: ]*")}","",${3:binx},${4:minx},${5:maxx},${6:biny},${7:miny},${8:maxy});
+${2:$(yas/substr text "[^: ]*")}->SetTitle("");
+${2:$(yas/substr text "[^: ]*")}->GetXaxis()->SetTitle("");
+${2:$(yas/substr text "[^: ]*")}->GetYaxis()->SetTitle("");
+${2:$(yas/substr text "[^: ]*")}->GetZaxis()->SetTitle("");
+// ${2:$(yas/substr text "[^: ]*")}->ClearUnderflowAndOverflow();
+// ${2:$(yas/substr text "[^: ]*")}->FindFirstBinAbove(Double_t threshold=0, Int_t axis=1);//第一个大于阈值的bin值
+// ${2:$(yas/substr text "[^: ]*")}->FindLastBinAbove(Double_t threshold=0, Int_t axis=1);//最后一个大于阈值的bin值
+// ${2:$(yas/substr text "[^: ]*")}->FindBin(Double_t x, Double_t y);//获得该数值对应的bin值
+// ${2:$(yas/substr text "[^: ]*")}->GetBinContent(Int_t bin);
+// ${2:$(yas/substr text "[^: ]*")}->SetBinContent(Int_t bin, Double_t content);
+// ${2:$(yas/substr text "[^: ]*")}->GetBinContent(Int_t binx, Int_t biny);//bin from 1-N
+// ${2:$(yas/substr text "[^: ]*")}->SetBinContent(Int_t binx, Int_t biny, Int_t, Double_t content);//bin from 1-N
+// ${2:$(yas/substr text "[^: ]*")}->Integral(Int_t binx1, Int_t binx2, Int_t biny1, Int_t biny2, Option_t *option="");
+// ${2:$(yas/substr text "[^: ]*")}->GetRandom2(Double_t &x, Double_t &y);//返回该谱的随机抽样
+// ${2:$(yas/substr text "[^: ]*")}->Scale(Double_t c1=1, Option_t *option="");
+// ${2:$(yas/substr text "[^: ]*")}->ProjectionX(const char *name="_px", Int_t firstybin=0, Int_t lastybin=-1, Option_t *option="");// TH1D
+// ${2:$(yas/substr text "[^: ]*")}->ProjectionY(const char *name="_py", Int_t firstxbin=0, Int_t lastxbin=-1, Option_t *option="");// TH1D
+// ${2:$(yas/substr text "[^: ]*")}->Reset(Option_t *option="");
+
+${2:$(yas/substr text "[^: ]*")}->Fill(${9:NumberX},${10:NumberY});
+
+${2:$(yas/substr text "[^: ]*")}->Draw("colz");//surf
+$0

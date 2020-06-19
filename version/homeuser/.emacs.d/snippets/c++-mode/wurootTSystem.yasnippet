@@ -1,0 +1,59 @@
+# -*- mode: snippet -*-
+# name: wurootTSystem
+# --
+// //获取文件信息
+// FileStat_t fs;
+// int flag = gSystem->GetPathInfo("TSystem.cc", fs);// return 0 success
+// std::cout<<(Int_t)fs.fSize<<std::endl;
+
+//  CpuInfo_t cpuInfo;
+//  MemInfo_t memInfo;
+//  gSystem->GetCpuInfo(&cpuInfo, 100);
+//  Float_t act_load = cpuInfo.fTotal; std::cout<<act_load<<std::endl;//actual CPU load
+//  gSystem->GetMemInfo(&memInfo);
+//  Int_t memUsage;
+//  memUsage = memInfo.fMemTotal; std::cout<<"MemTotal:"<<memUsage<<std::endl;
+//  memUsage = memInfo.fMemUsed; std::cout<<"MemUsed:"<<memUsage<<std::endl;
+//  memUsage = memInfo.fMemFree; std::cout<<"MemFree:"<<memUsage<<std::endl;
+ 
+//  UserGroup_t *u = gSystem->GetUserInfo(); std::cout<<u->fUser<<std::endl;
+//  UserGroup_t *ug = gSystem->GetUserInfo(gSystem->GetUid()); std::cout<<ug->fUser.Data()<<std::endl;
+
+// gSystem->Setenv("XXXXXX", "xxx");
+// gSystem->AddIncludePath("-I$ROOTSYS/include");
+// std::cout<<gSystem->Getenv("ROOTSYS")<<std::endl;//获取环境变量对应的路径
+// std::cout<<"当前路径："<<gSystem->pwd()<<std::endl;
+// gSystem->cd("/usr/include");
+// std::cout<<"TempDirectory:"<<gSystem->TempDirectory()<<std::endl;// /tmp
+// std::cout<<gSystem->GetSoExt()<<std::endl;// return "so"   Get the shared library extension.
+// std::cout<<gSystem->DirName(__FILE__)<<std::endl;
+// gSystem->ChangeDirectory("/opt");//
+// std::cout<<gSystem->WorkingDirectory()<<std::endl;
+// gSystem->OpenDirectory("XXX");//打开文件夹
+// gSystem->MakeDirectory("xxx");//新建文件夹
+// gSystem->ExpandPathName("xxx");
+// std::cout<<"BaseName:"<<gSystem->BaseName("aaa/bbb/ccc/TSystem.cc")<<std::endl;//TSystem.cc
+// gSystem->Rename("123","456");//文件、文件夹重命名
+// gSystem->CopyFile("source.root", "copy.root");
+// gSystem->AccessPathName("main.cc",kFileExists) //判断文件是否存在 false存在;true不存在
+// gSystem->AccessPathName("/tmp/",kWritePermission) //判断文件夹是否可写
+// gSystem->AccessPathName("/etc/krb5.conf", kReadPermission)//判断文件是否可读
+
+// Long_t id, size,flags,modtime;
+// gSystem->GetPathInfo("ROOTSYS",&id,&size,&flags,&modtime);
+// cout<<id<<"  "<<size<<"  "<<flags<<"  "<<modtime<<endl;
+
+// gSystem->CompileMacro("track.C");//将文件编译成动态链接库
+// gSystem->CompileMacro("track.C", "k");
+// gSystem->Load("xx.so");//加载文件、链接库等
+// gSystem->Load("libGeom");// gSystem->Load("$HOME/pythia6/libPythia6");
+// gSystem->mkdir("xxx", kTRUE);
+// gSystem->Exec("ls");//执行命令
+// gSystem->Sleep(100);
+// gSystem->Exit(1);//退出程序
+
+// std::cout<<gSystem->GetName()<<std::endl;//获取系统类型 Unix、WinNT 等
+// std::cout<<"root:"<<gSystem->Which(gSystem->Getenv("PATH"), "root.exe", kExecutePermission)<<std::endl;//寻找可执行文件所在位置
+// std::cout<<gSystem->HostName()<<std::endl;
+// std::cout<<gSystem->GetPid()<<std::endl;
+$0

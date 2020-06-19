@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: wucppmath
+# --
+// 输入 C++98 float/double/long double  C++11 扩展支持int
+// http://www.cplusplus.com/reference/cmath/
+// 三角函数/反三角函数/双曲三角函数
+// double sin(double);正弦
+// double cos(double);余弦
+// double tan(double);正切
+// double asin(double); 结果介于[-PI/2,PI/2]
+// double acos(double); 结果介于[0,PI]
+// double atan(double); 反正切（主值），结果介于[-PI/2,PI/2]
+// double atan2(double,double); 反正切（整圆值），结果介于[-PI,PI]
+// 指数/对数
+// double exp(double);求取自然数e的幂
+// double frexp(double value,int *exp);这是一个将value值拆分成小数部分f和（以2为底的）指数部分exp，并返回小数部分f，即f*2^exp。其中f取值在0.5~1.0范围或者0。
+// double ldexp(double x,int exp);这个函数刚好跟上面那个frexp函数功能相反，它的返回值是x*2^exp
+// double log(double); 以e为底的对数
+// double log10(double);以10为底的对数
+// double modf(double value,double *iptr);拆分value值，返回它的小数部分，iptr指向整数部分。
+// double pow(double x,double y);计算x的y次幂
+// float powf(float x,float y); 功能与pow一致，只是输入与输出皆为单精度浮点数
+// double sqrt (double);开平方根
+// 取整/取余
+// double ceil(double); 取上整，返回不比x小的最小整数
+// double floor(double); 取下整，返回不比x大的最大整数，即高斯函数[x]
+// double fmod(double,double); 返回两参数相除的余数
+// 绝对值
+// double abs(double x);求绝对值
+// double fabs(double);求绝对值
+$0

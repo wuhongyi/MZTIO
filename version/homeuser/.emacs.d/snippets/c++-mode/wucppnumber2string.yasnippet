@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: wucppnumber2string
+# --
+std::stringstream ${1:Name};//sstream cstring
+${1:$(yas/substr text "[^: ]*")}.clear();//重复使用前一定要清空
+${1:$(yas/substr text "[^: ]*")}<<${2:NumberName};
+${1:$(yas/substr text "[^: ]*")}>>${3:StringName};
+$0

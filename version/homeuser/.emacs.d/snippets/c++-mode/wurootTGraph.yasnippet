@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: wurootTGraph
+# --
+TGraph *${1:Name} = new TGraph();
+// ${1:$(yas/substr text "[^: ]*")} = new TGraph(n, x, y);//int float double
+${1:$(yas/substr text "[^: ]*")}->SetTitle("");
+${1:$(yas/substr text "[^: ]*")}->GetXaxis()->SetTitle("");
+${1:$(yas/substr text "[^: ]*")}->GetYaxis()->SetTitle("");
+// ${1:$(yas/substr text "[^: ]*")}->SetLineColor(Color_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetLineStyle(Style_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetLineWidth(Width_t);//1
+// ${1:$(yas/substr text "[^: ]*")}->SetFillStyle(Style_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetFillColor(Color_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetMarkerColor(Color_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetMarkerStyle(Style_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetMarkerSize(Size_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetMinimum(Double_t);
+// ${1:$(yas/substr text "[^: ]*")}->SetMaximum(Double_t);
+// ${1:$(yas/substr text "[^: ]*")}->IsInside(Double_t x, Double_t y);// int   判断（x，y）是否在TCut选定的范围
+// ${1:$(yas/substr text "[^: ]*")}->Eval(Double_t x);//double 获得x对应的y值
+// ${1:$(yas/substr text "[^: ]*")}->GetN();//int 获得点数
+
+${1:$(yas/substr text "[^: ]*")}->SetPoint(${2:i}, ${3:xPar}, ${4:yPar});//i = 0~N-1
+
+${1:$(yas/substr text "[^: ]*")}->Draw("A*");

@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: wucppfloat
+# --
+
+// FLT_RADIX	进制基数(float, double and long double).
+// FLT_MANT_DIG / DBL_MANT_DIG / LDBL_MANT_DIG	尾数中的位数
+// FLT_DIG / DBL_DIG / LDBL_DIG	// 小数点后面精确的位数
+// FLT_MIN_EXP / DBL_MIN_EXP / LDBL_MIN_EXP	最小2进制指数
+// FLT_MIN_10_EXP / DBL_MIN_10_EXP / LDBL_MIN_10_EXP	最小10进制指数
+// FLT_MAX_EXP / DBL_MAX_EXP / LDBL_MAX_EXP	最大2进制指数
+// FLT_MAX_10_EXP / DBL_MAX_10_EXP / LDBL_MAX_10_EXP  最大10进制指数
+// FLT_MAX / DBL_MAX / LDBL_MAX	最大值
+// FLT_EPSILON / DBL_EPSILON / LDBL_EPSILON	小的正数,0跨度值
+// FLT_MIN / DBL_MIN / LDBL_MIN	最小值
+// FLT_ROUNDS	// Rounding behavior. Possible values:  -1 undetermined  0 toward zero  1 to nearest  2 toward positive infinity  3 toward negative infinity     Applies to all floating-point types (float, double and long double).    加法舍入
+
+// C++11
+// FLT_EVAL_METHOD	Properties of the evaluation format. Possible values: -1 undetermined  0 evaluate just to the range and precision of the type  1 evaluate float and double as double, and long double as long double.  2 evaluate all as long double Other negative values indicate an implementation-defined behavior.   Applies to all floating-point types (float, double and long double).
+// DECIMAL_DIG	Number of decimal digits that can be rounded into a floating-point type and back again to the same decimal digits, without loss in precision.
+$0

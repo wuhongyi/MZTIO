@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: wurootTH1
+# --
+${1:TH1D} *${2:Name} = new ${1:$(yas/substr text "[^: ]*")}("${2:$(yas/substr text "[^: ]*")}","",${3:bin},${4:min},${5:max});
+${2:$(yas/substr text "[^: ]*")}->SetTitle("");
+${2:$(yas/substr text "[^: ]*")}->GetXaxis()->SetTitle("");
+${2:$(yas/substr text "[^: ]*")}->GetYaxis()->SetTitle("");
+// ${2:$(yas/substr text "[^: ]*")}->SetMinimum(Double_t);
+// ${2:$(yas/substr text "[^: ]*")}->SetMaximum(Double_t);
+// ${2:$(yas/substr text "[^: ]*")}->SetLineColor(Color_t);
+// ${2:$(yas/substr text "[^: ]*")}->SetLineStyle(Style_t);
+// ${2:$(yas/substr text "[^: ]*")}->SetLineWidth(Width_t);//1
+// ${2:$(yas/substr text "[^: ]*")}->SetFillColor(Color_t);
+// ${2:$(yas/substr text "[^: ]*")}->SetFillStyle(Style_t);
+// ${2:$(yas/substr text "[^: ]*")}->ClearUnderflowAndOverflow();
+// ${2:$(yas/substr text "[^: ]*")}->FindFirstBinAbove(Double_t threshold=0, Int_t axis=1);//第一个大于阈值的bin值
+// ${2:$(yas/substr text "[^: ]*")}->FindLastBinAbove(Double_t threshold=0, Int_t axis=1);//最后一个大于阈值的bin值
+// ${2:$(yas/substr text "[^: ]*")}->FindBin(Double_t x);//获得该数值对应的bin值
+// ${2:$(yas/substr text "[^: ]*")}->GetBinCenter(Int_t bin);
+// ${2:$(yas/substr text "[^: ]*")}->GetBinContent(Int_t bin);//bin from 1-N
+// ${2:$(yas/substr text "[^: ]*")}->SetBinContent(Int_t bin, Double_t content);//bin from 1-N
+// ${2:$(yas/substr text "[^: ]*")}->Integral(Int_t binx1, Int_t binx2, Option_t *option="");
+// ${2:$(yas/substr text "[^: ]*")}->GetRandom();//double 返回该谱的随机抽样
+// ${2:$(yas/substr text "[^: ]*")}->Scale(Double_t c1=1, Option_t *option="");
+// ${2:$(yas/substr text "[^: ]*")}->Reset(Option_t *option="");
+
+${2:$(yas/substr text "[^: ]*")}->Fill(${6:Number});
+
+${2:$(yas/substr text "[^: ]*")}->Draw();
+$0

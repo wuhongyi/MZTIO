@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: wurootTBenchmark
+# --
+gBenchmark->Start("${1:Name}");//计时开始
+gBenchmark->Show("${1:$(yas/substr text "[^: ]*")}");//计时结束并输出时间
+$0

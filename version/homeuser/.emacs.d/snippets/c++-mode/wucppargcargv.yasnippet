@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: wucppargcargv
+# --
+if(argc < ${1:2})
+{
+  std::cout<< "argc:" << argc <<std::endl;
+  exit(1);
+}
+
+// int N = atoi(argv[1]);//cstdlib
+
+$0

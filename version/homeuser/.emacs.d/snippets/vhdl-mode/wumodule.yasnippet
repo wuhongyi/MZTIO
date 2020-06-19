@@ -1,0 +1,75 @@
+# -*- mode: snippet -*-
+# name: wumodule
+# key: wumodule
+# --
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity ${1:ModuleName} is
+  port (
+    $0
+    -- din : in std_logic_vector (7 downto 0);
+    -- dout : out std_logic_vector (7 downto 0);
+    clk : in std_logic;
+    rst_n : in std_logic 
+    );  
+end ${1:$(yas/substr text "[^: ]*")};
+
+architecture ${2:Behavioral} of ${1:$(yas/substr text "[^: ]*")} is
+
+  -- constant N : integer := 8; 
+  -- signal counter : integer range 0 to N;
+  -- signal clk10mhz : std_logic;
+
+  -- 调用模块声明
+  -- COMPONENT clkip
+  --   PORT(
+  --     CLKIN_IN : IN std_logic;          
+  --     CLKDV_OUT : OUT std_logic;
+  --     CLKIN_IBUFG_OUT : OUT std_logic;
+  --     CLK0_OUT : OUT std_logic
+  --     );
+  -- END COMPONENT;
+
+begin
+
+  -- 调用模块例化
+  -- u1 : clkip PORT MAP(
+  --   CLKIN_IN => CLOCK,
+  --   CLKDV_OUT => clk10mhz,
+  --   CLKIN_IBUFG_OUT => open,
+  --   CLK0_OUT => open
+  --   );
+
+  --....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+
+  -- a <= b;
+  
+
+  -- 组合逻辑
+  -- process(name)
+  -- begin
+  
+  -- end process;
+
+
+  -- 时序逻辑
+  -- process(clk,rst_n)
+  --   -- wariable 在process内部定义及使用
+  --   variable counter_temp : integer range 0 to 100;
+  -- begin
+  --   if(rst_n = '0')then
+   
+  --   elsif(clk'event and clk = '1')then
+  --     if()then
+   
+  --     end if;
+  --   end if;
+  -- end process;	
+
+end ${2:$(yas/substr text "[^: ]*")};
+

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: wurootTRint
+# --
+// Create an interactive ROOT application
+TRint *theApp = new TRint("Rint", &argc, argv);
+
+$0
+
+// and enter the event loop...
+theApp->Run();
+delete theApp;

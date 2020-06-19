@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: wurootTGVerticalFrame
+# --
+TGVerticalFrame *${1:Child} = new TGVerticalFrame(${2:Parent}, 1/*w*/, 1/*h*/,kChildFrame);
+${2:$(yas/substr text "[^: ]*")}->AddFrame(${1:$(yas/substr text "[^: ]*")}, new TGLayoutHints(kLHintsLeft | kLHintsTop,0/*left*/,0/*right*/,0/*top*/,0/*bottom*/));
+$0

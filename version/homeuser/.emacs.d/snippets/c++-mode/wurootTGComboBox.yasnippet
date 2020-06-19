@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: wurootTGComboBox
+# --
+TGComboBox *${1:fComboBox} = new TGComboBox(${2:Parent},${3:-1} /*id*/);
+${2:$(yas/substr text "[^: ]*")}->AddFrame(${1:$(yas/substr text "[^: ]*")},new TGLayoutHints(kLHintsCenterX, 0, 0, 0, 0));
+// ${1:$(yas/substr text "[^: ]*")}->Associate(this);// 继承 widget 的需要调用该函数才能向主窗口发送 Message
+// ${1:$(yas/substr text "[^: ]*")}->Connect("Selected(Int_t)", "MainFrame", this,"Function(Int_t)" /*"Function()"*/);
+// ${1:$(yas/substr text "[^: ]*")}->Resize(/*w*/, /*h*/);
+
+${1:$(yas/substr text "[^: ]*")}->AddEntry(${4:"name"}, ${5:id} /*item*/);// 下拉选项多个可循环添加
+
+${1:$(yas/substr text "[^: ]*")}->Select(id /*item*/);
+$0

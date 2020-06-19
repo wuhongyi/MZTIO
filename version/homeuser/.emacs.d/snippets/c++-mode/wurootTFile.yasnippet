@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: wurootTFile
+# --
+TFile *${1:Name} = new TFile(${2:FileName},${3:"RECREATE"});//"RECREATE" "READ"
+if(!${1:$(yas/substr text "[^: ]*")}->IsOpen())
+{
+  std::cout<<"Can't open root file"<<std::endl;
+}
+$0
+// ${1:$(yas/substr text "[^: ]*")}->ls("");
+// ${1:$(yas/substr text "[^: ]*")}->cd();
+// TObject->Write();
+// TH1D *h = (TH1D*)${1:$(yas/substr text "[^: ]*")}->Get("name");
+// TH1D *h; ${1:$(yas/substr text "[^: ]*")}->GetObject("name", h);
+${1:$(yas/substr text "[^: ]*")}->Close();

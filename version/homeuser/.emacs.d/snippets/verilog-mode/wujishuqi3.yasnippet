@@ -1,0 +1,65 @@
+# -*- mode: snippet -*-
+# name: wujishuqi3
+# key: wujishuqi3
+# --
+reg [  $0:0]   ${1:cnt0}    ;
+wire         add_${1:$(yas/substr text "[^: ]*")};
+wire         end_${1:$(yas/substr text "[^: ]*")};
+always @(posedge clk or negedge rst_n)
+begin
+   if(!rst_n)
+   begin
+      ${1:$(yas/substr text "[^: ]*")} <= 0;
+   end
+   else if(add_${1:$(yas/substr text "[^: ]*")})
+   begin
+      if(end_${1:$(yas/substr text "[^: ]*")})
+	${1:$(yas/substr text "[^: ]*")} <= 0;
+      else
+	${1:$(yas/substr text "[^: ]*")} <= ${1:$(yas/substr text "[^: ]*")} + 1;
+   end
+end
+assign add_${1:$(yas/substr text "[^: ]*")} = ;
+assign end_${1:$(yas/substr text "[^: ]*")} = add_${1:$(yas/substr text "[^: ]*")} && ${1:$(yas/substr text "[^: ]*")}== ;
+
+reg [  :0]   ${2:cnt1}    ;
+wire         add_${2:$(yas/substr text "[^: ]*")};
+wire         end_${2:$(yas/substr text "[^: ]*")};
+always @(posedge clk or negedge rst_n)
+begin 
+   if(!rst_n)
+   begin
+      ${2:$(yas/substr text "[^: ]*")} <= 0;
+   end
+   else if(add_${2:$(yas/substr text "[^: ]*")})
+   begin
+      if(end_${2:$(yas/substr text "[^: ]*")})
+	${2:$(yas/substr text "[^: ]*")} <= 0;
+      else
+	${2:$(yas/substr text "[^: ]*")} <= ${2:$(yas/substr text "[^: ]*")} + 1;
+   end
+end
+assign add_${2:$(yas/substr text "[^: ]*")} = end_${1:$(yas/substr text "[^: ]*")};
+assign end_${2:$(yas/substr text "[^: ]*")} = add_${2:$(yas/substr text "[^: ]*")} && ${2:$(yas/substr text "[^: ]*")}== ;
+
+reg [  :0]   ${3:cnt2}    ;
+wire         add_${3:$(yas/substr text "[^: ]*")};
+wire         end_${3:$(yas/substr text "[^: ]*")};
+always @(posedge clk or negedge rst_n)
+begin
+   if(!rst_n)
+   begin
+      ${3:$(yas/substr text "[^: ]*")} <= 0;
+   end
+   else if(add_${3:$(yas/substr text "[^: ]*")})
+   begin
+      if(end_${3:$(yas/substr text "[^: ]*")})
+	${3:$(yas/substr text "[^: ]*")} <= 0;
+      else
+	${3:$(yas/substr text "[^: ]*")} <= ${3:$(yas/substr text "[^: ]*")} + 1;
+   end
+end
+
+assign add_${3:$(yas/substr text "[^: ]*")} = end_${2:$(yas/substr text "[^: ]*")};
+assign end_${3:$(yas/substr text "[^: ]*")} = add_${3:$(yas/substr text "[^: ]*")} && ${3:$(yas/substr text "[^: ]*")}== ;
+$0
