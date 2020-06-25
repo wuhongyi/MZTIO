@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="prev" title="代码" href="code.html" /> 
+    <link rel="prev" title="Code" href="code.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,17 +84,17 @@
               <p class="caption"><span class="caption-text">GUIDE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">README</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webgui.html">网页控制界面</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">远程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webgui.html">WEB Control GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RemoteControl.html">remote control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu.html">ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Vivado.html">Vivado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiment.html">实验</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">代码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">demo version 01</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">控制寄存器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">寄存器状态</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">触发率监视</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">时间差谱测量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#control-register">Control register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-status">Register status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trigger-rate">Trigger rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-difference-measurement">Time difference measurement</a></li>
 </ul>
 </li>
 </ul>
@@ -163,16 +163,16 @@
             
   <div class="section" id="demo-version-01">
 <h1>demo version 01<a class="headerlink" href="#demo-version-01" title="永久链接至标题">¶</a></h1>
-<p>为了方便 GDDAQ 使用者熟悉 Pixie-16 模块的逻辑功能和 PKU 固件的特点，特别开发了本固件用于教学。用户可以在 <a class="reference external" href="https://github.com/wuhongyi/MZTIO/">https://github.com/wuhongyi/MZTIO/</a> 下载对应版本固件以及网页控制程序。</p>
-<p><em>version/01</em> 文件夹内包含固件 <em>xillydemo.bit</em> 和控制网页文件夹 <em>www</em>。<strong>本固件及其配套的控制程序仅可用于获取的学习，实验版本请与吴鸿毅联系。</strong></p>
-<p>MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符号表示：A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4。PKU 固件中 Pixie-16 模块上的 RJ-45 连接器输出 channel 0 和 channel 1 的多重性逻辑信号，分别用 _I 和 _II 表示。 则 A1_I 表示 MZTIO 第一个 RJ-45 端口连接的 Pixie-16 模块中 channel 0 的多重性逻辑。</p>
-<div class="section" id="id1">
-<h2>控制寄存器<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>In order to facilitate GDDAQ users to be familiar with the logic functions of Pixie-16 module and the characteristics of PKU firmware, this firmware was specially developed for teaching. Users can download the corresponding version firmware and web control program at <a class="reference external" href="https://github.com/wuhongyi/MZTIO/">https://github.com/wuhongyi/MZTIO/</a> .</p>
+<p>The <em>version/01</em> folder contains the firmware <em>xillydemo.bit</em> and the control web <em>www</em> folder. <strong>This firmware and its supporting control program can only be used for learning, please contact Hongyi Wu get the experimental version.</strong></p>
+<p>The top 12 RJ-45 connectors on the front panel of the MZTIO are represented by the following symbols from top to bottom: A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4. The RJ-45 connector on the Pixie-16 module in the PKU firmware outputs the multiplicity logic signals of channel 0 and channel 1, which are denoted by _I and _II, respectively. Then A1_I represents the multiplicity logic of channel 0 in the Pixie-16 module connected to the first RJ-45 port of MZTIO.</p>
+<div class="section" id="control-register">
+<h2>Control register<a class="headerlink" href="#control-register" title="永久链接至标题">¶</a></h2>
 <img alt="_images/version01_control.png" src="_images/version01_control.png" />
-<p>按钮 “Program FPGA” 用于初始化系统配置，当操作系统上电之后第一时间点击该按钮来完成系统的初始化。</p>
-<p>示波器监视部分用于选择 4 个 LEMO 输出通道的输出信号，下表中列出了当前所有可供选择的选项。点击 “Read” 按钮即可读取当前的设置参数，按钮 “Change” 用于将当前输入框的参数写入 FPGA 中。</p>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">4 channels LEMO output</span><a class="headerlink" href="#id5" title="永久链接至表格">¶</a></caption>
+<p>The button “Program FPGA” is used to initialize the system configuration. When the operating system is powered on, click this button to complete the system initialization.</p>
+<p>The monitoring part of the oscilloscope is used to select the output signals of the four LEMO output channels. The following table lists all currently available options. Click the “Read” button to read the current setting parameters. The button “Change” is used to write the parameters of the current input box to the FPGA.</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">4 channels LEMO output</span><a class="headerlink" href="#id1" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -362,9 +362,9 @@
 </tr>
 </tbody>
 </table>
-<p>寄存器设置部分用于读取或者修改寄存器设置参数。读取寄存器时，需要输入要读取寄存器的地址，然后点击按钮 “Read”；修改寄存器时，输入要修改寄存器的地址以及参数值，然后点击按钮“Write”。</p>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-text">control register</span><a class="headerlink" href="#id6" title="永久链接至表格">¶</a></caption>
+<p>The register setting part is used to read or modify register setting parameters. When reading the register, user need to enter the address of the register to be read, and then click the button “Read”; when modifying the register, input the address and parameter value of the register to be modified, and then click the button “Write”.</p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">control register</span><a class="headerlink" href="#id2" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 87%" />
@@ -491,25 +491,25 @@
 </tr>
 </tbody>
 </table>
-<p>网页也可用于 MZTIO 中 LINUX 操作系统的关闭，点击红色按钮 “SHUTDOWN OS” 将会立即关闭操作系统，此后将无法访问网页，需要重新上电才能开启操作系统。该按钮仅用于关闭机箱之前的关闭 MZTIO 操作系统。</p>
-<p>黄色按钮 “UPDATE FW” 用于升级固件并重启操作系统。需要将要升级的固件放置在 <em>/root</em> 目录下，然后点击按钮。如果固件升级成功，网页将会提示操作系统将在一分钟之后重启，如果升级失败，则提示找不到固件文件。</p>
+<p>The webpage can also be used to shut down the LINUX operating system in MZTIO. Clicking the red button “SHUTDOWN OS” will immediately shut down the operating system. After that, user will not be able to access the webpage. User need to power on again to start the operating system before use. This button is only used to shut down the MZTIO operating system before shutting down the chassis.</p>
+<p>The yellow button “UPDATE FW” is used to upgrade the firmware and restart the operating system. The firmware to be upgraded needs to be placed in the <em>/root</em> directory, and then click the button. If the firmware upgrade is successful, the web page will prompt that the operating system will restart after one minute, if the upgrade fails, it prompts that the firmware file cannot be found.</p>
 </div>
-<div class="section" id="id2">
-<h2>寄存器状态<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="register-status">
+<h2>Register status<a class="headerlink" href="#register-status" title="永久链接至标题">¶</a></h2>
 <img alt="_images/version01_register.png" src="_images/version01_register.png" />
-<p>该页面用于查看所设置的寄存器参数。</p>
+<p>This page is used to view the user setting register parameters.</p>
 </div>
-<div class="section" id="id3">
-<h2>触发率监视<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="trigger-rate">
+<h2>Trigger rate<a class="headerlink" href="#trigger-rate" title="永久链接至标题">¶</a></h2>
 <img alt="_images/version01_status.png" src="_images/version01_status.png" />
-<p>该页面用于实时的计数率监视。当前版本包含了 4 个 LEMO 输入通道的计数率，4 个 LEMO 输出通道的计数率，Multi_A-H 的计数率，OR_A-H 的计数率， 12 个 RJ-45 连接器输入多重性信号的计数率等。</p>
+<p>This page is used for real-time count rate monitoring. The current version includes the count rate of 4 LEMO input channels, 4 LEMO output channels, Multi_A-H, OR_A-H, and 12 RJ-45 connectors input (Pixie-16 output multiplicity).</p>
 </div>
-<div class="section" id="id4">
-<h2>时间差谱测量<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="time-difference-measurement">
+<h2>Time difference measurement<a class="headerlink" href="#time-difference-measurement" title="永久链接至标题">¶</a></h2>
 <img alt="_images/version01_timediff.png" src="_images/version01_timediff.png" />
-<p>该页面实现了任意两个逻辑信号的时间差谱测量（chA-chB，时间差大于 0 表示 chA 信号晚于 chB 信号）。按钮 “Read” 用于读取信号源参数；按钮 “Write” 用于更改信号源；按钮 “Clear” 用于清除 FPGA 中的时间差谱，当更改信号源后必须清除 FPGA 中的时间差谱。按钮 “Update” 可用于从 FPGA 中读取当前的时间差谱并显示在网页上。</p>
-<table class="colwidths-given docutils align-default" id="id7">
-<caption><span class="caption-text">time difference meaurement sources</span><a class="headerlink" href="#id7" title="永久链接至表格">¶</a></caption>
+<p>This page implements the time difference measurement of any two logic signals (chA-chB, a time difference greater than 0 means that the chA signal is later than the chB signal). The button “Read” is used to read the signal source parameters; the button “Write” is used to change the signal source; the button “Clear” is used to clear the time difference spectrum in the FPGA. When the signal source is changed, the time difference spectrum in the FPGA must be cleared. The button “Update” can be used to read the current time difference spectrum from the FPGA and display it on the web page.</p>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">time difference meaurement sources</span><a class="headerlink" href="#id3" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -630,7 +630,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="code.html" class="btn btn-neutral float-left" title="代码" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="code.html" class="btn btn-neutral float-left" title="Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

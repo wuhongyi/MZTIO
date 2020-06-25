@@ -3,40 +3,34 @@
 .. Description: 
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
-.. Created: 五 6月 19 20:43:45 2020 (+0800)
-.. Last-Updated: 四 6月 25 22:07:00 2020 (+0800)
+.. Created: 四 6月 25 21:43:40 2020 (+0800)
+.. Last-Updated: 四 6月 25 22:06:58 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 15
+..     Update #: 1
 .. URL: http://wuhongyi.cn 
 
 ##################################################
 demo version 01
 ##################################################
 
+In order to facilitate GDDAQ users to be familiar with the logic functions of Pixie-16 module and the characteristics of PKU firmware, this firmware was specially developed for teaching. Users can download the corresponding version firmware and web control program at https://github.com/wuhongyi/MZTIO/ .
+
+The *version/01* folder contains the firmware *xillydemo.bit* and the control web *www* folder. **This firmware and its supporting control program can only be used for learning, please contact Hongyi Wu get the experimental version.**
 
 
-为了方便 GDDAQ 使用者熟悉 Pixie-16 模块的逻辑功能和 PKU 固件的特点，特别开发了本固件用于教学。用户可以在 https://github.com/wuhongyi/MZTIO/ 下载对应版本固件以及网页控制程序。
-
-*version/01* 文件夹内包含固件 *xillydemo.bit* 和控制网页文件夹 *www*。**本固件及其配套的控制程序仅可用于获取的学习，实验版本请与吴鸿毅联系。**
-
-
-MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符号表示：A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4。PKU 固件中 Pixie-16 模块上的 RJ-45 连接器输出 channel 0 和 channel 1 的多重性逻辑信号，分别用 _I 和 _II 表示。 则 A1_I 表示 MZTIO 第一个 RJ-45 端口连接的 Pixie-16 模块中 channel 0 的多重性逻辑。
+The top 12 RJ-45 connectors on the front panel of the MZTIO are represented by the following symbols from top to bottom: A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4. The RJ-45 connector on the Pixie-16 module in the PKU firmware outputs the multiplicity logic signals of channel 0 and channel 1, which are denoted by _I and _II, respectively. Then A1_I represents the multiplicity logic of channel 0 in the Pixie-16 module connected to the first RJ-45 port of MZTIO.
 
 
 
 ============================================================
-控制寄存器
+Control register
 ============================================================
 
 .. image:: /_static/img/version01_control.png
 
+The button "Program FPGA" is used to initialize the system configuration. When the operating system is powered on, click this button to complete the system initialization.
 
-按钮 “Program FPGA” 用于初始化系统配置，当操作系统上电之后第一时间点击该按钮来完成系统的初始化。
-
-
-
-
-示波器监视部分用于选择 4 个 LEMO 输出通道的输出信号，下表中列出了当前所有可供选择的选项。点击 “Read” 按钮即可读取当前的设置参数，按钮 “Change” 用于将当前输入框的参数写入 FPGA 中。
+The monitoring part of the oscilloscope is used to select the output signals of the four LEMO output channels. The following table lists all currently available options. Click the "Read" button to read the current setting parameters. The button "Change" is used to write the parameters of the current input box to the FPGA.
 
 .. csv-table:: 4 channels LEMO output
    :header: "vaule", "signal"
@@ -103,9 +97,8 @@ MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符
    70, ets clock
 
 
+The register setting part is used to read or modify register setting parameters. When reading the register, user need to enter the address of the register to be read, and then click the button "Read"; when modifying the register, input the address and parameter value of the register to be modified, and then click the button "Write".
 
-   
-寄存器设置部分用于读取或者修改寄存器设置参数。读取寄存器时，需要输入要读取寄存器的地址，然后点击按钮 “Read”；修改寄存器时，输入要修改寄存器的地址以及参数值，然后点击按钮“Write”。
 
 .. csv-table:: control register
    :header: "vaule", "function"
@@ -151,40 +144,40 @@ MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符
    0x6F, OR_H
 
 
-   
-网页也可用于 MZTIO 中 LINUX 操作系统的关闭，点击红色按钮 “SHUTDOWN OS” 将会立即关闭操作系统，此后将无法访问网页，需要重新上电才能开启操作系统。该按钮仅用于关闭机箱之前的关闭 MZTIO 操作系统。
+The webpage can also be used to shut down the LINUX operating system in MZTIO. Clicking the red button "SHUTDOWN OS" will immediately shut down the operating system. After that, user will not be able to access the webpage. User need to power on again to start the operating system before use. This button is only used to shut down the MZTIO operating system before shutting down the chassis.
 
 
+The yellow button "UPDATE FW" is used to upgrade the firmware and restart the operating system. The firmware to be upgraded needs to be placed in the */root* directory, and then click the button. If the firmware upgrade is successful, the web page will prompt that the operating system will restart after one minute, if the upgrade fails, it prompts that the firmware file cannot be found.
 
-黄色按钮 “UPDATE FW” 用于升级固件并重启操作系统。需要将要升级的固件放置在 */root* 目录下，然后点击按钮。如果固件升级成功，网页将会提示操作系统将在一分钟之后重启，如果升级失败，则提示找不到固件文件。   
 
    
 ============================================================
-寄存器状态
+Register status
 ============================================================
 
 .. image:: /_static/img/version01_register.png
 
-该页面用于查看所设置的寄存器参数。
 
-
-
+This page is used to view the user setting register parameters.
+	   
 ============================================================
-触发率监视
+Trigger rate
 ============================================================
 
 .. image:: /_static/img/version01_status.png
 
-该页面用于实时的计数率监视。当前版本包含了 4 个 LEMO 输入通道的计数率，4 个 LEMO 输出通道的计数率，Multi_A-H 的计数率，OR_A-H 的计数率， 12 个 RJ-45 连接器输入多重性信号的计数率等。
 
-
-============================================================
-时间差谱测量
-============================================================
-
-.. image:: /_static/img/version01_timediff.png
+This page is used for real-time count rate monitoring. The current version includes the count rate of 4 LEMO input channels, 4 LEMO output channels, Multi_A-H, OR_A-H, and 12 RJ-45 connectors input (Pixie-16 output multiplicity).
 	   
-该页面实现了任意两个逻辑信号的时间差谱测量（chA-chB，时间差大于 0 表示 chA 信号晚于 chB 信号）。按钮 “Read” 用于读取信号源参数；按钮 “Write” 用于更改信号源；按钮 “Clear” 用于清除 FPGA 中的时间差谱，当更改信号源后必须清除 FPGA 中的时间差谱。按钮 “Update” 可用于从 FPGA 中读取当前的时间差谱并显示在网页上。
+============================================================
+Time difference measurement
+============================================================
+	   
+.. image:: /_static/img/version01_timediff.png
+
+This page implements the time difference measurement of any two logic signals (chA-chB, a time difference greater than 0 means that the chA signal is later than the chB signal). The button "Read" is used to read the signal source parameters; the button "Write" is used to change the signal source; the button "Clear" is used to clear the time difference spectrum in the FPGA. When the signal source is changed, the time difference spectrum in the FPGA must be cleared. The button “Update” can be used to read the current time difference spectrum from the FPGA and display it on the web page.
+
+	   
 
 .. csv-table:: time difference meaurement sources
    :header: "vaule", "signal"
@@ -222,9 +215,6 @@ MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符
    29, DEBUG1
    30, DEBUG2
    31, DEBUG3
-
-
-
 
 
 

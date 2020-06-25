@@ -23,3 +23,4 @@ Welcome to MZTIO's documentation!
    Vivado.rst
    experiment.rst
    code.rst
+   version01.rst
