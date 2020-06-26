@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 五 6月 19 20:43:45 2020 (+0800)
-.. Last-Updated: 五 6月 26 15:06:10 2020 (+0800)
+.. Last-Updated: 五 6月 26 17:20:56 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 16
+..     Update #: 19
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -34,6 +34,9 @@ MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符
 按钮 “Program FPGA” 用于初始化系统配置，当操作系统上电之后第一时间点击该按钮来完成系统的初始化。
 
 可以保存 5 个实验设置参数，分别为 “Experimental setup 1-5”。通过修改寄存器进行实验逻辑配置之后，可以点击按钮 “Save” 保存，将会把当前 FPGA 寄存器参数保存到选定的实验配置中。按钮 “Load” 用于将选择的实验配置加载到 FPGA 中。
+
+
+4个 LEMO 输入通道分别命名为 LEMO1，LEMO2，LEMO3，LEMO4。其中 LEMO4 连接机箱背板的“run inhibit”信号，当输入信号为高电平时，获取系统停止运行。
 
 
 示波器监视部分用于选择 4 个 LEMO 输出通道的输出信号，下表中列出了当前所有可供选择的选项。点击 “Read” 按钮即可读取当前的设置参数，按钮 “Change” 用于将当前输入框的参数写入 FPGA 中。
@@ -101,6 +104,14 @@ MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符
    68, 10k clock
    69, 1k clock
    70, ets clock
+   72, AND_A
+   73, AND_B 	
+   74, AND_C 	
+   75, AND_D 	
+   76, AND_E 	
+   77, AND_F 	
+   78, AND_G 	
+   79, AND_H 	
 
 
 
@@ -149,7 +160,17 @@ MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符
    0x6D, OR_F
    0x6E, OR_G
    0x6F, OR_H
+   0x70, AND_A([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:OR_A 25:OR_B 26:OR_C 27:OR_D 28:OR_E 29:OR_F 30:OR_G 31:OR_H)
+   0x71, AND_B
+   0x72, AND_C
+   0x73, AND_D
+   0x74, AND_E
+   0x75, AND_F
+   0x76, AND_G
+   0x77, AND_H
 
+
+   
 
    
 网页也可用于 MZTIO 中 LINUX 操作系统的关闭，点击红色按钮 “SHUTDOWN OS” 将会立即关闭操作系统，此后将无法访问网页，需要重新上电才能开启操作系统。该按钮仅用于关闭机箱之前的关闭 MZTIO 操作系统。

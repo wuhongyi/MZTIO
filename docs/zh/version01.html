@@ -171,6 +171,7 @@
 <img alt="_images/version01_control.png" src="_images/version01_control.png" />
 <p>按钮 “Program FPGA” 用于初始化系统配置，当操作系统上电之后第一时间点击该按钮来完成系统的初始化。</p>
 <p>可以保存 5 个实验设置参数，分别为 “Experimental setup 1-5”。通过修改寄存器进行实验逻辑配置之后，可以点击按钮 “Save” 保存，将会把当前 FPGA 寄存器参数保存到选定的实验配置中。按钮 “Load” 用于将选择的实验配置加载到 FPGA 中。</p>
+<p>4个 LEMO 输入通道分别命名为 LEMO1，LEMO2，LEMO3，LEMO4。其中 LEMO4 连接机箱背板的“run inhibit”信号，当输入信号为高电平时，获取系统停止运行。</p>
 <p>示波器监视部分用于选择 4 个 LEMO 输出通道的输出信号，下表中列出了当前所有可供选择的选项。点击 “Read” 按钮即可读取当前的设置参数，按钮 “Change” 用于将当前输入框的参数写入 FPGA 中。</p>
 <table class="colwidths-given docutils align-default" id="id5">
 <caption><span class="caption-text">4 channels LEMO output</span><a class="headerlink" href="#id5" title="永久链接至表格">¶</a></caption>
@@ -361,6 +362,30 @@
 <tr class="row-even"><td><p>70</p></td>
 <td><p>ets clock</p></td>
 </tr>
+<tr class="row-odd"><td><p>72</p></td>
+<td><p>AND_A</p></td>
+</tr>
+<tr class="row-even"><td><p>73</p></td>
+<td><p>AND_B</p></td>
+</tr>
+<tr class="row-odd"><td><p>74</p></td>
+<td><p>AND_C</p></td>
+</tr>
+<tr class="row-even"><td><p>75</p></td>
+<td><p>AND_D</p></td>
+</tr>
+<tr class="row-odd"><td><p>76</p></td>
+<td><p>AND_E</p></td>
+</tr>
+<tr class="row-even"><td><p>77</p></td>
+<td><p>AND_F</p></td>
+</tr>
+<tr class="row-odd"><td><p>78</p></td>
+<td><p>AND_G</p></td>
+</tr>
+<tr class="row-even"><td><p>79</p></td>
+<td><p>AND_H</p></td>
+</tr>
 </tbody>
 </table>
 <p>寄存器设置部分用于读取或者修改寄存器设置参数。读取寄存器时，需要输入要读取寄存器的地址，然后点击按钮 “Read”；修改寄存器时，输入要修改寄存器的地址以及参数值，然后点击按钮“Write”。</p>
@@ -489,6 +514,30 @@
 </tr>
 <tr class="row-odd"><td><p>0x6F</p></td>
 <td><p>OR_H</p></td>
+</tr>
+<tr class="row-even"><td><p>0x70</p></td>
+<td><p>AND_A([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:OR_A 25:OR_B 26:OR_C 27:OR_D 28:OR_E 29:OR_F 30:OR_G 31:OR_H)</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x71</p></td>
+<td><p>AND_B</p></td>
+</tr>
+<tr class="row-even"><td><p>0x72</p></td>
+<td><p>AND_C</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x73</p></td>
+<td><p>AND_D</p></td>
+</tr>
+<tr class="row-even"><td><p>0x74</p></td>
+<td><p>AND_E</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x75</p></td>
+<td><p>AND_F</p></td>
+</tr>
+<tr class="row-even"><td><p>0x76</p></td>
+<td><p>AND_G</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x77</p></td>
+<td><p>AND_H</p></td>
 </tr>
 </tbody>
 </table>

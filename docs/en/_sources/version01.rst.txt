@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 四 6月 25 21:43:40 2020 (+0800)
-.. Last-Updated: 五 6月 26 15:06:09 2020 (+0800)
+.. Last-Updated: 五 6月 26 17:21:46 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 2
+..     Update #: 4
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -32,7 +32,7 @@ The button "Program FPGA" is used to initialize the system configuration. When t
 
 Five experimental setup parameters can be saved, which are "Experimental setup 1-5". After modifying the register to configure the experiment logic, user can click the "Save" button to save, and the current FPGA register parameters will be saved to the selected experiment configuration. The button "Load" is used to load the selected experiment configuration into the FPGA.
 
-
+The four LEMO input channels are named LEMO1, LEMO2, LEMO3, LEMO4. The LEMO4 is connected to the "run inhibit" signal on the back panel of the chassis. When the input signal is high, the acquisition system stops running.
 
 The monitoring part of the oscilloscope is used to select the output signals of the four LEMO output channels. The following table lists all currently available options. Click the "Read" button to read the current setting parameters. The button "Change" is used to write the parameters of the current input box to the FPGA.
 
@@ -99,7 +99,16 @@ The monitoring part of the oscilloscope is used to select the output signals of 
    68, 10k clock
    69, 1k clock
    70, ets clock
+   72, AND_A
+   73, AND_B 	
+   74, AND_C 	
+   75, AND_D 	
+   76, AND_E 	
+   77, AND_F 	
+   78, AND_G 	
+   79, AND_H
 
+   
 
 The register setting part is used to read or modify register setting parameters. When reading the register, user need to enter the address of the register to be read, and then click the button "Read"; when modifying the register, input the address and parameter value of the register to be modified, and then click the button "Write".
 
@@ -146,7 +155,17 @@ The register setting part is used to read or modify register setting parameters.
    0x6D, OR_F
    0x6E, OR_G
    0x6F, OR_H
+   0x70, AND_A([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:OR_A 25:OR_B 26:OR_C 27:OR_D 28:OR_E 29:OR_F 30:OR_G 31:OR_H)
+   0x71, AND_B
+   0x72, AND_C
+   0x73, AND_D
+   0x74, AND_E
+   0x75, AND_F
+   0x76, AND_G
+   0x77, AND_H
 
+
+   
 
 The webpage can also be used to shut down the LINUX operating system in MZTIO. Clicking the red button "SHUTDOWN OS" will immediately shut down the operating system. After that, user will not be able to access the webpage. User need to power on again to start the operating system before use. This button is only used to shut down the MZTIO operating system before shutting down the chassis.
 
