@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 四 6月 25 21:43:40 2020 (+0800)
-.. Last-Updated: 四 6月 25 22:06:58 2020 (+0800)
+.. Last-Updated: 五 6月 26 15:06:09 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 1
+..     Update #: 2
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -29,6 +29,10 @@ Control register
 .. image:: /_static/img/version01_control.png
 
 The button "Program FPGA" is used to initialize the system configuration. When the operating system is powered on, click this button to complete the system initialization.
+
+Five experimental setup parameters can be saved, which are "Experimental setup 1-5". After modifying the register to configure the experiment logic, user can click the "Save" button to save, and the current FPGA register parameters will be saved to the selected experiment configuration. The button "Load" is used to load the selected experiment configuration into the FPGA.
+
+
 
 The monitoring part of the oscilloscope is used to select the output signals of the four LEMO output channels. The following table lists all currently available options. Click the "Read" button to read the current setting parameters. The button "Change" is used to write the parameters of the current input box to the FPGA.
 
