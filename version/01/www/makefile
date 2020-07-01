@@ -1,4 +1,4 @@
-TARGET = progfippi.cgi runstats status.cgi register.cgi clockprog.cgi monitordaq cgireadoscilloscope.cgi cgiwriteoscilloscope.cgi cgireadregister.cgi cgiwriteregister.cgi cgireadtimediffch.cgi cgiwritetimediffch.cgi cgicleartimediff.cgi cgiupdatetimediff.cgi shutdown.cgi updatefirmware.cgi 
+TARGET = progfippi.cgi runstats status.cgi register.cgi clockprog.cgi monitordaq cgireadoscilloscope.cgi cgiwriteoscilloscope.cgi cgireadregister.cgi cgiwriteregister.cgi cgireadtimediffch.cgi cgiwritetimediffch.cgi cgicleartimediff.cgi cgiupdatetimediff.cgi shutdown.cgi updatefirmware.cgi cgisavesettings.cgi
 LIBS = -lm 
 CFLAGS = -std=c99 -Wall
 CXXFLAGS = -Wall -O3 -DNDEBUG   -pthread -std=c++11
@@ -11,7 +11,7 @@ BOOSTLIBS = -L/usr/local/lib -lboost_date_time -lboost_chrono -lboost_atomic -lb
 default: $(TARGET) cgisudo
 all: default
 
-cgisudo: shutdown.cgi updatefirmware.cgi
+cgisudo: shutdown.cgi updatefirmware.cgi cgisavesettings.cgi
 	$(shell sh cgisudo.sh)
 
 %.o: %.c 
@@ -49,6 +49,9 @@ cgireadregister.cgi: cgireadregister.o
 
 cgiwriteregister.cgi: cgiwriteregister.o
 	g++ cgiwriteregister.o $(LIBS) -o cgiwriteregister.cgi
+
+cgisavesettings.cgi:  cgisavesettings.o
+	g++ cgisavesettings.o $(LIBS) -o cgisavesettings.cgi
 
 runstats: runstats.o MZTIOCommon.o MZTIODefs.h
 	gcc runstats.o MZTIOCommon.o $(LIBS) -o runstats

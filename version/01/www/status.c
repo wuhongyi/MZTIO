@@ -4,9 +4,9 @@
  * Author: Hongyi Wu(吴鸿毅)
  * Email: wuhongyi@qq.com 
  * Created: Sat Jul 20 04:58:39 2019 (+0000)
- * Last-Updated: Fri Jun 12 22:37:13 2020 (+0800)
+ * Last-Updated: Wed Jul  1 12:30:11 2020 (+0800)
  *           By: Hongyi Wu(吴鸿毅)
- *     Update #: 67
+ *     Update #: 71
  * URL: http://wuhongyi.cn */
 
 #include <stdio.h>
@@ -174,24 +174,24 @@ int read_print_runstats(volatile unsigned int *mapped)
 
   struct dataflag data3[N_PL_RS_PAR] =
     {
-      {"Front Trigger",	    "%u",	    0x1A0},   //00
-      {"Back Trigger",	    "%u",	    0x1A1},   //01
-      {"Front || Back",	    "%u",	    0x1A2},   //02
-      {"Front && Back",	    "%u",	    0x1A3},   //03
-      {"reserved",	    "%u",	    0x000},   //04
-      {"reserved",	    "%u",	    0x000},   //05	
-      {"reserved",	    "%u",	    0x000},   //06
-      {"reserved",	    "%u",	    0x000},   //07
-      {"reserved",	    "%u",	    0x000},   //08
-      {"reserved",	    "%u",	    0x000},   //09
-      {"reserved",	    "%u",	    0x000},   //10
-      {"reserved",	    "%u",	    0x000},   //11
-      {"reserved",	    "%u",	    0x000},   //12
-      {"reserved",	    "%u",	    0x000},   //13
-      {"reserved",	    "%u",	    0x000},   //14
-      {"reserved",	    "%u",	    0x000},   //15
-      {"reserved",	    "%u",	    0x000},	  //16 
-      {"reserved",	    "%u",	    0x000},	  //17 
+      {"Multi_A",	    "%u",	    0x1A0},   //00
+      {"Multi_B",	    "%u",	    0x1A1},   //01
+      {"Multi_C",	    "%u",	    0x1A2},   //02
+      {"Multi_D",	    "%u",	    0x1A3},   //03
+      {"Multi_E",	    "%u",	    0x1A4},   //04
+      {"Multi_F",	    "%u",	    0x1A5},   //05	
+      {"Multi_G",	    "%u",	    0x1A6},   //06
+      {"Multi_H",	    "%u",	    0x1A7},   //07
+      {"OR_A",	    "%u",	    0x1A8},   //08
+      {"OR_B",	    "%u",	    0x1A9},   //09
+      {"OR_C",	    "%u",	    0x1AA},   //10
+      {"OR_D",	    "%u",	    0x1AB},   //11
+      {"OR_E",	    "%u",	    0x1AC},   //12
+      {"OR_F",	    "%u",	    0x1AD},   //13
+      {"OR_G",	    "%u",	    0x1AE},   //14
+      {"OR_H",	    "%u",	    0x1AF},   //15
+      {"AND_A",	    "%u",	    0x1B0},	  //16 
+      {"AND_B",	    "%u",	    0x1B1},	  //17 
       {"reserved",	    "%u",	    0x000},	  //18 
       {"reserved",	    "%u",	    0x000},	  //19
       {"reserved",	    "%u",	    0x000},	  //20 

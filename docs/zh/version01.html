@@ -258,16 +258,16 @@
 <td><p>C4_II</p></td>
 </tr>
 <tr class="row-even"><td><p>24</p></td>
-<td><p>DPMFULLOUT</p></td>
+<td><p>LEMO input 1</p></td>
 </tr>
 <tr class="row-odd"><td><p>25</p></td>
-<td><p>SYNCOUT</p></td>
+<td><p>LEMO input 2</p></td>
 </tr>
 <tr class="row-even"><td><p>26</p></td>
-<td><p>ETLOCAL</p></td>
+<td><p>LEMO input 3</p></td>
 </tr>
 <tr class="row-odd"><td><p>27</p></td>
-<td><p>FTLOCAL</p></td>
+<td><p>LEMO input 4</p></td>
 </tr>
 <tr class="row-even"><td><p>28</p></td>
 <td><p>DEBUG0</p></td>
@@ -281,17 +281,29 @@
 <tr class="row-odd"><td><p>31</p></td>
 <td><p>DEBUG3</p></td>
 </tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>10M clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>33</p></td>
+<td><p>1M clock</p></td>
+</tr>
 <tr class="row-even"><td><p>34</p></td>
-<td><p>LEMO input 1</p></td>
+<td><p>100k clock</p></td>
 </tr>
 <tr class="row-odd"><td><p>35</p></td>
-<td><p>LEMO input 2</p></td>
+<td><p>10k clock</p></td>
 </tr>
 <tr class="row-even"><td><p>36</p></td>
-<td><p>LEMO input 3</p></td>
+<td><p>1k clock</p></td>
 </tr>
 <tr class="row-odd"><td><p>37</p></td>
-<td><p>LEMO input 4</p></td>
+<td><p>ets clock</p></td>
+</tr>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>AND_A</p></td>
+</tr>
+<tr class="row-odd"><td><p>41</p></td>
+<td><p>AND_B</p></td>
 </tr>
 <tr class="row-even"><td><p>48</p></td>
 <td><p>multi_A</p></td>
@@ -341,51 +353,6 @@
 <tr class="row-odd"><td><p>63</p></td>
 <td><p>OR_H</p></td>
 </tr>
-<tr class="row-even"><td><p>64</p></td>
-<td><p>100M clock</p></td>
-</tr>
-<tr class="row-odd"><td><p>65</p></td>
-<td><p>10M clock</p></td>
-</tr>
-<tr class="row-even"><td><p>66</p></td>
-<td><p>1M clock</p></td>
-</tr>
-<tr class="row-odd"><td><p>67</p></td>
-<td><p>100k clock</p></td>
-</tr>
-<tr class="row-even"><td><p>68</p></td>
-<td><p>10k clock</p></td>
-</tr>
-<tr class="row-odd"><td><p>69</p></td>
-<td><p>1k clock</p></td>
-</tr>
-<tr class="row-even"><td><p>70</p></td>
-<td><p>ets clock</p></td>
-</tr>
-<tr class="row-odd"><td><p>72</p></td>
-<td><p>AND_A</p></td>
-</tr>
-<tr class="row-even"><td><p>73</p></td>
-<td><p>AND_B</p></td>
-</tr>
-<tr class="row-odd"><td><p>74</p></td>
-<td><p>AND_C</p></td>
-</tr>
-<tr class="row-even"><td><p>75</p></td>
-<td><p>AND_D</p></td>
-</tr>
-<tr class="row-odd"><td><p>76</p></td>
-<td><p>AND_E</p></td>
-</tr>
-<tr class="row-even"><td><p>77</p></td>
-<td><p>AND_F</p></td>
-</tr>
-<tr class="row-odd"><td><p>78</p></td>
-<td><p>AND_G</p></td>
-</tr>
-<tr class="row-even"><td><p>79</p></td>
-<td><p>AND_H</p></td>
-</tr>
 </tbody>
 </table>
 <p>寄存器设置部分用于读取或者修改寄存器设置参数。读取寄存器时，需要输入要读取寄存器的地址，然后点击按钮 “Read”；修改寄存器时，输入要修改寄存器的地址以及参数值，然后点击按钮“Write”。</p>
@@ -402,52 +369,52 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0x30</p></td>
-<td><p>DelayAndExtend1([15:0]delay [31:16]stretch)</p></td>
+<td><p>DelayAndExtend1(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x31</p></td>
-<td><p>DelayAndExtend2</p></td>
+<td><p>DelayAndExtend2(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x32</p></td>
-<td><p>DelayAndExtend3</p></td>
+<td><p>DelayAndExtend3(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x33</p></td>
-<td><p>DelayAndExtend4</p></td>
+<td><p>DelayAndExtend4(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x34</p></td>
-<td><p>DelayAndExtend5</p></td>
+<td><p>DelayAndExtend5(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x35</p></td>
-<td><p>DelayAndExtend6</p></td>
+<td><p>DelayAndExtend6(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x36</p></td>
-<td><p>DelayAndExtend7</p></td>
+<td><p>DelayAndExtend7(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x37</p></td>
-<td><p>DelayAndExtend8</p></td>
+<td><p>DelayAndExtend8(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x38</p></td>
-<td><p>DelayAndExtend9</p></td>
+<td><p>DelayAndExtend9(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x39</p></td>
-<td><p>DelayAndExtend10</p></td>
+<td><p>DelayAndExtend10(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x3A</p></td>
-<td><p>DelayAndExtend11</p></td>
+<td><p>DelayAndExtend11(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x3B</p></td>
-<td><p>DelayAndExtend12</p></td>
+<td><p>DelayAndExtend12(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x3C</p></td>
-<td><p>DelayAndExtend13</p></td>
+<td><p>DelayAndExtend13(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x3D</p></td>
-<td><p>DelayAndExtend14</p></td>
+<td><p>DelayAndExtend14(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x3E</p></td>
-<td><p>DelayAndExtend15</p></td>
+<td><p>DelayAndExtend15(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x3F</p></td>
-<td><p>DelayAndExtend16</p></td>
+<td><p>DelayAndExtend16(not used now [15:0]delay [31:16]stretch)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x45</p></td>
 <td><p>external timestamp clock(0:10M 1:1M 2:100k 3: 10k 4:1k)</p></td>
@@ -456,92 +423,74 @@
 <td><p>TriggerModeFP(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x51</p></td>
-<td><p>TriggerModeBP1</p></td>
+<td><p>TriggerModeBP1(not used now)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x52</p></td>
-<td><p>TriggerModeBP2</p></td>
+<td><p>TriggerModeBP2(not used now)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x53</p></td>
-<td><p>TriggerModeBP3</p></td>
+<td><p>TriggerModeBP3(not used now)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x54</p></td>
-<td><p>TriggerModeBP4</p></td>
+<td><p>TriggerModeBP4(not used now)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x60</p></td>
 <td><p>multi_A([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x61</p></td>
-<td><p>multi_B</p></td>
+<td><p>multi_B([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x62</p></td>
-<td><p>multi_C</p></td>
+<td><p>multi_C([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x63</p></td>
-<td><p>multi_D</p></td>
+<td><p>multi_D([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x64</p></td>
-<td><p>multi_E</p></td>
+<td><p>multi_E([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x65</p></td>
-<td><p>multi_F</p></td>
+<td><p>multi_F([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x66</p></td>
-<td><p>multi_G</p></td>
+<td><p>multi_G([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x67</p></td>
-<td><p>multi_H</p></td>
+<td><p>multi_H([23:0] bit mask 0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II  [31:24] multi)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x68</p></td>
 <td><p>OR_A([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x69</p></td>
-<td><p>OR_B</p></td>
+<td><p>OR_B([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x6A</p></td>
-<td><p>OR_C</p></td>
+<td><p>OR_C([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x6B</p></td>
-<td><p>OR_D</p></td>
+<td><p>OR_D([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x6C</p></td>
-<td><p>OR_E</p></td>
+<td><p>OR_E([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x6D</p></td>
-<td><p>OR_F</p></td>
+<td><p>OR_F([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x6E</p></td>
-<td><p>OR_G</p></td>
+<td><p>OR_G([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x6F</p></td>
-<td><p>OR_H</p></td>
+<td><p>OR_H([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:multi_C 27:multi_D 28:multi_E 29:multi_F 30:multi_G 31:multi_H)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x70</p></td>
 <td><p>AND_A([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:OR_A 25:OR_B 26:OR_C 27:OR_D 28:OR_E 29:OR_F 30:OR_G 31:OR_H)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x71</p></td>
-<td><p>AND_B</p></td>
-</tr>
-<tr class="row-even"><td><p>0x72</p></td>
-<td><p>AND_C</p></td>
-</tr>
-<tr class="row-odd"><td><p>0x73</p></td>
-<td><p>AND_D</p></td>
-</tr>
-<tr class="row-even"><td><p>0x74</p></td>
-<td><p>AND_E</p></td>
-</tr>
-<tr class="row-odd"><td><p>0x75</p></td>
-<td><p>AND_F</p></td>
-</tr>
-<tr class="row-even"><td><p>0x76</p></td>
-<td><p>AND_G</p></td>
-</tr>
-<tr class="row-odd"><td><p>0x77</p></td>
-<td><p>AND_H</p></td>
+<td><p>AND_B([31:0] bit mask  0:A1_I 1:A1_II 2:A2_I 3:A2_II 4:A3_I 5:A3_II 6:A4_I 7:A4_II 8:B1_I 9:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:OR_A 25:OR_B 26:OR_C 27:OR_D 28:OR_E 29:OR_F 30:OR_G 31:OR_H)</p></td>
 </tr>
 </tbody>
 </table>
-<p>网页也可用于 MZTIO 中 LINUX 操作系统的关闭，点击红色按钮 “SHUTDOWN OS” 将会立即关闭操作系统，此后将无法访问网页，需要重新上电才能开启操作系统。该按钮仅用于关闭机箱之前的关闭 MZTIO 操作系统。</p>
+<p>网页也可用于 MZTIO 中 LINUX 操作系统的关闭，点击红色按钮 “SHUTDOWN OS” 将会弹出密码输入框，输入正确的密码后将立即关闭操作系统，此后将无法访问网页，需要重新上电才能开启操作系统。该按钮仅用于关闭机箱之前的关闭 MZTIO 操作系统。</p>
 <p>黄色按钮 “UPDATE FW” 用于升级固件并重启操作系统。需要将要升级的固件放置在 <em>/root</em> 目录下，然后点击按钮。如果固件升级成功，网页将会提示操作系统将在一分钟之后重启，如果升级失败，则提示找不到固件文件。</p>
 </div>
 <div class="section" id="id2">
@@ -665,6 +614,72 @@
 </tr>
 <tr class="row-odd"><td><p>31</p></td>
 <td><p>DEBUG3</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>LEMO input 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>33</p></td>
+<td><p>LEMO input 2</p></td>
+</tr>
+<tr class="row-even"><td><p>34</p></td>
+<td><p>LEMO input 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>35</p></td>
+<td><p>LEMO input 4</p></td>
+</tr>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>AND_A</p></td>
+</tr>
+<tr class="row-odd"><td><p>41</p></td>
+<td><p>AND_B</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>multi_A</p></td>
+</tr>
+<tr class="row-odd"><td><p>49</p></td>
+<td><p>multi_B</p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>multi_C</p></td>
+</tr>
+<tr class="row-odd"><td><p>51</p></td>
+<td><p>multi_D</p></td>
+</tr>
+<tr class="row-even"><td><p>52</p></td>
+<td><p>multi_E</p></td>
+</tr>
+<tr class="row-odd"><td><p>53</p></td>
+<td><p>multi_F</p></td>
+</tr>
+<tr class="row-even"><td><p>54</p></td>
+<td><p>multi_G</p></td>
+</tr>
+<tr class="row-odd"><td><p>55</p></td>
+<td><p>multi_H</p></td>
+</tr>
+<tr class="row-even"><td><p>56</p></td>
+<td><p>OR_A</p></td>
+</tr>
+<tr class="row-odd"><td><p>57</p></td>
+<td><p>OR_B</p></td>
+</tr>
+<tr class="row-even"><td><p>58</p></td>
+<td><p>OR_C</p></td>
+</tr>
+<tr class="row-odd"><td><p>59</p></td>
+<td><p>OR_D</p></td>
+</tr>
+<tr class="row-even"><td><p>60</p></td>
+<td><p>OR_E</p></td>
+</tr>
+<tr class="row-odd"><td><p>61</p></td>
+<td><p>OR_F</p></td>
+</tr>
+<tr class="row-even"><td><p>62</p></td>
+<td><p>OR_G</p></td>
+</tr>
+<tr class="row-odd"><td><p>63</p></td>
+<td><p>OR_H</p></td>
 </tr>
 </tbody>
 </table>

@@ -11,13 +11,20 @@
     <meta name="revised" content="Hongyi Wu, 05/27/19">
 
     <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
-    <link style="text/css" rel="stylesheet" href="static/css/bootstrap.css">  
+    <script type="text/javascript" src="static/js/popper.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    
+
+    <!-- <link style="text/css" rel="stylesheet" href="static/css/bootstrap.css"> -->
     <!--导入基本样式的压缩-->
     <link style="text/css" rel="stylesheet" href="static/css/bootstrap.min.css">
     <!--导入主题样式  注意：顺序 不可变-->
     <link style="text/css" rel="stylesheet" href="static/css/bootstrap-theme.css">
 
+    <link style="text/css" rel="stylesheet" href="static/css/bootstrap-select.min.css">
+    <script type="text/javascript" src="static/js/bootstrap-select.min.js"></script>
 
+    
     <style type="text/css">
       div {
     	  margin: auto;/*居中设置*/
@@ -32,11 +39,30 @@
     <script>
       $(function(){
 
-      $("#shutdownos").click(function(){
+      $('#shutdownos').on('click', function(){
+      $('#qrcode').modal('show');
+      });
+      $('#qrcode').on('show.bs.modal', function (event) {
+      var modal = $(this);  //get modal itself
+      <!-- modal.find('.modal-body #message').text('your message'); -->
+      <!-- modal.find('.modal-body #scan').attr("src", 'image src'); -->
+      });
+
+
+
+      
+      $("#popup").click(function(){
+      if($("#sdpassswd").val()!=null && $("#sdpassswd").val() == "shutdown")
+      {
       $.get("shutdown.cgi", function (data) {
       alert(data);	    
-      })  		// end get
-      });		   // end button click refresh 
+      })
+      }
+      else
+      {
+      alert("passwd error!");
+      }
+      });	
 
       $("#updatefirmware").click(function(){
       $.get("updatefirmware.cgi", function (data) {
@@ -45,12 +71,27 @@
       });		   // end button click refresh 
 
       
-      $("#init").click(function(){		// function for Initialize button
-      $.get("progfippi.cgi", function (data) {	//jQuery get function executes progfippi on MZTIO -> settings file applied
+      $("#init").click(function(){//init
+      $.get("progfippi.cgi",{v0:"0"}, function (data) {
       alert(data);	    
-      })  		// end get
-      });		   // end button click refresh      
+      })
+      });    
 
+      $("#savesettingsfile").click(function(){
+      $.get("cgisavesettings.cgi",{v0:$("#expsetup").selectpicker().val()}, function (data) {
+      alert(data);
+      // alert($("#expsetup").selectpicker().val());
+      })  		// end get
+      });		   // end button click refresh 
+
+      $("#loadsettingsfile").click(function(){
+      $.get("progfippi.cgi",{v0:$("#expsetup").selectpicker().val()}, function (data) {
+      alert(data);
+      // alert($("#expsetup").selectpicker().val());
+      })  		// end get
+      });		   // end button click refresh 
+
+      
 
       $(".readosc").click(function(){// function for  read settings button
       $.get("cgireadoscilloscope.cgi", function (data) {	   //jQuery get function executes cgireadsettings on Pixie-Net -> return data is list of analog settings
@@ -129,25 +170,55 @@
     <!-- nav导航栏 -->
     <nav style="font-size: 22px;">
 	<ul class="nav nav-tabs">
-	  <li><a href="index.html" data-toggle="tab">Main</a></li>
-	  <li class="active"><a href="control.html" data-toggle="tab">Control</a></li>
-	  <li><a href="register.html" data-toggle="tab">Register</a></li>
-	  <li><a href="status.html" data-toggle="tab">Status</a></li>
-	  <li><a href="timediff.html" data-toggle="tab">TimeDiff</a></li>
-	  <li><a href="log.html" data-toggle="tab">Log</a></li>
-	  <li><a href="support.html" data-toggle="tab">Support</a></li>
+	  <li><a href="index.html" >Main</a></li>
+	  <li class="active"><a href="control.html" >Control</a></li>
+	  <li><a href="register.html" >Register</a></li>
+	  <li><a href="status.html" >Status</a></li>
+	  <li><a href="timediff.html" >TimeDiff</a></li>
+	  <li><a href="log.html" >Log</a></li>
+	  <li><a href="support.html" >Support</a></li>
 	</ul>
     </nav>
     
     <!-- section内容块 -->
     <div class="content" style="width: 1200px;">
 
+
+      <div class="modal fade" id="qrcode" tabindex="-1" role="dialog" aria-labelledby="information">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+		<span>&times;</span>
+              </button>
+              <h4 class="modal-title">SHUTDOWN the OS?</h4>
+	    </div>
+	    <div class="modal-body" style="text-align: center">
+              <!-- <p id="message"> aaasssdddfff</p> -->
+	      <p>Enter the password 'shutdown' to shutdown the OS.</p>
+	      Passwd: <input type="text" size="50" id="sdpassswd" value="">
+	      <p></p>
+              <button id="popup" class="btn  btn-primary btn-lg btn-block">Enter</button>
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+      
       <div id="" class="" style="width: 1200px; height: 120px; vertical-align: middle; display: table-cell; float: left;">
 	<h2 style=" margin-top:15px; font-size:20px; font-weight:normal; border-bottom:1px solid #ff9040"> System Initialization </h2>
-	<p>When you turn on MZTIO, it should be initialized immediately.</p>
+	<p>When you turn on MZTIO, it should be initialized immediately. You can also save the current experiment settings or load settings.</p>
 	<p> </p>
-	<b>Initialize:</b>
-	<input id='init' type="button" class="btn btn-primary btn-sm" value="Program FPGA">
+	<b>Initialize:</b> <input id='init' type="button" class="btn btn-info btn-sm" value="Program FPGA"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<select id="expsetup" class="selectpicker">
+	  <option value="1">Experimental setup 1</option>
+	  <option value="2">Experimental setup 2</option>
+	  <option value="3">Experimental setup 3</option>
+	  <option value="4">Experimental setup 4</option>
+	  <option value="5">Experimental setup 5</option>
+	</select>
+	<input id='savesettingsfile' type="button" class="btn btn-success btn-sm" value="Save">
+	<input id='loadsettingsfile' type="button" class="btn btn-success btn-sm" value="Load">
 	<p> </p>
       </div>
 
@@ -168,7 +239,7 @@
 	  </tr>
 	</table>
 
-	<p>00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:DPMFULLOUT 25:SYNCOUT 26:ETLOCAL 27:FTLOCAL 28:DEBUG0 29:DEBUG1 30:DEBUG2 31:DEBUG3 34:lemo1 35:lemo2 36:lemo3 37:lemo4 64:100M 65:10M 66:1M 67:100k 68:10k 69:1k 70:etsclk</p>
+	<p>00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:LEMO_IN1 25:LEMO_IN2 26:LEMO_IN3 27:LEMO_IN4 28:DEBUG0 29:DEBUG1 30:DEBUG2 31:DEBUG3 32:clk_10M 33:clk_1M 34:clk_100k 35:clk_10k 36:clk_1k 37:ets_clk 40:AND_A 41:AND_B 48-55:multi_A-H 56-63:OR_A-H</p>
       </div>
 
 
@@ -179,7 +250,7 @@
 	
 	<P> Control register to change experimental trigger mode, delay and stretch of logic signal </P>
 	<p>Register: <label for="reglab"></label><input type="text" size="8" id="reglab" value="0x511">   Value: <label for="regval"></label><input type="text" size="10" id="regval" value="0x00000000">   <input id="readreg" class="readreg btn btn-primary btn-sm" type="button" value="Read">   <input id="writereg" type="button" class="btn btn-primary btn-sm" value="Write"></p>
-	<p>0x30-0x3F: DelayAndExtend, 0x50/51/52/53/54: TriggerModeFP/BP1/BP2/BP3/BP4(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II), 0x45: external timestamp clock(0:10M 1:1M 2:100k 3: 10k 4:1k)</p>
+	<p>0x30-0x3F: DelayAndExtend, 0x50/51/52/53/54: TriggerModeFP/BP1/BP2/BP3/BP4(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:Multi_A 25: Multi_B 26:OR_A 27:OR_B 28:AND_A 29:AND_B 30:LEMO_IN1 31:LEMO_IN2), 0x45: external timestamp clock(0:10M 1:1M 2:100k 3: 10k 4:1k), 0x60-0x67: multi_A-H, 0x68-0x6F: OR_A-H, 0x70-0x71: AND_A-B </p>
       </div>
 
       <div id="" class="" style="width: 1200px; height: 150px; vertical-align: middle; display: table-cell; float: left;">

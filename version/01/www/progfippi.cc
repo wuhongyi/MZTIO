@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: Sat Jul 20 13:36:26 2019 (+0000)
-// Last-Updated: Sat Jul 20 13:44:05 2019 (+0000)
+// Last-Updated: Fri Jun 26 14:36:56 2020 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 1
+//     Update #: 4
 // URL: http://wuhongyi.cn 
 
 #include <stdio.h>
@@ -190,10 +190,24 @@ int main(void)
   int k, lbit, fbit;
   long long int revsn;
 
+  char * data;
+  data = getenv("QUERY_STRING");                           // retrieve webpage arguments   
+  std::string webdata(data);                               // turn into string
+  // printf("%s\n",webdata.c_str());
 
+  std::string ss = webdata.substr(3);
+  int num = atoi(ss.c_str());
+  // printf("%d\n",num);
+
+  
   map<unsigned int,unsigned int> label_to_values;
   std::map<unsigned int,unsigned int>::iterator it;
-  const char *settings_file = "settings.ini";
+  // const char *settings_file = "settings.ini";
+  char settings_file[32];
+  if(num==0) sprintf(settings_file,"settings.ini");
+  else sprintf(settings_file,"settings%d.ini",num);
+    
+  
   bool rval = read_config_file(settings_file,label_to_values);
 
   if( rval == 0 )

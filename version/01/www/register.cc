@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: Wed Jun 10 22:13:37 2020 (+0800)
-// Last-Updated: Fri Jun 12 22:56:27 2020 (+0800)
+// Last-Updated: Wed Jul  1 12:35:28 2020 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 8
+//     Update #: 11
 // URL: http://wuhongyi.cn 
 
 #include <stdio.h>
@@ -143,10 +143,10 @@ int read_print_logic(volatile unsigned int *mapped)
       {"reserved",	    "%u",	  0x000},	  //05 
       {"reserved",	    "%u",	  0x000},	  //06 
       {"Ext Clk Source",    "%u",	  0x045},	  //07 
-      {"reserved",	    "%u",	  0x000},	  //08 
-      {"reserved",	    "%u",	  0x000},	  //09 
-      {"reserved",	    "%u",	  0x000},	  //10 
-      {"reserved",	    "%u",	  0x000},	  //11 
+      {"LEMO CH 1",	    "%u",	  0x040},	  //08 
+      {"LEMO CH 2",	    "%u",	  0x041},	  //09 
+      {"LEMO CH 3",	    "%u",	  0x042},	  //10 
+      {"LEMO CH 4",	    "%u",	  0x043},	  //11 
       {"reserved",	    "%u",	  0x000},	  //12 
       {"reserved",	    "%u",	  0x000},	  //13 
       {"reserved",	    "%u",	  0x000},	  //14 
@@ -171,11 +171,11 @@ int read_print_logic(volatile unsigned int *mapped)
 
   struct dataflag data3[N_PL_RS_PAR] =
     {
-      {"LEMO CH 1",	    "%u",	    0x040},	//00
-      {"LEMO CH 2",	    "%u",	    0x041},	//01 
-      {"LEMO CH 3",	    "%u",	    0x042},	//02 
-      {"LEMO CH 4",	    "%u",	    0x043},	//03
-      {"reserved",          "0x%X",	    0x000},	//04 
+      {"AND_A",	    "0x%X",	    0x070},	//00
+      {"AND_B",	    "0x%X",	    0x071},	//01 
+      {"reserved",	    "0x%X",	    0x000},	//02 
+      {"reserved",	    "0x%X",	    0x000},	//03
+      {"reserved",	    "0x%X",	    0x000},	//04 
       {"reserved",	    "0x%X",	    0x000},	//05 
       {"reserved",	    "0x%X",	    0x000},	//06 
       {"reserved",	    "0x%X",	    0x000},	//07 
@@ -187,10 +187,10 @@ int read_print_logic(volatile unsigned int *mapped)
       {"reserved",	    "0x%X",	    0x000},	//13 
       {"reserved",	    "0x%X",	    0x000},	//14 
       {"reserved",	    "0x%X",	    0x000},	//15 
-      {"reserved",	    "%u",	    0x000},	//16 
-      {"reserved",	    "%u",	    0x000},	//17 
-      {"reserved",	    "%u",	    0x000},	//18 
-      {"reserved",	    "%u",	    0x000},	//19
+      {"reserved",	    "%x%X",	    0x000},	//16 
+      {"reserved",	    "%x%X",	    0x000},	//17 
+      {"reserved",	    "%x%X",	    0x000},	//18 
+      {"reserved",	    "%x%X",	    0x000},	//19
       {"reserved",	    "0x%X",	    0x000},	//20 
       {"reserved",	    "0x%X",	    0x000},	//21 
       {"reserved",	    "0x%X",	    0x000},	//22 
@@ -245,22 +245,22 @@ int read_print_logic(volatile unsigned int *mapped)
 
   struct dataflag data5[N_PL_RS_PAR] =
     {
-      {"CMASK_FRONTA",	    "0x%X",	    0x108},   //00
-      {"CMASK_FRONTB",	    "0x%X",	    0x109},   //01
-      {"CMASK_FRONTC",	    "0x%X",	    0x10A},   //02
-      {"CMASK_TRIGGERALL",  "0x%X",	    0x10B},   //03
-      {"CMASK_EBDATA",	    "0x%X",	    0x10C},   //04
-      {"MMSUM_FRONTA",	    "%u",	    0x110},   //05
-      {"MMSUM_FRONTB",	    "%u",	    0x111},   //06
-      {"MMSUM_FRONTC",	    "%u",	    0x112},   //07
-      {"MMSUM_TRIGGERALL",  "%u",	    0x113},   //08
-      {"MMSUM_EBDATA",	    "%u",	    0x114},   //09
-      {"reserved",	    "%u",	  0x000},     //10 
-      {"reserved",	    "%u",	  0x000},     //11 
-      {"reserved",	    "%u",	  0x000},     //12 
-      {"reserved",	    "%u",	  0x000},     //13 
-      {"reserved",	    "%u",	  0x000},     //14 
-      {"COINCTEST",	    "0x%X",	  0x005},     //15 
+      {"Multi_A",	    "0x%X",	    0x060},   //00
+      {"Multi_B",	    "0x%X",	    0x061},   //01
+      {"Multi_C",	    "0x%X",	    0x062},   //02
+      {"Multi_D",           "0x%X",	    0x063},   //03
+      {"Multi_E",	    "0x%X",	    0x064},   //04
+      {"Multi_F",	    "0x%X",	    0x065},   //05
+      {"Multi_G",	    "0x%X",	    0x066},   //06
+      {"Multi_H",	    "0x%X",	    0x067},   //07
+      {"OR_A",              "0x%X",	    0x068},   //08
+      {"OR_B",	            "0x%X",	    0x069},   //09
+      {"OR_C",	            "0x%X",	  0x06A},     //10 
+      {"OR_D",	            "0x%X",	  0x06B},     //11 
+      {"OR_E",	            "0x%X",	  0x06C},     //12 
+      {"OR_F",	            "0x%X",	  0x06D},     //13 
+      {"OR_G",	            "0x%X",	  0x06E},     //14 
+      {"OR_H",	            "0x%X",	  0x06F},     //15 
       {"reserved",	    "%u",	  0x000},	//16 
       {"reserved",	    "%u",	  0x000},	//17 
       {"reserved",	    "%u",	  0x000},	//18 
