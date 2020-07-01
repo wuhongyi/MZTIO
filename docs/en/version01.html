@@ -166,6 +166,9 @@
 <p>In order to facilitate GDDAQ users to be familiar with the logic functions of Pixie-16 module and the characteristics of PKU firmware, this firmware was specially developed for teaching. Users can download the corresponding version firmware and web control program at <a class="reference external" href="https://github.com/wuhongyi/MZTIO/">https://github.com/wuhongyi/MZTIO/</a> .</p>
 <p>The <em>version/01</em> folder contains the firmware <em>xillydemo.bit</em> and the control web <em>www</em> folder. <strong>This firmware and its supporting control program can only be used for learning, please contact Hongyi Wu get the experimental version.</strong></p>
 <p>The top 12 RJ-45 connectors on the front panel of the MZTIO are represented by the following symbols from top to bottom: A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4. The RJ-45 connector on the Pixie-16 module in the PKU firmware outputs the multiplicity logic signals of channel 0 and channel 1, which are denoted by _I and _II, respectively. Then A1_I represents the multiplicity logic of channel 0 in the Pixie-16 module connected to the first RJ-45 port of MZTIO.</p>
+<img alt="_images/version01_hw.png" src="_images/version01_hw.png" />
+<p>This firmware requires the use of an 8-channel LEMO port daughter board. Set the first 4 channels as input and the next 4 channels as output by jumper. The jumper settings are shown below:</p>
+<img alt="_images/version01_jumper.png" src="_images/version01_jumper.png" />
 <div class="section" id="control-register">
 <h2>Control register<a class="headerlink" href="#control-register" title="永久链接至标题">¶</a></h2>
 <img alt="_images/version01_control.png" src="_images/version01_control.png" />

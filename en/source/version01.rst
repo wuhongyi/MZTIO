@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 四 6月 25 21:43:40 2020 (+0800)
-.. Last-Updated: 三 7月  1 13:15:26 2020 (+0800)
+.. Last-Updated: 三 7月  1 14:05:22 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 6
+..     Update #: 7
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -20,6 +20,13 @@ The *version/01* folder contains the firmware *xillydemo.bit* and the control we
 
 The top 12 RJ-45 connectors on the front panel of the MZTIO are represented by the following symbols from top to bottom: A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4. The RJ-45 connector on the Pixie-16 module in the PKU firmware outputs the multiplicity logic signals of channel 0 and channel 1, which are denoted by _I and _II, respectively. Then A1_I represents the multiplicity logic of channel 0 in the Pixie-16 module connected to the first RJ-45 port of MZTIO.
 
+
+.. image:: /_static/img/version01_hw.png
+
+This firmware requires the use of an 8-channel LEMO port daughter board. Set the first 4 channels as input and the next 4 channels as output by jumper. The jumper settings are shown below:
+
+
+.. image:: /_static/img/version01_jumper.png
 
 
 ============================================================

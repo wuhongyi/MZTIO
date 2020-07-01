@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 五 6月 19 20:43:45 2020 (+0800)
-.. Last-Updated: 三 7月  1 13:15:26 2020 (+0800)
+.. Last-Updated: 三 7月  1 14:05:20 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 21
+..     Update #: 22
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -20,6 +20,12 @@ demo version 01
 
 
 MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符号表示：A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4。PKU 固件中 Pixie-16 模块上的 RJ-45 连接器输出 channel 0 和 channel 1 的多重性逻辑信号，分别用 _I 和 _II 表示。 则 A1_I 表示 MZTIO 第一个 RJ-45 端口连接的 Pixie-16 模块中 channel 0 的多重性逻辑。
+
+.. image:: /_static/img/version01_hw.png
+
+本固件要求配合一个 8 通道 LEMO 口子板使用。通过跳锡线将前 4 个通道设置为输入，后 4 个通道为输出。跳线的设置如下图所示：
+
+.. image:: /_static/img/version01_jumper.png
 
 
 

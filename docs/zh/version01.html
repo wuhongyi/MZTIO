@@ -166,6 +166,9 @@
 <p>为了方便 GDDAQ 使用者熟悉 Pixie-16 模块的逻辑功能和 PKU 固件的特点，特别开发了本固件用于教学。用户可以在 <a class="reference external" href="https://github.com/wuhongyi/MZTIO/">https://github.com/wuhongyi/MZTIO/</a> 下载对应版本固件以及网页控制程序。</p>
 <p><em>version/01</em> 文件夹内包含固件 <em>xillydemo.bit</em> 和控制网页文件夹 <em>www</em>。<strong>本固件及其配套的控制程序仅可用于获取的学习，实验版本请与吴鸿毅联系。</strong></p>
 <p>MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符号表示：A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4。PKU 固件中 Pixie-16 模块上的 RJ-45 连接器输出 channel 0 和 channel 1 的多重性逻辑信号，分别用 _I 和 _II 表示。 则 A1_I 表示 MZTIO 第一个 RJ-45 端口连接的 Pixie-16 模块中 channel 0 的多重性逻辑。</p>
+<img alt="_images/version01_hw.png" src="_images/version01_hw.png" />
+<p>本固件要求配合一个 8 通道 LEMO 口子板使用。通过跳锡线将前 4 个通道设置为输入，后 4 个通道为输出。跳线的设置如下图所示：</p>
+<img alt="_images/version01_jumper.png" src="_images/version01_jumper.png" />
 <div class="section" id="id1">
 <h2>控制寄存器<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <img alt="_images/version01_control.png" src="_images/version01_control.png" />
