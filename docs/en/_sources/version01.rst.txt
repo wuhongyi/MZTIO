@@ -4,14 +4,17 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 四 6月 25 21:43:40 2020 (+0800)
-.. Last-Updated: 三 7月  1 14:05:22 2020 (+0800)
+.. Last-Updated: 一 7月 20 15:55:57 2020 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 7
+..     Update #: 8
 .. URL: http://wuhongyi.cn 
 
 ##################################################
 demo version 01
 ##################################################
+
+- 2020-07-01 First release version
+- 2020-07-20 Fixed bug for AND_A/AND_B  
 
 In order to facilitate GDDAQ users to be familiar with the logic functions of Pixie-16 module and the characteristics of PKU firmware, this firmware was specially developed for teaching. Users can download the corresponding version firmware and web control program at https://github.com/wuhongyi/MZTIO/ .
 
@@ -130,7 +133,7 @@ The register setting part is used to read or modify register setting parameters.
    0x3E, DelayAndExtend15(not used now [15:0]delay [31:16]stretch)
    0x3F, DelayAndExtend16(not used now [15:0]delay [31:16]stretch)
    0x45, external timestamp clock(0:10M 1:1M 2:100k 3: 10k 4:1k)
-   0x50, TriggerModeFP(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II)
+   0x50, TriggerModeFP(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:OR_A 27:OR_B 28:AND_A 29:AND_B)
    0x51, TriggerModeBP1(not used now)
    0x52, TriggerModeBP2(not used now)
    0x53, TriggerModeBP3(not used now)

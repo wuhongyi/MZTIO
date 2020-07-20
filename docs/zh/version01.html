@@ -163,6 +163,10 @@
             
   <div class="section" id="demo-version-01">
 <h1>demo version 01<a class="headerlink" href="#demo-version-01" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>2020-07-01 首次发布版本</p></li>
+<li><p>2020-07-20 修复 AND_A/AND_B bug</p></li>
+</ul>
 <p>为了方便 GDDAQ 使用者熟悉 Pixie-16 模块的逻辑功能和 PKU 固件的特点，特别开发了本固件用于教学。用户可以在 <a class="reference external" href="https://github.com/wuhongyi/MZTIO/">https://github.com/wuhongyi/MZTIO/</a> 下载对应版本固件以及网页控制程序。</p>
 <p><em>version/01</em> 文件夹内包含固件 <em>xillydemo.bit</em> 和控制网页文件夹 <em>www</em>。<strong>本固件及其配套的控制程序仅可用于获取的学习，实验版本请与吴鸿毅联系。</strong></p>
 <p>MZTIO 前面板的最上面 12 个 RJ-45 连接器从上到下分别用以下符号表示：A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4。PKU 固件中 Pixie-16 模块上的 RJ-45 连接器输出 channel 0 和 channel 1 的多重性逻辑信号，分别用 _I 和 _II 表示。 则 A1_I 表示 MZTIO 第一个 RJ-45 端口连接的 Pixie-16 模块中 channel 0 的多重性逻辑。</p>
@@ -423,7 +427,7 @@
 <td><p>external timestamp clock(0:10M 1:1M 2:100k 3: 10k 4:1k)</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x50</p></td>
-<td><p>TriggerModeFP(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II)</p></td>
+<td><p>TriggerModeFP(00:A1_I 01:A1_II 02:A2_I 03:A2_II 04:A3_I 05:A3_II 06:A4_I 07:A4_II 08:B1_I 09:B1_II 10:B2_I 11:B2_II 12:B3_I 13:B3_II 14:B4_I 15:B4_II 16:C1_I 17:C1_II 18:C2_I 19:C2_II 20:C3_I 21:C3_II 22:C4_I 23:C4_II 24:multi_A 25:multi_B 26:OR_A 27:OR_B 28:AND_A 29:AND_B)</p></td>
 </tr>
 <tr class="row-even"><td><p>0x51</p></td>
 <td><p>TriggerModeBP1(not used now)</p></td>
